@@ -1,0 +1,102 @@
+
+
+.contact__wrapper{
+    padding-top: 50px;
+    margin-bottom: 60px;
+    .title{
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .desc{
+        font-size: 14px;
+        padding-top: 10px;
+        text-align: center;
+        padding-bottom: 50px;
+    }
+
+    .item-wrapper{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        gap: 12rem;
+
+        svg{
+            font-size: 42px;
+            padding-bottom: 14px;
+        }
+
+        .icon-title{
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        p{
+            font-size: 14px;
+        }
+    }
+
+    .contact__form{
+        margin-top: 80px;
+        .contact__form-wrapper{
+            display: flex;
+            gap: 2rem;
+
+            .accordion {
+                --bs-accordion-btn-bg: F5F5F5;
+            }
+
+            .accordion-item{
+                background-color: #F5F5F5 !important;
+                margin-bottom: 10px;
+
+                button{
+                    font-size: 16px;
+                }
+
+                .accordion-body{
+                    font-size: 13px;
+                }
+            }
+        }
+        h4{
+            font-size: 20px;
+            padding-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .form-item{
+            padding-bottom: 20px;
+            label{
+                font-size: 14px;
+                padding-bottom: 5px;
+            }
+
+            input{
+                padding-left: 10px !important;
+                padding: 10px 0;
+            }
+
+        }
+        .btn__main{
+            margin-top: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .item-wrapper{
+        flex-wrap: wrap;
+        gap: 5rem !important;
+    }
+
+    .contact__form-wrapper{
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .item-wrapper{
+        gap: 3rem !important;
+    }
+}
