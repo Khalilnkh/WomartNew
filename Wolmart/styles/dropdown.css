@@ -584,7 +584,7 @@ html {
   color: #fff;
 }
 .category-dropdown:hover > a, .category-dropdown.show > a {
-  color: #fff;
+  color: #fff !important;
   background-color: #336699;
 }
 .category-dropdown .dropdown-box {

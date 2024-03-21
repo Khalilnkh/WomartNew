@@ -10,6 +10,19 @@ const colorLinks = document.querySelectorAll('.product__color .color');
 const sizeLinks = document.querySelectorAll('.product__size .size');
 const addToCartButton = document.querySelector('.addToCart');
 
+document.addEventListener("DOMContentLoaded", function() {
+    window.addEventListener("scroll", function() {
+        var scrollY = window.scrollY;
+        var headerBottom = document.querySelector(".header-bottom");
+
+        if (scrollY > 100) {
+            headerBottom.classList.add("fixed-bar");
+        } else {
+            headerBottom.classList.remove("fixed-bar");
+        }
+    });
+});
+
 colorLinks.forEach(link => {
     link.addEventListener('click', function(event) {
         if (this.classList.contains('active')) {
@@ -59,7 +72,9 @@ function updateAddToCartStatus() {
     }
 }
 
-
+overlayMenu.addEventListener('click', function() {
+    document.body.classList.remove('mmenu-active')
+})
 
 function toggleMenu(e) {
     document.body.classList.toggle('mmenu-active');
@@ -85,9 +100,6 @@ function menuWrapperToggle(e) {
     e.preventDefault();
 }
 
-function closeMenu() {
-    document.body.classList.remove('mmenu-active');
-}
 
 menuToggle.addEventListener('click', toggleMenu);
 
@@ -115,9 +127,5 @@ menuLink.forEach(function(link) {
         lastUlElement.classList.add('new-class');
     }
 });
-
-overlayMenu.addEventListener('click', closeMenu);
-
-
 
 

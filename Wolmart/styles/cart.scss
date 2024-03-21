@@ -19,6 +19,10 @@
     .cart-table{
         width: 100%;
 
+        .action-main{
+            text-align: center;
+        }
+
 
         thead{
             th{
@@ -29,7 +33,7 @@
             }
         }
 
-        .product-quantity{
+        .medium__item{
             text-align: center;
 
             .input-group {
@@ -87,6 +91,11 @@
             border-top: 1px solid #eee;
             font-size: 1.4rem;
 
+            .btn__main{
+                color: #fff !important;
+                width: auto;
+            }
+
             a{
                 color: #666666;
             }
@@ -94,6 +103,13 @@
 
         td:not(:first-child){
             padding-left: 1rem;
+
+            div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+            }
         }
     }
 
@@ -159,8 +175,34 @@
     .cart__product{
         gap: 3rem;
 
+        thead{
+            display: none;
+        }
+
+        tbody{
+            text-align: center;
+        }
+
+        tr{
+            display: flex;
+            flex-direction: column;
+        }
+
+        td{
+            width: 100%;
+        }
+
+        .product-thumbnail{
+            width: 100% !important;
+
+            figure{
+                display: flex;
+                justify-content: center;
+            }
+        }
+
         .input-group{
-            width: 78% !important;
+            width: 30% !important;
         }
     }
 }
@@ -172,3 +214,5 @@
 
     }
 }
+
+

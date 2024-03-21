@@ -15,16 +15,19 @@
 .cart__main .cart-table {
   width: 100%;
 }
+.cart__main .cart-table .action-main {
+  text-align: center;
+}
 .cart__main .cart-table thead th {
   padding-bottom: 10px;
 }
 .cart__main .cart-table thead th span {
   font-size: 16px;
 }
-.cart__main .cart-table .product-quantity {
+.cart__main .cart-table .medium__item {
   text-align: center;
 }
-.cart__main .cart-table .product-quantity .input-group {
+.cart__main .cart-table .medium__item .input-group {
   display: inline-flex;
   height: 4.4rem;
   position: relative;
@@ -34,7 +37,7 @@
   justify-content: center;
   width: 48%;
 }
-.cart__main .cart-table .product-quantity .input-group button {
+.cart__main .cart-table .medium__item .input-group button {
   position: absolute;
   border: none;
   border-radius: 50% !important;
@@ -43,10 +46,10 @@
   width: 2.4rem;
   height: 2.4rem;
 }
-.cart__main .cart-table .product-quantity .input-group .minus-btn {
+.cart__main .cart-table .medium__item .input-group .minus-btn {
   margin-left: -3rem !important;
 }
-.cart__main .cart-table .product-quantity input {
+.cart__main .cart-table .medium__item input {
   flex: 1;
   font-size: 1.3rem;
   padding: 0 1.4rem 0 1.8rem;
@@ -70,11 +73,21 @@
   border-top: 1px solid #eee;
   font-size: 1.4rem;
 }
+.cart__main .cart-table td .btn__main {
+  color: #fff !important;
+  width: auto;
+}
 .cart__main .cart-table td a {
   color: #666666;
 }
 .cart__main .cart-table td:not(:first-child) {
   padding-left: 1rem;
+}
+.cart__main .cart-table td:not(:first-child) div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 .cart__main .cart-action {
   display: flex;
@@ -129,12 +142,32 @@
   .cart__product {
     gap: 3rem;
   }
+  .cart__product thead {
+    display: none;
+  }
+  .cart__product tbody {
+    text-align: center;
+  }
+  .cart__product tr {
+    display: flex;
+    flex-direction: column;
+  }
+  .cart__product td {
+    width: 100%;
+  }
+  .cart__product .product-thumbnail {
+    width: 100% !important;
+  }
+  .cart__product .product-thumbnail figure {
+    display: flex;
+    justify-content: center;
+  }
   .cart__product .input-group {
-    width: 78% !important;
+    width: 30% !important;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 992px) {
   .cart__product {
     gap: 3rem;
   }
-}/*# sourceMappingURL=card.css.map */
+}/*# sourceMappingURL=cart.css.map */
