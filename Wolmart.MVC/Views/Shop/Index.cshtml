@@ -1,0 +1,628 @@
+﻿@model List<Product>
+
+<div class="drawer-menu">
+    <nav id="nav">
+        <div class="accordion__main contents">
+            <div class="accordion-single js-acc-single">
+                <div class="accordion-single-item js-acc-item is-open">
+                    <h3 class="accordion-single-title js-acc-single-trigger">
+                        <label>
+                            All Categories
+                        </label>
+                    </h3>
+                    <div class="accordion-single-content">
+                        <ul>
+                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Babies</a></li>
+                            <li><a href="#">Beauty</a></li>
+                            <li><a href="#">Decoration</a></li>
+                            <li><a href="#">Electronics</a></li>
+                            <li><a href="#">Fashion</a></li>
+                            <li><a href="#">Food</a></li>
+                            <li><a href="#">Furniture</a></li>
+                            <li><a href="#">Kitchen</a></li>
+                            <li><a href="#">Medical</a></li>
+                            <li><a href="#">Sports</a></li>
+                            <li><a href="#">Watches</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-single-item js-acc-item is-open">
+                    <h3 class="accordion-single-title js-acc-single-trigger">
+                        <label>
+                            Price
+                        </label>
+                    </h3>
+                    <div class="accordion-single-content">
+                        <ul>
+                            <li><a href="#">$0.00 - $100.00</a></li>
+                            <li><a href="#">$100.00 - $200.00</a></li>
+                            <li><a href="#">$200.00 - $300.00</a></li>
+                            <li><a href="#">$300.00 - $500.00</a></li>
+                            <li><a href="#">$500.00+</a></li>
+                        </ul>
+                        <form method="POST" class="price-range">
+                            <input type="number" name="min_price" class="min_price text-center" placeholder="$min">
+                            <span class="dash">-</span>
+                            <input type="number" name="max_price" class="max_price text-center" placeholder="$max">
+                            <button type="submit" class="btn btn-primary btn-rounded">Go</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="accordion-single-item js-acc-item is-open">
+                    <h3 class="accordion-single-title js-acc-single-trigger">
+                        <label>
+                            Size
+                        </label>
+                    </h3>
+                    <div class="accordion-single-content">
+                        <div class="checkboxes">
+                            <div class="checkboxes__row">
+                                <ul>
+                                    <li class="checkboxes__item">
+                                        <a href="#">
+                                            <label class="checkbox style-c">
+                                                <input type="checkbox" />
+                                                <div class="checkbox__checkmark"></div>
+                                                <a href="#" class="checkbox__body">Extra Large</a>
+                                            </label>
+                                        </a>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Large</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Medium</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Small</a>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-single-item js-acc-item is-open">
+                    <h3 class="accordion-single-title js-acc-single-trigger">
+                        <label>
+                            Brand
+                        </label>
+                    </h3>
+                    <div class="accordion-single-content">
+                        <div class="checkboxes">
+                            <div class="checkboxes__row">
+                                <ul>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Elegant Auto Group</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Green Grass</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Node Js</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">NS8</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Red</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Skysuite Tech</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Sterling</a>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-single-item js-acc-item is-open">
+                    <h3 class="accordion-single-title js-acc-single-trigger">
+                        <label>
+                            Color
+                        </label>
+                    </h3>
+                    <div class="accordion-single-content">
+                        <div class="checkboxes">
+                            <div class="checkboxes__row">
+                                <ul>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Black</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Blue</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Brown</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Green</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Grey</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Orange</a>
+                                        </label>
+                                    </li>
+                                    <li class="checkboxes__item">
+                                        <label class="checkbox style-c">
+                                            <input type="checkbox" />
+                                            <div class="checkbox__checkmark"></div>
+                                            <a href="#" class="checkbox__body">Yellow</a>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="overlay-menu" id="overlay-menu">
+    </div>
+</div>
+
+<main>
+    <nav class="breadcrumb-nav">
+        <div class="container">
+            <div class="row">
+                <ul class="breadcrumb-main">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <i class="fa-solid fa-angle-right"></i>
+                    <li>
+                        <a href="#">Shop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="sidebar__banner">
+        <div class="container">
+            <div class="row">
+                <div id="banner-sidebar" class="banner-main">
+                    <div class="banner-box">
+                        <div class="banner-content">
+                            <h4>Accessories Collection</h4>
+                            <h3 id="main">Smart Wrist Watches</h3>
+                            <button type="submit" class="btn__main">
+                                DISCOVER NOW
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <img src="/assets/images/banner-14.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="category__main">
+        <div class="container">
+            <div class="row">
+                <div class="category-box">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="icon-box">
+                                <a href="#">
+                                    <img src="/assets/images/categories/category-1.jpg" alt="Category Image">
+                                </a>
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="#">
+                                            Sports
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="icon-box">
+                                <a href="#">
+                                    <img src="/assets/images/categories/category-2.jpg" alt="Category Image">
+                                </a>
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="#">
+                                            Babies
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="icon-box">
+                                <a href="#">
+                                    <img src="/assets/images/categories/category-3.jpg" alt="Category Image">
+                                </a>
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="#">
+                                            Sneakers
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="icon-box">
+                                <a href="#">
+                                    <img src="/assets/images/categories/category-4.jpg" alt="Category Image">
+                                </a>
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="#">
+                                            Cameras
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="icon-box">
+                                <a href="#">
+                                    <img src="/assets/images/categories/category-5.jpg" alt="Category Image">
+                                </a>
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="#">
+                                            Games
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="icon-box">
+                                <a href="#">
+                                    <img src="/assets/images/categories/category-6.jpg" alt="Category Image">
+                                </a>
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="#">
+                                            Kitchen
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="icon-box">
+                                <a href="#">
+                                    <img src="/assets/images/categories/category-8.jpg" alt="Category Image">
+                                </a>
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="#">
+                                            Watches
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="icon-box">
+                                <a href="#">
+                                    <img src="/assets/images/categories/category-9.jpg" alt="Category Image">
+                                </a>
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="#">
+                                            Clothes
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar__main">
+        <div class="container">
+            <div class="row">
+                <div class="product__main-wrapper">
+                    <div class="product-filter col-lg-3">
+                        <div class="accordion__main contents">
+                            <div class="accordion-single js-acc-single">
+                                <div class="accordion-single-item js-acc-item is-open">
+                                    <h3 class="accordion-single-title js-acc-single-trigger">
+                                        <label>
+                                            All Categories
+                                        </label>
+                                    </h3>
+                                    <div class="accordion-single-content">
+                                        <ul>
+                                            @foreach (var item in ViewBag.Categories)
+                                            {
+                                                <li><a href="#">@item.Name</a></li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="accordion-single-item js-acc-item is-open">
+                                    <h3 class="accordion-single-title js-acc-single-trigger">
+                                        <label>
+                                            Price
+                                        </label>
+                                    </h3>
+                                    <div class="accordion-single-content">
+                                        <ul>
+                                            <li><a href="#">$0.00 - $100.00</a></li>
+                                            <li><a href="#">$100.00 - $200.00</a></li>
+                                            <li><a href="#">$200.00 - $300.00</a></li>
+                                            <li><a href="#">$300.00 - $500.00</a></li>
+                                            <li><a href="#">$500.00+</a></li>
+                                        </ul>
+                                        <form method="POST" class="price-range">
+                                            <input type="number" name="min_price" class="min_price text-center" placeholder="$min">
+                                            <span class="dash">-</span>
+                                            <input type="number" name="max_price" class="max_price text-center" placeholder="$max">
+                                            <button type="submit" class="btn btn-primary btn-rounded">Go</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="accordion-single-item js-acc-item is-open">
+                                    <h3 class="accordion-single-title js-acc-single-trigger">
+                                        <label>
+                                            Size
+                                        </label>
+                                    </h3>
+                                    <div class="accordion-single-content">
+                                        <div class="checkboxes">
+                                            <div class="checkboxes__row">
+                                                <ul>
+                                                    @foreach (var item in ViewBag.Sizes)
+                                                    {
+                                                        <li class="checkboxes__item">
+                                                                <label class="checkbox style-c">
+                                                                    <input type="checkbox" />
+                                                                    <div class="checkbox__checkmark"></div>
+                                                                    <a href="#" class="checkbox__body">@item.Name</a>
+                                                                </label>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-single-item js-acc-item is-open">
+                                    <h3 class="accordion-single-title js-acc-single-trigger">
+                                        <label>
+                                            Brand
+                                        </label>
+                                    </h3>
+                                    <div class="accordion-single-content">
+                                        <div class="checkboxes">
+                                            <div class="checkboxes__row">
+                                                <ul>
+                                                    @foreach (var item in ViewBag.Brands)
+                                                    {
+                                                        <li class="checkboxes__item">
+                                                            <label data-brand-id="@item.ID" class="checkbox style-c">
+                                                                <input type="checkbox" />
+                                                                <div class="checkbox__checkmark"></div>
+                                                                <div class="checkbox__body">@item.Name</div>
+                                                            </label>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-single-item js-acc-item is-open">
+                                    <h3 class="accordion-single-title js-acc-single-trigger">
+                                        <label>
+                                            Color
+                                        </label>
+                                    </h3>
+                                    <div class="accordion-single-content">
+                                        <div class="checkboxes">
+                                            <div class="checkboxes__row">
+                                                <ul>
+                                                    @foreach (var item in ViewBag.Colors)
+                                                    {
+                                                        <li class="checkboxes__item">
+                                                            <label class="checkbox style-c">
+                                                                <input type="checkbox" />
+                                                                <div class="checkbox__checkmark"></div>
+                                                                <a href="#" class="checkbox__body">@item.Name</a>
+                                                            </label>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-list col-lg-9">
+                        <div class="select__main">
+                            <div class="sort__wrapper">
+
+                                <div class="filter-menu text-uppercase" onClick="toggle();">
+                                    <i class="fa-solid fa-bars"></i>
+                                    Filters
+                                </div>
+                                <label>Sort By :</label>
+                                <i class="fa-solid fa-chevron-down"></i>
+                                <select name="orderby" class="form-control">
+                                    <option value="default" selected="selected">Default sorting</option>
+                                    <option value="popularity">Sort by popularity</option>
+                                    <option value="rating">Sort by average rating</option>
+                                    <option value="date">Sort by latest</option>
+                                    <option value="price-low">Sort by pric: low to high</option>
+                                    <option value="price-high">Sort by price: high to low</option>
+                                </select>
+                            </div>
+                            <div class="show__item">
+                                <i class="fa-solid fa-chevron-down"></i>
+                                <select name="item-count" class="form-control">
+                                    <option value="9">Show 9</option>
+                                    <option value="12" selected="selected">Show 12</option>
+                                    <option value="24">Show 24</option>
+                                    <option value="36">Show 36</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="product-wrapper">
+                            @foreach (var item in Model)
+                            {
+                                <div class="item-wrapper">
+                                    <figure class="product-gallery">
+                                        <a asp-controller="shop" asp-action="detail" asp-route-id="@item.ID">
+                                            <img src="~/assets/images/products/@item.MainImage" alt="Product">
+                                            <img src="~/assets/images/products/@item.HoverImage" alt="Product">
+                                        </a>
+                                        <div class="product-menu">
+                                            <a href="#" class="btn-label btn-cart" title="Add to cart">
+                                                <i class="fa-solid fa-bag-shopping"></i>
+                                            </a>
+                                            <a href="#" class="btn-label btn-wishlist" title="Add to wishlist">
+                                                <i class="fa-regular fa-heart"></i>
+                                            </a>
+                                        </div>
+                                        @{
+                                            var timeCheck = DateTime.Today.AddMonths(-1);
+                                        }
+                                        @if(item.CreatedAt >= timeCheck)
+                                        {
+                                            <div class="product-label-main">
+                                                <label class="product-label label-new">New</label>
+                                            </div>
+                                        }
+                                    </figure>
+                                    <div class="product-details">
+                                        <h4 class="product-title">
+                                            <a asp-controller="shop" asp-action="detail" asp-route-id="@item.ID">@item.Name</a>
+                                        </h4>
+                                        <div class="ratings-wrapper">
+                                            <div class="ratings-main">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                            <a href="#" class="rating">(@item.Feedbacks.Count Reviews)</a>
+                                        </div>
+                                        <div class="product-price">
+                                            @if (item.ProductColors.Any(x => x.DiscountedPrice == 0))
+                                            {
+                                               <ins class="new-price">$@(item.ProductColors.Min(x => x.Price.ToString("0.00"))) -</ins>
+                                               <span class="del-price">$@item.ProductColors.Max(x=>x.Price).ToString("0.00")</span>
+                                            }
+                                            else
+                                            {
+                                                <ins class="new-price">$@(item.ProductColors.Select(x => x.Price.ToString("0.00")).FirstOrDefault())</ins>
+                                                <del class="old-price">$@(item.ProductColors.Select(x => x.DiscountedPrice?.ToString("0.00")).FirstOrDefault())</del>
+                                            }
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="pagination-main">
+                            <p class="pagination-info">
+                                Showing<span>1-12 of 60</span>Products
+                            </p>
+                            <ul class="pagination">
+                                <li class="prev disabled">
+                                    <a href="#">
+                                        <i class="fa-solid fa-arrow-left-long mr-3"></i>
+                                        Prev
+                                    </a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="next">
+                                    <a href="#">
+                                        Next
+                                        <i class="fa-solid fa-arrow-right-long ml-3"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

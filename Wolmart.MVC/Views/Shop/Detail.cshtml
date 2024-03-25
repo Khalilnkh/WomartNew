@@ -1,0 +1,497 @@
+﻿@model ShopVM
+
+<section class="product__detail">
+    <div class="container">
+        <div class="row">
+            <div class="product__main">
+                <div class="product__gallery col-lg-6 col-md-6">
+                    <div class="product__box">
+                        <div class="gallery">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper" id="animated-thumbnails-gallery">
+                                    @foreach (ProductImage item in Model.Product.ProductImages)
+                                    {
+                                        <a href="~/assets/images/products/@item.Image" class="swiper-slide">
+                                            <img src="~/assets/images/products/@item.Image" alt="Product Image">
+                                        </a>
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @foreach (ProductImage item in Model.Product.ProductImages)
+                                    {
+                                        <div class="swiper-slide">
+                                            <img src="~/assets/images/products/@item.Image" alt="Product Image">
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product__content col-lg-6 col-md-6">
+                    <h1 class="product-title">
+                        @Model.Product.Name
+                    </h1>
+                    <div class="product-categories">
+                        Category:
+                        <span class="product-category">
+                            <a href="#">@Model.Product.Category.Name</a>
+                        </span>
+                    </div>
+                    <div class="product-brands">
+                        Brand:
+                        <span class="product-brand">
+                            <a href="#">@Model.Product.Brand.Name</a>
+                        </span>
+                    </div>
+                    <hr />
+                    @{
+                        double? minPrice = Model.Product.ProductColors
+                        .Where(x => x != null && x.Price > 0)
+                        .Min(x => (double?)x.Price);
+
+                        double? minDiscountedPrice = Model.Product.ProductColors
+                        .Where(pc => pc != null && pc.DiscountedPrice.HasValue && pc.DiscountedPrice > 0)
+                        .Min(pc => (double?)pc.DiscountedPrice);
+
+                        if (minPrice.HasValue)
+                        {
+                            <div class="product-price">
+                                <ins class="new-price" id="colorPrice">$@minPrice.Value.ToString("0.00")</ins>
+                                <del style="font-size: 23px;color: #a2a2a2;font-weight: normal;" class="old-price" id="colorOldPrice">$@minDiscountedPrice.Value.ToString("0.00")</del>
+                            </div>
+                        }
+                    }
+
+                    <div class="ratings-wrapper">
+                        <div class="ratings-main">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <a href="#" class="rating">(3 Reviews)</a>
+                    </div>
+                    <hr />
+                    <div class="product__color">
+                        <label>Color:</label>
+
+                        @foreach (var item in Model.Product.ProductColors)
+                        {
+                            <a href="#" class="color @item.Color.Name.ToLower()" data-price="@item.Price.ToString("0.00")"
+                               data-old-price="@item.DiscountedPrice?.ToString("0.00")">
+                            </a>
+                        }
+                    </div>
+
+                    <div class="product__size">
+                        <label>
+                            Size:
+                        </label>
+                        @foreach (var item in Model.Sizes)
+                        {
+                            <a href="#" class="size">@item.Name</a>
+                        }
+                    </div>
+                    <form class="product-form">
+                        <div class="product__form-main">
+                            <div class="input-group">
+                                <input class="quantity form-control" type="number" placeholder="1" min="1" max="10000000">
+                                <button class="plus-btn">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                                <button class="minus-btn">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <a href="#" class="addToCart disabled">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span>Add to Cart</span>
+                        </a>
+                    </form>
+                </div>
+                <div class="product__tabs">
+                    <ul class="nav nav-tabs mb-3" id="ex4 nav-tabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active"
+                               id="ex4-tab-1"
+                               data-bs-toggle="tab"
+                               href="#ex4-tabs-1"
+                               role="tab"
+                               aria-controls="ex4-tabs-1"
+                               aria-selected="true">Description</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link"
+                               id="ex4-tab-2"
+                               data-bs-toggle="tab"
+                               href="#ex4-tabs-2"
+                               role="tab"
+                               aria-controls="ex4-tabs-2"
+                               aria-selected="false">Specification</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link"
+                               id="ex4-tab-3"
+                               data-bs-toggle="tab"
+                               href="#ex4-tabs-3"
+                               role="tab"
+                               aria-controls="ex4-tabs-3"
+                               aria-selected="false">Customer Reviews (3)</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="ex4-content">
+                        <div class="tab-pane fade show active"
+                             id="ex4-tabs-1"
+                             role="tabpanel"
+                             aria-labelledby="ex4-tab-1">
+                            <div class="product__description-content">
+                                @foreach (var description in Model.Description)
+                                {
+                                    @Html.Raw(description.Text)
+                                }
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="ex4-tabs-2" role="tabpanel" aria-labelledby="ex4-tab-2">
+                            <ul class="spec-list">
+                                <li>
+                                    <label>Model</label>
+                                    @if (Model.Specifications.Count > 0)
+                                    {
+                                        <p>@Model.Specifications[0].Model</p>
+                                    }
+                                </li>
+                                <li>
+                                    <label>Color</label>
+
+                                    <div>
+                                        @for (var i = 0; i < Model.Colors.Count; i++)
+                                        {
+                                            <p>@Model.Colors[i].Name@(i < Model.Colors.Count - 1 ? "," : "")</p>
+                                        }
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <label>Size</label>
+                                    <div>
+                                        @for (int i = 0; i < Model.Sizes.Count; i++)
+                                        {
+                                            <p>@Model.Sizes[i].Name@(i < Model.Sizes.Count - 1 ? "," : "")</p>
+                                        }
+                                    </div>
+                                </li>
+                                <li>
+                                    <label>Guarantee Time</label>
+                                    @if (Model.Specifications.Count > 0)
+                                    {
+                                        <p>@Model.Specifications[0].Guarantee</p>
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="tab-pane fade" id="ex4-tabs-3" role="tabpanel" aria-labelledby="ex4-tab-3">
+                                <div class="customer-review">
+                                    <div class="col-lg-5">
+                                        <div class="review__rating">
+                                            @{
+                                                double totalRating = 0;
+                                                int feedbackCount = Model.Feedbacks.Count;
+
+                                                foreach (var feedback in Model.Feedbacks)
+                                                {
+                                                    totalRating += feedback.Rating;
+                                                }
+
+                                                double averageRating = feedbackCount > 0 ? totalRating / feedbackCount : 0;
+                                            }
+
+                                            <h4>@averageRating.ToString("0.0")</h4>
+
+                                            <div class="rating-main">
+                                                <p>Average Rating</p>
+                                                <div class="ratings-wrapper">
+                                                    <div class="ratings-main">
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                    </div>
+                                                    <a href="#" class="rating">(@feedbackCount Reviews)</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @{
+                                            var recommendedFeedbackCount = Model.Feedbacks.Count(f => f.Rating >= 4);
+                                            var recommendationPercentage = feedbackCount > 0 ? (double)recommendedFeedbackCount / feedbackCount * 100 : 0; 
+
+                                            var recommendationPercentageString = recommendationPercentage.ToString("0.0");
+                                        }
+
+                                        <div class="recommended">
+                                            <span class="text-dark font-weight-bold">@recommendationPercentageString%</span>
+                                            Recommended
+                                            <span class="count">(@recommendedFeedbackCount of @feedbackCount)</span>
+                                        </div>
+
+                                        <div class="rating-list">
+                                            <div class="ratings-list">
+                                                @{
+                                                    var allRatings = Model.Feedbacks.Select(x => x.Rating).ToList();
+                                                    var totalFeedbackCount = allRatings.Count;
+                                                    var ratingRange = Enumerable.Range(1, 5).Reverse();
+
+                                                    <div class="ratings-wrapper">
+                                                        @foreach (var rating in ratingRange)
+                                                        {
+                                                            var ratingCount = allRatings.Count(r => r == rating);
+                                                            var progressPercentage = ratingCount > 0 ? (int)((double)ratingCount / totalFeedbackCount * 100) : 0;
+
+                                                            <div class="rating-box">
+                                                                <div class="ratings-main">
+                                                                    @{
+                                                                        for (int i = 0; i < rating; i++)
+                                                                        {
+                                                                            <i class="fa-solid fa-star"></i>
+                                                                        }
+                                                                        for (int i = rating; i < 5; i++)
+                                                                        {
+                                                                            <i class="fa-solid far fa-star"></i>
+                                                                        }
+                                                                    }
+                                                                </div>
+                                                                <div class="progress-bar progress-bar-sm">
+                                                                    <span style="width: @progressPercentage%;"></span>
+                                                                </div>
+                                                                <div class="rating-value">
+                                                                    <span>@progressPercentage%</span>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="form__main">
+                                            <h3>Submit Your Review</h3>
+                                            <p class="mb-3">Your email address will not be published. Required fields are marked *</p>
+                                            <form asp-controller="shop" asp-action="feedback" asp-route-ProductID="@Model.Product.ID" method="POST" class="review-form" enctype="multipart/form-data">
+                                                <div class="rating-form">
+                                                    <label for="rating">Your Rating Of This Product :</label>
+                                                    <div class="ratings-wrapper">
+                                                        <div class="ratings-main">
+                                                            <i class="ratingStar fas fa-star" data-value="1"></i>
+                                                            <i class="ratingStar far fa-star" data-value="2"></i>
+                                                            <i class="ratingStar far fa-star" data-value="3"></i>
+                                                            <i class="ratingStar far fa-star" data-value="4"></i>
+                                                            <i class="ratingStar far fa-star" data-value="5"></i>
+                                                        </div>
+                                                        <input type="hidden" name="rating" id="ratingValue" value="1" />
+                                                    </div>
+                                                </div>
+                                                <textarea cols="30" rows="6" name="text" placeholder="Write Your Review Here..." id="review"></textarea>
+                                                <div class="input-main">
+                                                    <div class="col-md-6">
+                                                        <input type="text" name="name" placeholder="Your Name" id="author">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" name="email" placeholder="Your Email" id="email">
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn__main">
+                                                    Submit Review
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="review__user">
+                                        <ul>
+                                            @foreach (var item in Model.Feedbacks)
+                                            {
+                                                <li class="comment">
+                                                    <div class="comment-body">
+                                                        <div class="comment-avatar">
+                                                            <img src="~/assets/images/default-profile.png" alt="Avatar">
+                                                        </div>
+                                                        <div class="comment-content">
+                                                            <h4 class="comment-author">
+                                                                <a href="#">@item.Name</a>
+                                                                <span class="comment-date">
+                                                                    @item.CreatedAt?.ToString("MMMM dd, yyyy 'at' h:mm tt")
+                                                                </span>
+                                                            </h4>
+                                                            <div class="ratings-container comment-rating">
+                                                                <div class="ratings-wrapper">
+                                                                    <div class="ratings-main">
+                                                                        <div class="ratings-main">
+                                                                           @for (int i = 0; i < item.Rating; i++)
+                                                                           {
+                                                                               <i class="fa-solid fas fa-star"></i>
+                                                                           }
+                                                                           @for (int i = item.Rating; i < 5; i++)
+                                                                           {
+                                                                               <i class="fa-solid far fa-star"></i>
+                                                                           }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="desc">
+                                                                @item.Text
+                                                            </p>
+                                                            <div class="comment-action">
+                                                                <div class="review-image">
+                                                                    <div id="review-gallery">
+                                                                        <a href="~/assets/images/products/@item.Image">
+                                                                            <img src="~/assets/images/products/@item.Image" alt="">
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="product-related-title">Related Products</h4>
+                <div id="product-wrapper" class="deal-wrapper">
+                    <div class="swiper-wrapper product-wrapper">
+                        @foreach (var product in Model.Products)
+                        {
+                            <div class="swiper-slide item-wrapper">
+                                <figure class="product-gallery">
+                                    <a href="#">
+                                        <img src="~/assets/images/products/@product.MainImage" alt="Product">
+                                        <img src="~/assets/images/products/@product.HoverImage" alt="Product">
+                                    </a>
+                                    <div class="product-menu">
+                                        <a href="#" class="btn-label btn-cart" title="Add to cart">
+                                            <i class="fa-solid fa-bag-shopping"></i>
+                                        </a>
+                                        <a href="#" class="btn-label btn-wishlist" title="Add to wishlist">
+                                            <i class="fa-regular fa-heart"></i>
+                                        </a>
+                                    </div>
+                                    <div class="product-label-main">
+                                    </div>
+                                </figure>
+                                <div class="product-details">
+                                    <h4 class="product-title"><a href="#">@product.Name</a></h4>
+                                    <div class="ratings-wrapper">
+                                        <div class="ratings-main">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <a href="#" class="rating">(@product.Feedbacks.Select(x => x.Rating).Count() Reviews)</a>
+                                    </div>
+                                    <div class="product-price">
+                                        <ins class="new-price">$@product.ProductColors.Select(x=>x.Price).FirstOrDefault()</ins>
+                                        <del class="del-price">$49.89</del>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="banner__production">
+                <div class="icon__box-main">
+                    <div class="icon-box">
+                        <div class="icon-main">
+                            <i class="fa-solid fa-truck"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h4 class="icon-box-title">Free Shipping &amp; Returns</h4>
+                            <p>For all orders over $99</p>
+                        </div>
+                    </div>
+                    <div class="icon-box">
+                        <div class="icon-main">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h4 class="icon-box-title">Secure Payment</h4>
+                            <p>We ensure secure payment</p>
+                        </div>
+                    </div>
+                    <div class="icon-box">
+                        <div class="icon-main">
+                            <i class="fa-solid fa-money-bill"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h4 class="icon-box-title">Money Back Guarantee</h4>
+                            <p>Any back within 30 days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-production">
+                    <img src="/assets/images/banner-15.jpg" alt="Banner">
+                </div>
+                <div class="more__products">
+                    <div class="product__header">
+                        <h4 class="more-product">More Products</h4>
+                    </div>
+                    @foreach (var item in Model.Products.Take(3))
+                    {
+                        <div class="product">
+                            <div class="product-media">
+                                <a href="#">
+                                    <img src="~/assets/images/products/@item.MainImage" alt="Product" width="100" height="113">
+                                </a>
+                            </div>
+                            <div class="product-details">
+                                <h4 class="product-name">
+                                    <a href="#">@item.Name</a>
+                                </h4>
+                                <div class="ratings-wrapper">
+                                    <div class="ratings-main">
+                                        <i class="fa-solid fas fa-star"></i>
+                                        <i class="fa-solid fas fa-star"></i>
+                                        <i class="fa-solid fas fa-star"></i>
+                                        <i class="fa-solid fas fa-star"></i>
+                                        <i class="fa-solid fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    @{
+                                        var moreMinPrice = item.ProductColors.Select(x => x.Price).Min();
+                                        var moreMaxPrice = item.ProductColors.Select(x => x.Price).Max();
+                                        if (moreMinPrice != moreMaxPrice)
+                                        {
+                                            <span>$@moreMinPrice.ToString("0.00") - $@moreMaxPrice.ToString("0.00")</span>
+                                        }
+                                        else
+                                        {
+                                            <span>$@moreMinPrice.ToString("0.00")</span>
+                                        }
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
