@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "D:\\repos\\C#\\Wolmart.MVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\views\\shop\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:views\\shop\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\controllers\\shopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:controllers\\shopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\views\\shared\\_cartindexpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:views\\shared\\_cartindexpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\wwwroot\\styles\\shop-sidebar.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:wwwroot\\styles\\shop-sidebar.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\views\\shared\\components\\header\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:views\\shared\\components\\header\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\wwwroot\\assets\\js\\custom.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:wwwroot\\assets\\js\\custom.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +30,72 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "shop-sidebar.css",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\styles\\shop-sidebar.css",
-              "RelativeDocumentMoniker": "wwwroot\\styles\\shop-sidebar.css",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\styles\\shop-sidebar.css",
-              "RelativeToolTip": "wwwroot\\styles\\shop-sidebar.css",
-              "ViewState": "AQIAAG4AAAAAAAAAAAAwwHwAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-03-23T12:09:28.252Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ShopController.cs",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Controllers\\ShopController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ShopController.cs",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Controllers\\ShopController.cs",
-              "RelativeToolTip": "Controllers\\ShopController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-23T11:46:41.206Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Shop\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shop\\Index.cshtml",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Shop\\Index.cshtml",
-              "RelativeToolTip": "Views\\Shop\\Index.cshtml",
-              "ViewState": "AQIAAMcBAAAAAAAAAAAAANYBAABNAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-23T11:45:15.963Z",
+              "DocumentIndex": 4,
+              "Title": "custom.js",
+              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\js\\custom.js",
+              "RelativeDocumentMoniker": "wwwroot\\assets\\js\\custom.js",
+              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\js\\custom.js",
+              "RelativeToolTip": "wwwroot\\assets\\js\\custom.js",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAowF4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-03-26T12:24:01.798Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Product.cs",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "Models\\Product.cs",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Models\\Product.cs",
-              "RelativeToolTip": "Models\\Product.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwA4AAAAuAAAA",
+              "Title": "Default.cshtml",
+              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Shared\\Components\\Header\\Default.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\Components\\Header\\Default.cshtml",
+              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Shared\\Components\\Header\\Default.cshtml",
+              "RelativeToolTip": "Views\\Shared\\Components\\Header\\Default.cshtml",
+              "ViewState": "AQIAAMYAAAAAAAAAAAAAwNMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-26T14:34:36.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Cart\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Cart\\Index.cshtml",
+              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Cart\\Index.cshtml",
+              "RelativeToolTip": "Views\\Cart\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-26T14:04:53.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_CartIndexPartial.cshtml",
+              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Shared\\_CartIndexPartial.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_CartIndexPartial.cshtml",
+              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Shared\\_CartIndexPartial.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_CartIndexPartial.cshtml",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAIwCwAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-26T14:03:01.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CartController.cs",
+              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Controllers\\CartController.cs",
+              "RelativeToolTip": "Controllers\\CartController.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAmwCAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T16:52:51.067Z",
+              "WhenOpened": "2024-03-26T13:18:26.414Z",
               "EditorCaption": ""
             }
           ]

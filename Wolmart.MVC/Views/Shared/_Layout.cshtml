@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/styles/dropdown.css" asp-append-version="true">
     <link rel="stylesheet" href="/styles/swiper.css">
     <link rel="stylesheet" href="/styles/shop-sidebar.css" asp-append-version="true">
-    <link rel="stylesheet" href="/styles/accordion.css">
+    <link rel="stylesheet" href="/styles/accordion.css" asp-append-version="true">
     <link rel="stylesheet" href="/styles/checkout.css">
     <link rel="stylesheet" href="/styles/cart.css">
     <link rel="stylesheet" href="/styles/about.css">
@@ -161,13 +161,13 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/assets/js/photoswipe.js" asp-append-version="true"></script>
+    @* @RenderSection("scripts", required: false) *@
     <script src="/assets/js/custom.js" asp-append-version="true"></script>
     <script src="/assets/js/accordion.js"></script>
     <script src="/assets/js/swiper.js"></script>
     <script src="/assets/js/drawer.js"></script>
     <script src="/assets/js/script.js"></script>
-    <script src="/assets/js/countdown.js"></script>
-    @* @await RenderSectionAsync("Scripts", required: false) *@
+    @* <script src="/assets/js/countdown.js"></script> *@
 </body>
 
 </html>

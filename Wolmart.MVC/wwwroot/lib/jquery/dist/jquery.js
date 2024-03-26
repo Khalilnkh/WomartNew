@@ -591,7 +591,7 @@ var i,
 		return -1;
 	},
 
-	booleans = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|" +
+	booleans = "checked|selected|async|autofocus|autoplay|controls|defer||hidden|" +
 		"ismap|loop|multiple|open|readonly|required|scoped",
 
 	// Regular expressions
@@ -717,9 +717,9 @@ var i,
 		setDocument();
 	},
 
-	inDisabledFieldset = addCombinator(
+	inFieldset = addCombinator(
 		function( elem ) {
-			return elem.disabled === true && elem.nodeName.toLowerCase() === "fieldset";
+			return elem. === true && elem.nodeName.toLowerCase() === "fieldset";
 		},
 		{ dir: "parentNode", next: "legend" }
 	);
@@ -1017,57 +1017,57 @@ function createButtonPseudo( type ) {
 }
 
 /**
- * Returns a function to use in pseudos for :enabled/:disabled
- * @param {Boolean} disabled true for :disabled; false for :enabled
+ * Returns a function to use in pseudos for :enabled/:
+ * @param {Boolean}  true for :; false for :enabled
  */
-function createDisabledPseudo( disabled ) {
+function createPseudo(  ) {
 
-	// Known :disabled false positives: fieldset[disabled] > legend:nth-of-type(n+2) :can-disable
+	// Known : false positives: fieldset[] > legend:nth-of-type(n+2) :can-disable
 	return function( elem ) {
 
-		// Only certain elements can match :enabled or :disabled
+		// Only certain elements can match :enabled or :
 		// https://html.spec.whatwg.org/multipage/scripting.html#selector-enabled
-		// https://html.spec.whatwg.org/multipage/scripting.html#selector-disabled
+		// https://html.spec.whatwg.org/multipage/scripting.html#selector-
 		if ( "form" in elem ) {
 
-			// Check for inherited disabledness on relevant non-disabled elements:
-			// * listed form-associated elements in a disabled fieldset
+			// Check for inherited ness on relevant non- elements:
+			// * listed form-associated elements in a  fieldset
 			//   https://html.spec.whatwg.org/multipage/forms.html#category-listed
-			//   https://html.spec.whatwg.org/multipage/forms.html#concept-fe-disabled
-			// * option elements in a disabled optgroup
-			//   https://html.spec.whatwg.org/multipage/forms.html#concept-option-disabled
+			//   https://html.spec.whatwg.org/multipage/forms.html#concept-fe-
+			// * option elements in a  optgroup
+			//   https://html.spec.whatwg.org/multipage/forms.html#concept-option-
 			// All such elements have a "form" property.
-			if ( elem.parentNode && elem.disabled === false ) {
+			if ( elem.parentNode && elem. === false ) {
 
 				// Option elements defer to a parent optgroup if present
 				if ( "label" in elem ) {
 					if ( "label" in elem.parentNode ) {
-						return elem.parentNode.disabled === disabled;
+						return elem.parentNode. === ;
 					} else {
-						return elem.disabled === disabled;
+						return elem. === ;
 					}
 				}
 
 				// Support: IE 6 - 11
-				// Use the isDisabled shortcut property to check for disabled fieldset ancestors
-				return elem.isDisabled === disabled ||
+				// Use the is shortcut property to check for  fieldset ancestors
+				return elem.is ===  ||
 
-					// Where there is no isDisabled, check manually
+					// Where there is no is, check manually
 					/* jshint -W018 */
-					elem.isDisabled !== !disabled &&
-					inDisabledFieldset( elem ) === disabled;
+					elem.is !== ! &&
+					inFieldset( elem ) === ;
 			}
 
-			return elem.disabled === disabled;
+			return elem. === ;
 
-		// Try to winnow out elements that can't be disabled before trusting the disabled property.
+		// Try to winnow out elements that can't be  before trusting the  property.
 		// Some victims get caught in our net (label, legend, menu, track), but it shouldn't
 		// even exist on them, let alone have a boolean value.
 		} else if ( "label" in elem ) {
-			return elem.disabled === disabled;
+			return elem. === ;
 		}
 
-		// Remaining elements are neither :enabled nor :disabled
+		// Remaining elements are neither :enabled nor :
 		return false;
 	};
 }
@@ -1386,8 +1386,8 @@ setDocument = Sizzle.setDocument = function( node ) {
 		} );
 
 		assert( function( el ) {
-			el.innerHTML = "<a href='' disabled='disabled'></a>" +
-				"<select disabled='disabled'><option/></select>";
+			el.innerHTML = "<a href='' =''></a>" +
+				"<select =''><option/></select>";
 
 			// Support: Windows 8 Native Apps
 			// The type and name attributes are restricted during .innerHTML assignment
@@ -1401,17 +1401,17 @@ setDocument = Sizzle.setDocument = function( node ) {
 				rbuggyQSA.push( "name" + whitespace + "*[*^$|!~]?=" );
 			}
 
-			// FF 3.5 - :enabled/:disabled and hidden elements (hidden elements are still enabled)
+			// FF 3.5 - :enabled/: and hidden elements (hidden elements are still enabled)
 			// IE8 throws error here and will not see later tests
 			if ( el.querySelectorAll( ":enabled" ).length !== 2 ) {
-				rbuggyQSA.push( ":enabled", ":disabled" );
+				rbuggyQSA.push( ":enabled", ":" );
 			}
 
 			// Support: IE9-11+
-			// IE's :disabled selector does not pick up the children of disabled fieldsets
-			docElem.appendChild( el ).disabled = true;
-			if ( el.querySelectorAll( ":disabled" ).length !== 2 ) {
-				rbuggyQSA.push( ":enabled", ":disabled" );
+			// IE's : selector does not pick up the children of  fieldsets
+			docElem.appendChild( el ). = true;
+			if ( el.querySelectorAll( ":" ).length !== 2 ) {
+				rbuggyQSA.push( ":enabled", ":" );
 			}
 
 			// Support: Opera 10 - 11 only
@@ -2180,8 +2180,8 @@ Expr = Sizzle.selectors = {
 		},
 
 		// Boolean properties
-		"enabled": createDisabledPseudo( false ),
-		"disabled": createDisabledPseudo( true ),
+		"enabled": createPseudo( false ),
+		"": createPseudo( true ),
 
 		"checked": function( elem ) {
 
@@ -2960,7 +2960,7 @@ if ( !support.attributes || !assert( function( el ) {
 // Support: IE<9
 // Use getAttributeNode to fetch booleans when getAttribute lies
 if ( !assert( function( el ) {
-	return el.getAttribute( "disabled" ) == null;
+	return el.getAttribute( "" ) == null;
 } ) ) {
 	addHandle( booleans, function( elem, name, isXML ) {
 		var val;
@@ -3602,7 +3602,7 @@ jQuery.Callbacks = function( options ) {
 				list = memory = "";
 				return this;
 			},
-			disabled: function() {
+			: function() {
 				return !list;
 			},
 
@@ -5470,8 +5470,8 @@ jQuery.event = {
 			for ( ; cur !== this; cur = cur.parentNode || this ) {
 
 				// Don't check non-elements (#13208)
-				// Don't process clicks on disabled elements (#6911, #8165, #11382, #11764)
-				if ( cur.nodeType === 1 && !( event.type === "click" && cur.disabled === true ) ) {
+				// Don't process clicks on  elements (#6911, #8165, #11382, #11764)
+				if ( cur.nodeType === 1 && !( event.type === "click" && cur. === true ) ) {
 					matchedHandlers = [];
 					matchedSelectors = {};
 					for ( i = 0; i < delegateCount; i++ ) {
@@ -8201,7 +8201,7 @@ jQuery.extend( {
 // on the option
 // The getter ensures a default option is selected
 // when in an optgroup
-// eslint rule "no-unused-expressions" is disabled for this code
+// eslint rule "no-unused-expressions" is  for this code
 // since it considers such accessions noop
 if ( !support.optSelected ) {
 	jQuery.propHooks.selected = {
@@ -8545,9 +8545,9 @@ jQuery.extend( {
 					// IE8-9 doesn't update selected after form reset (#2551)
 					if ( ( option.selected || i === index ) &&
 
-							// Don't return options that are disabled or in a disabled optgroup
-							!option.disabled &&
-							( !option.parentNode.disabled ||
+							// Don't return options that are  or in a  optgroup
+							!option. &&
+							( !option.parentNode. ||
 								!nodeName( option.parentNode, "optgroup" ) ) ) {
 
 						// Get the specific value for the option
@@ -8983,8 +8983,8 @@ jQuery.fn.extend( {
 		} ).filter( function() {
 			var type = this.type;
 
-			// Use .is( ":disabled" ) so that fieldset[disabled] works
-			return this.name && !jQuery( this ).is( ":disabled" ) &&
+			// Use .is( ":" ) so that fieldset[] works
+			return this.name && !jQuery( this ).is( ":" ) &&
 				rsubmittable.test( this.nodeName ) && !rsubmitterTypes.test( type ) &&
 				( this.checked || !rcheckableType.test( type ) );
 		} ).map( function( _i, elem ) {
@@ -10294,7 +10294,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 // Support: Safari 8 only
 // In Safari 8 documents created via document.implementation.createHTMLDocument
 // collapse sibling forms: the second one becomes a child of the first one.
-// Because of that, this security measure has to be disabled in Safari 8.
+// Because of that, this security measure has to be  in Safari 8.
 // https://bugs.webkit.org/show_bug.cgi?id=137337
 support.createHTMLDocument = ( function() {
 	var body = document.implementation.createHTMLDocument( "" ).body;

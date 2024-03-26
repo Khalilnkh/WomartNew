@@ -1,4 +1,5 @@
 ﻿using Wolmart.MVC.Models;
+using Wolmart.MVC.ViewModels.Cart;
 
 namespace Wolmart.MVC.Interface
 {
@@ -6,5 +7,6 @@ namespace Wolmart.MVC.Interface
     {
         Task<List<Category>> GetCategories();
         Task<List<Subcategory>> GetSubcategories();
+        Task<List<CartVM>> GetCart();
     }
 }

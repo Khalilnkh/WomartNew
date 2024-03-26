@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Wolmart.MVC.Models
 {
@@ -28,5 +29,38 @@ namespace Wolmart.MVC.Models
         public List<ProductImage> ProductImages { get; set; }
         public List<ProductDescription> ProductDescriptions { get; set; }
         public List<ProductSpecification> ProductSpecifications { get; set; }
+
+        [NotMapped]
+        [Required]
+        public List<string> ProductDescription { get; set; } = new List<string>();
+
+        [NotMapped]
+        [Required]
+        public IFormFile MainFile { get; set; }
+        [NotMapped]
+        [Required]
+        public IFormFile HoverFile { get; set; }
+        [NotMapped]
+        [Required]
+        [MaxLength(5)]
+        public IEnumerable<IFormFile> Files { get; set; }
+
+        [NotMapped]
+        [Required]
+        public List<double?> Prices { get; set; }
+
+        [NotMapped]
+        public List<double?> DiscountedPrices { get; set; }
+
+        [NotMapped]
+        public List<int> SizeIDs { get; set; }
+
+        [NotMapped]
+        public List<int?> SizeCounts { get; set; }
+
+        [NotMapped]
+        public List<int> ColorIDs { get; set; }
+        [NotMapped]
+        public List<int?> Counts { get; set; }
     }
 }

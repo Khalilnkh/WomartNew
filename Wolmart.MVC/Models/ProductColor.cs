@@ -12,7 +12,6 @@ namespace Wolmart.MVC.Models
         [Required]
         [Range(0, int.MaxValue)]
         public double Price { get; set; }
-        [Required]
         [Range(0, int.MaxValue)]
         public double? DiscountedPrice { get; set; }
 

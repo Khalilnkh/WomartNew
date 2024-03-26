@@ -198,7 +198,6 @@ namespace Wolmart.MVC.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<double?>("DiscountedPrice")
-                        .IsRequired()
                         .HasColumnType("float");
 
                     b.Property<double>("Price")

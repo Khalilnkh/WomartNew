@@ -431,7 +431,7 @@
   display: flex;
   gap: 2rem;
 }
-.product__detail .product-form .addToCart.disabled {
+.product__detail .product-form .addToCart. {
   pointer-events: none;
   background-color: #eee;
   border-color: #eee;

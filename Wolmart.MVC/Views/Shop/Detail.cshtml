@@ -16,7 +16,6 @@
                                         </a>
                                     }
                                 </div>
-
                             </div>
                             <div class="swiper-container gallery-thumbs">
                                 <div class="swiper-wrapper">
@@ -61,7 +60,10 @@
                         {
                             <div class="product-price">
                                 <ins class="new-price" id="colorPrice">$@minPrice.Value.ToString("0.00")</ins>
-                                <del style="font-size: 23px;color: #a2a2a2;font-weight: normal;" class="old-price" id="colorOldPrice">$@minDiscountedPrice.Value.ToString("0.00")</del>
+                                @if (minDiscountedPrice.HasValue)
+                                {
+                                    <del style="font-size: 23px;color: #a2a2a2;font-weight: normal;" class="old-price" id="colorOldPrice">$@minDiscountedPrice.Value.ToString("0.00")</del>
+                                }
                             </div>
                         }
                     }
@@ -109,7 +111,7 @@
                                 </button>
                             </div>
                         </div>
-                        <a href="#" class="addToCart disabled">
+                        <a href="#" class="addToCart ">
                             <i class="fa-solid fa-bag-shopping"></i>
                             <span>Add to Cart</span>
                         </a>

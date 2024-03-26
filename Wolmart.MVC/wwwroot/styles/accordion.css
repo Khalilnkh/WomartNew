@@ -50,13 +50,15 @@
   margin: 0;
 }
 .accordion-single-content ul .checkboxes__item {
-  padding-bottom: 8px;
+  padding-bottom: 10px;
 }
-.accordion-single-content ul a {
-  font-size: 14px;
-  padding-bottom: 10px !important;
-  display: block;
-}
+    .accordion-single-content.price-filter a{
+        padding-bottom: 10px;
+    }
+    .accordion-single-content ul a {
+        font-size: 14px;
+        display: block;
+    }
 
 .accordion-single-content p {
   padding: 20px;

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Wolmart.MVC.DAL;
 using Wolmart.MVC.Models;
+using Wolmart.MVC.ViewModels;
 using Wolmart.MVC.ViewModels.Shops;
 
 namespace Wolmart.MVC.Controllers
@@ -15,9 +16,37 @@ namespace Wolmart.MVC.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int page, int? category, int? brand, int? size, int? color, int? minPrice, int? maxPrice)
         {
-            List<Product> products = await _context.Products.Include(x=>x.Feedbacks).Include(x=>x.ProductColors).ToListAsync();
+            IQueryable<Product> products = _context.Products.Include(x=>x.Feedbacks).Include(x=>x.ProductSizes).Include(x=>x.ProductColors).OrderBy(x=>x.ID);
+
+            if (category.HasValue)
+            {
+                products = products.Where(p => p.CategoryID == category);
+            }
+
+            if (brand.HasValue)
+            {
+                products = products.Where(p => p.BrandID == brand);
+            }
+
+            if (size.HasValue)
+            {
+                products = products.Where(p => p.ProductSizes.Any(x => x.SizeID == size));
+            }
+
+
+            if (color.HasValue)
+            {
+                products = products.Where(p => p.ProductColors.Any(x => x.ColorID == color));
+            }
+
+            if (minPrice.HasValue && maxPrice.HasValue)
+            {
+                products = products.Where(p => p.ProductColors.All(x => x.Price >= minPrice && x.Price <= maxPrice));
+            }
+
+            var pagedList = PagiNationList<Product>.Create(products, page, 12);
 
             ViewBag.Brands = _context.Brands.ToList();
             ViewBag.Categories = _context.Categories.ToList();
@@ -25,7 +54,7 @@ namespace Wolmart.MVC.Controllers
             ViewBag.Brands = _context.Brands.ToList();
             ViewBag.Sizes = _context.Sizes.ToList();
 
-            return View(products);
+            return View(pagedList);
         }
 
         public async Task<IActionResult> Detail(int? ID)
@@ -65,7 +94,7 @@ namespace Wolmart.MVC.Controllers
             return View(shopVM);
         }
         
-        [HttpPost()]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Feedback(int? ID, Feedback feedback)
         {
@@ -76,6 +105,6 @@ namespace Wolmart.MVC.Controllers
 
             return RedirectToAction("index", "shop");
         }
-        
+
     }
 }
