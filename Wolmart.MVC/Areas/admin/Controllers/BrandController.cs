@@ -3,11 +3,12 @@ using Wolmart.MVC.Models;
 using Wolmart.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Wolmart.MVC.Extension;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Wolmart.MVC.Areas.admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class BrandController : Controller
     {
         private readonly AppDbContext _context;

@@ -3792,22 +3792,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\1-800x900.jpg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\1a06574d-56bd-44cd-b7de-73d319105a15_202403252227540896_1708002004160.jpg))">
-      <SourceType>Package</SourceType>
-      <SourceId>Wolmart.MVC</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Wolmart.MVC</BasePath>
-      <RelativePath>assets/images/products/1a06574d-56bd-44cd-b7de-73d319105a15_202403252227540896_1708002004160.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\1a06574d-56bd-44cd-b7de-73d319105a15_202403252227540896_1708002004160.jpg))</OriginalItemSpec>
-    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\1_org_zoom.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Wolmart.MVC</SourceId>
@@ -4096,22 +4080,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\3-800x900.jpg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\3c27af19-f36f-4dd2-87dc-6e3afc3a4eac_202403252229139736_eTicket_53646844016_page-0001.jpg))">
-      <SourceType>Package</SourceType>
-      <SourceId>Wolmart.MVC</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Wolmart.MVC</BasePath>
-      <RelativePath>assets/images/products/3c27af19-f36f-4dd2-87dc-6e3afc3a4eac_202403252229139736_eTicket_53646844016_page-0001.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\3c27af19-f36f-4dd2-87dc-6e3afc3a4eac_202403252229139736_eTicket_53646844016_page-0001.jpg))</OriginalItemSpec>
-    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\4-1-1.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Wolmart.MVC</SourceId>
@@ -4287,86 +4255,6 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\5-800x900.jpg))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\57d269b8-119a-44c5-9e50-62463a94f257_202403252227540954_88888.png))">
-      <SourceType>Package</SourceType>
-      <SourceId>Wolmart.MVC</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Wolmart.MVC</BasePath>
-      <RelativePath>assets/images/products/57d269b8-119a-44c5-9e50-62463a94f257_202403252227540954_88888.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\57d269b8-119a-44c5-9e50-62463a94f257_202403252227540954_88888.png))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\7351d3f2-886a-4ccc-bf7a-2332b10126a5_202403252238435318_eTicket_53646844016_page-0001.jpg))">
-      <SourceType>Package</SourceType>
-      <SourceId>Wolmart.MVC</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Wolmart.MVC</BasePath>
-      <RelativePath>assets/images/products/7351d3f2-886a-4ccc-bf7a-2332b10126a5_202403252238435318_eTicket_53646844016_page-0001.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\7351d3f2-886a-4ccc-bf7a-2332b10126a5_202403252238435318_eTicket_53646844016_page-0001.jpg))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\7f846f51-a723-43c4-92c2-cd97a00d3505_202403252229139696_eTicket_53646844016_page-0001.jpg))">
-      <SourceType>Package</SourceType>
-      <SourceId>Wolmart.MVC</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Wolmart.MVC</BasePath>
-      <RelativePath>assets/images/products/7f846f51-a723-43c4-92c2-cd97a00d3505_202403252229139696_eTicket_53646844016_page-0001.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\7f846f51-a723-43c4-92c2-cd97a00d3505_202403252229139696_eTicket_53646844016_page-0001.jpg))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\d55ff037-4170-4053-9470-0bb4884d6852_202403252227540966_55.png))">
-      <SourceType>Package</SourceType>
-      <SourceId>Wolmart.MVC</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Wolmart.MVC</BasePath>
-      <RelativePath>assets/images/products/d55ff037-4170-4053-9470-0bb4884d6852_202403252227540966_55.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\d55ff037-4170-4053-9470-0bb4884d6852_202403252227540966_55.png))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\ec41c856-cb70-4c80-8033-f2ed6c728534_202403252229139716_eTicket_53646844016_page-0001.jpg))">
-      <SourceType>Package</SourceType>
-      <SourceId>Wolmart.MVC</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Wolmart.MVC</BasePath>
-      <RelativePath>assets/images/products/ec41c856-cb70-4c80-8033-f2ed6c728534_202403252229139716_eTicket_53646844016_page-0001.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\products\ec41c856-cb70-4c80-8033-f2ed6c728534_202403252229139716_eTicket_53646844016_page-0001.jpg))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\images\slides\man.png))">
       <SourceType>Package</SourceType>

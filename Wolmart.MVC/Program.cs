@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Wolmart.MVC.DAL;
 using Wolmart.MVC.Interface;
+using Wolmart.MVC.Models;
 using Wolmart.MVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,21 @@ builder.Services.AddScoped<ILayoutServices, LayoutServices>();
 
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{
+    options.Password.RequiredLength = 5;
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+
+
+    options.User.RequireUniqueEmail = true;
+    options.Lockout.MaxFailedAccessAttempts = 3;
+    options.Lockout.AllowedForNewUsers = true;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(15);
+}).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,6 +40,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

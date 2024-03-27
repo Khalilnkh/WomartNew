@@ -84,7 +84,7 @@
 
                         @foreach (var item in Model.Product.ProductColors)
                         {
-                            <a href="#" class="color @item.Color.Name.ToLower()" data-price="@item.Price.ToString("0.00")"
+                            <a class="color @item.Color.Name.ToLower()" data-color-id="@item.ColorID" data-price="@item.Price.ToString("0.00")"
                                data-old-price="@item.DiscountedPrice?.ToString("0.00")">
                             </a>
                         }
@@ -96,22 +96,11 @@
                         </label>
                         @foreach (var item in Model.Sizes)
                         {
-                            <a href="#" class="size">@item.Name</a>
+                            <a class="size" data-size-id="@item.ID">@item.Name</a>
                         }
                     </div>
                     <form class="product-form">
-                        <div class="product__form-main">
-                            <div class="input-group">
-                                <input class="quantity form-control" type="number" placeholder="1" min="1" max="10000000">
-                                <button class="plus-btn">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                                <button class="minus-btn">
-                                    <i class="fa-solid fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <a href="#" class="addToCart ">
+                        <a asp-controller="cart" asp-action="addToCart" asp-route-id="@Model.Product.ID" class="addToCart disabled">
                             <i class="fa-solid fa-bag-shopping"></i>
                             <span>Add to Cart</span>
                         </a>

@@ -1,4 +1,5 @@
 ﻿using Wolmart.MVC.Models;
+using Wolmart.MVC.ViewModels.Cart;
 
 namespace Wolmart.MVC.ViewModels.Shops
 {
@@ -13,5 +14,6 @@ namespace Wolmart.MVC.ViewModels.Shops
         public List<Color> Colors { get; set; }
         public List<Feedback> Feedbacks { get; set; }
         public List<Size> Sizes { get; set; }
+        public List<CartVM> CartVMs { get; set; }
     }
 }

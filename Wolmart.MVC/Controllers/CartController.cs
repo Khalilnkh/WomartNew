@@ -52,6 +52,24 @@ namespace Wolmart.MVC.Controllers
             return PartialView("_CartPartial", await _getCartItemAsync(cartVMs));
         }
 
+        public async Task<IActionResult> GetDetailCart()
+        {
+            string cart = Request.Cookies["cart"];
+
+            List<CartVM> cartVMs = null;
+
+            if (!string.IsNullOrWhiteSpace(cart))
+            {
+                cartVMs = JsonConvert.DeserializeObject<List<CartVM>>(cart);
+            }
+            else
+            {
+                cartVMs = new List<CartVM>();
+            }
+
+            return PartialView("_DetailCartPartial", await _getCartItemAsync(cartVMs));
+        }
+
         public async Task<IActionResult> GetCartIndex()
         {
             string cart = Request.Cookies["cart"];
@@ -70,11 +88,17 @@ namespace Wolmart.MVC.Controllers
             return PartialView("_CartIndexPartial", await _getCartItemAsync(cartVMs));
         }
 
-        public async Task<IActionResult> addToCart(int? ID, int? value)
+        public async Task<IActionResult> addToCart(int? ID, int? value, int? colorID, int? sizeID)
         {
             if (ID == null) return BadRequest();
 
+            if(colorID == null) colorID = 1;
+
+            if (sizeID == null) sizeID = 1;
+
             Product product = await _context.Products.Include(x=>x.ProductColors).FirstOrDefaultAsync(x => x.ID == ID);
+            Color color = await _context.Colors.FirstOrDefaultAsync(x => x.ID == colorID);
+            Size size = await _context.Sizes.FirstOrDefaultAsync(x => x.ID == sizeID);
 
             if (product == null) return NotFound();
 
@@ -108,6 +132,9 @@ namespace Wolmart.MVC.Controllers
                 {
                     ProductID = product.ID,
                     Price = product.ProductColors.Min(x => x.Price),
+                    SizeID = size.ID,
+                    ColorID = color.ID,
+                    
                     Count = value ?? 1
                 };
 
@@ -201,15 +228,37 @@ namespace Wolmart.MVC.Controllers
 
             return PartialView("_CartIndexPartial", await _getCartItemAsync(cartVMs));
         }
-        private async Task<List<CartVM>> _getCartItemAsync(List<CartVM> cartVMs)
+
+        public async Task<IActionResult> RemoveAllCart()
+        {
+            string cart = HttpContext.Request.Cookies["cart"];
+
+            if (string.IsNullOrWhiteSpace(cart)) return BadRequest();
+
+            List<CartVM> cartVMs = JsonConvert.DeserializeObject<List<CartVM>>(cart);
+
+            cartVMs.RemoveAll(x => true);
+
+            cart = JsonConvert.SerializeObject(cartVMs);
+
+            HttpContext.Response.Cookies.Append("cart", cart);
+
+            return PartialView("_CartIndexPartial", await _getCartItemAsync(cartVMs));
+        }
+
+        private async Task<List<CartVM>> _getCartItemAsync(List<CartVM> cartVMs) 
         {
             foreach (CartVM item in cartVMs)
             {
                 Product product = await _context.Products.Include(x=>x.ProductColors).FirstOrDefaultAsync(x => x.ID == item.ProductID);
+                Color color = await _context.Colors.FirstOrDefaultAsync(x => x.ID == item.ColorID);
+                Size size = await _context.Sizes.FirstOrDefaultAsync(x => x.ID == item.SizeID);
 
                 item.Image = product.MainImage;
                 item.Title = product.Name;
                 item.Price = product.ProductColors.Min(x => x.Price);
+                item.Color = color.Name;
+                item.Size = size.Name;
             }
 
             return cartVMs;

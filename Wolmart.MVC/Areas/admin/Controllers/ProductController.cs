@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using System.Reflection.Metadata.Ecma335;
@@ -10,6 +11,7 @@ using Wolmart.MVC.ViewModels;
 namespace Wolmart.MVC.Areas.admin.Controllers
 {
     [Area("admin")]
+    [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;

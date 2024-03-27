@@ -46,10 +46,14 @@ namespace Wolmart.MVC.Services
             foreach (CartVM cartVM in cartVMs)
             {
                 Product product = await _context.Products.Include(x=>x.ProductColors).FirstOrDefaultAsync(x => x.ID == cartVM.ProductID);
+                Color color = await _context.Colors.FirstOrDefaultAsync(x => x.ID == cartVM.ColorID);
+                Size size = await _context.Sizes.FirstOrDefaultAsync(x => x.ID == cartVM.SizeID);
 
                 cartVM.Title = product.Name;
                 cartVM.Image = product.MainImage;
                 cartVM.Price = product.ProductColors.Min(x => x.Price);
+                cartVM.Color = color.Name;
+                cartVM.Size = size.Name;
             }
 
             return cartVMs;

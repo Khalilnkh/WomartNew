@@ -251,3 +251,9 @@ D:\repos\C#\Wolmart.MVC\bin\Debug\net7.0\ru\Microsoft.CodeAnalysis.Workspaces.re
 D:\repos\C#\Wolmart.MVC\bin\Debug\net7.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\repos\C#\Wolmart.MVC\bin\Debug\net7.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\repos\C#\Wolmart.MVC\bin\Debug\net7.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\repos\C#\Wolmart.MVC\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\repos\C#\Wolmart.MVC\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\repos\C#\Wolmart.MVC\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\repos\C#\Wolmart.MVC\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+D:\repos\C#\Wolmart.MVC\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+D:\repos\C#\Wolmart.MVC\bin\Debug\net7.0\Microsoft.Extensions.Options.dll

@@ -1,14 +1,46 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
     $('.addToCart').click(function (e) {
         e.preventDefault();
 
-        let url = $(this).attr('href');
+        let colorID = $('.product__color .color.active').data('color-id');
+        let sizeID = $('.product__size .size.active').data('size-id');
+
+        let url = $(this).attr('href') + '?colorID=' + colorID + '&sizeID=' + sizeID;
 
         fetch(url).then(res => res.text())
             .then(data => {
                 $('#cart-info').html(data);
-            })
-    })
+            });
+    });
+});
+
+$(document).ready(function () {
+    $('.addToWishlist').click(function (e) {
+        alert('hello')
+        e.preventDefault();
+    });
+
+
+    $(document).on('click', '.testBtn', function (e) {
+        alert('hello')
+            e.preventDefault();
+        });
+    });
+
+
+$(document).on('click', '.clearBtn', function (e) {
+    e.preventDefault();
+
+    fetch($(this).attr('href'))
+        .then(res => res.text())
+        .then(data => {
+            $('#cartIndex').html(data);
+
+            fetch('/cart/getcart').then(res => res.text())
+                .then(data => {
+                    $('#cart-info').html(data);
+                })
+        })
 })
 
 $(document).on('click', '.close-btn', function (e) {
@@ -36,6 +68,17 @@ $(document).on('click', '.deleteCart', function (e) {
                 .then(data => {
                     $('#cart-info').html(data);
                 })
+        })
+})
+
+
+$(document).on('click', '.deleteWishlist', function (e) {
+    e.preventDefault();
+
+    fetch($(this).attr('href'))
+        .then(res => res.text())
+        .then(data => {
+            $('#wishlistIndex').html(data);
         })
 })
 

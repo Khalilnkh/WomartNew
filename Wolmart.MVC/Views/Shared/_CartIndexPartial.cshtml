@@ -36,10 +36,10 @@
                         </td>
                         <td>
                             <a asp-controller="shop" asp-action="detail" asp-route-id="@item.ProductID">
-                                @item.Title
+                                @item.Title  (@item.Color - @item.Size)
                             </a>
                         </td>
-                        <td><span class="amount">$@item.Price</span></td>
+                        <td><span class="amount">$@item.Price.ToString("F2")</span></td>
                         <td class="medium__item">
                             <div class="input-group">
                                 <input class="quantity form-control" type="text" value="@item.Count">
@@ -71,7 +71,7 @@
             <a href="/checkout.html" class="btn__main">
                 Continue Shopping
             </a>
-            <button type="submit" class="btn btn-rounded clearBtn">Clear Cart</button>
+            <a asp-controller="cart" asp-action="removeAllCart" class="btn btn-rounded clearBtn">Clear Cart</a>
         </div>
     </div>
     <div class="col-lg-4 col-12">

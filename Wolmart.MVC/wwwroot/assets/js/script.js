@@ -66,9 +66,9 @@ function updateAddToCartStatus() {
     const sizeIsActive = Array.from(sizeLinks).some(link => link.classList.contains('active'));
 
     if (colorIsActive && sizeIsActive) {
-        addToCartButton.classList.remove('');
+        addToCartButton.classList.remove('disabled');
     } else {
-        addToCartButton.classList.add('');
+        addToCartButton.classList.add('disabled');
     }
 }
 

@@ -1,8 +1,16 @@
-﻿@model HeaderVM
+﻿@using Microsoft.AspNetCore.Identity
+
+@model HeaderVM
 @inject ILayoutServices layoutservices
+@inject UserManager<AppUser> userManager
 
 @{
     List<CartVM> cartVMs = await layoutservices.GetCart();
+    AppUser appUser = null;
+    if (User.Identity.IsAuthenticated)
+    {
+        appUser = userManager.Users.FirstOrDefault(a => a.UserName == User.Identity.Name);
+    }
 }
 
 <header>
@@ -47,12 +55,19 @@
                         </div>
                         <div class="modal-box">
                             <i class="fa-regular fa-user"></i>
-                            <a data-bs-toggle="modal" data-bs-target="#loginModal" data-tilt data-tilt-glare="true" data-tilt-transition="true" data-tilt-scale="1.1" class="c-logo">
-                                Sign In /
-                            </a>
-                            <a data-bs-toggle="modal" data-bs-target="#loginModal" data-tilt data-tilt-glare="true" data-tilt-transition="true" data-tilt-scale="1.1" class="c-logo">
-                                Register
-                            </a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="account" asp-action="profile">@appUser.UserName</a>
+                            }
+                            else
+                            {
+                                <a data-bs-toggle="modal" data-bs-target="#loginModal" data-tilt data-tilt-glare="true" data-tilt-transition="true" data-tilt-scale="1.1" class="c-logo">
+                                    Sign In /
+                                </a>
+                                <a data-bs-toggle="modal" data-bs-target="#loginModal" data-tilt data-tilt-glare="true" data-tilt-transition="true" data-tilt-scale="1.1" class="c-logo">
+                                    Register
+                                </a>
+                            }
                         </div>
                     </div>
                 </div>
@@ -70,33 +85,23 @@
                         <div class="menu-list">
                             <ul class="d-flex">
                                 <li>
-                                    <a href="#">
+                                    <a asp-controller="home" asp-action="index">
                                         Home
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a asp-controller="shop" asp-action="index">
                                         Shop
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        Vendor
+                                    <a asp-controller="about" asp-action="index">
+                                        About
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        Blog
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Pages
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Elements
+                                    <a asp-controller="contact" asp-action="index">
+                                        Contact us
                                     </a>
                                 </li>
                             </ul>
@@ -114,7 +119,7 @@
                         </div>
                         <span class="divider"></span>
                         <div class="item-box d-flex">
-                            <a href="#" class="item">
+                            <a asp-controller="wishlist" asp-action="index" class="item">
                                 <i class="fa-regular fa-heart"></i>
                                 <span>Wishlist</span>
                             </a>

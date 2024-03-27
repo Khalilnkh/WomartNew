@@ -5,10 +5,13 @@
 
     List<Subcategory> subcategories = await layoutservices.GetSubcategories();
 
+    List<CartVM> cartvm = await layoutservices.GetCart();
+
     HeaderVM headerVM = new HeaderVM
     {
        Categories = categories,
-       Subcategories = subcategories
+       Subcategories = subcategories,
+       CartVMs = cartvm
     };
 }
 
@@ -53,6 +56,7 @@
         </svg>
     </div>
 
+
     <div class="modal fade modal-index" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -77,17 +81,31 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="ex2-content">
-                    <div class="tab-pane fade show active"
+                    <form asp-controller="account" asp-action="login" method="POST" class="tab-pane fade show active"
                          id="ex2-tabs-1"
                          role="tabpanel"
                          aria-labelledby="ex2-tab-1">
+                        @if (TempData["ErrorMessage"] != null)
+                        {                        
+                            <div class="alert alert-danger" role="alert">
+                                <ul>
+                                    @foreach (var modelStateEntry in ViewData.ModelState)
+                                    {
+                                        foreach (var error in modelStateEntry.Value.Errors)
+                                        {
+                                            <li>@error.ErrorMessage</li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        }
                         <div class="form-group">
                             <label>Username or email address *</label>
-                            <input type="text" class="form-control" name="username" id="username" required="">
+                            <input type="text" class="form-control" name="loginEmail" id="username" required="">
                         </div>
                         <div class="form-group">
                             <label>Password *</label>
-                            <input type="password" class="form-control" name="password" id="password" required="">
+                            <input type="password" class="form-control" name="loginPassword" id="password" required="">
                         </div>
 
                         <div class="checkboxes">
@@ -106,16 +124,58 @@
                             Sign In
                         </button>
 
-                    </div>
-                    <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+                    </form>
+                    <form asp-controller="account" asp-action="register" method="POST" class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+                        <span class="text text-danger" asp-validation-summary="ModelOnly"></span>
+                        @if (TempData["ModelStateErrors"] != null)
+                        {
+                            var errors = TempData["ModelStateErrors"];
+                            if (errors is string[])
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    <ul>
+                                        @foreach (var error in (string[])errors)
+                                        {
+                                            <li>@error</li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                            else if (errors is string)
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    <ul>
+                                        <li>@errors</li>
+                                    </ul>
+                                </div>
+                            }
+                        }
+
                         <div class="form-group">
                             <label>Your Email address *</label>
-                            <input type="email" class="form-control" name="email" id="email" required="">
+                            <input type="email" class="form-control" name="email" required="">
+                        </div>
+                        <div class="form-group">
+                            <label>First Name *</label>
+                            <input type="text" class="form-control" name="firstName" required="">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name *</label>
+                            <input type="text" class="form-control" name="lastName" required="">
+                        </div>
+                        <div class="form-group">
+                            <label>Username *</label>
+                            <input type="text" class="form-control" name="username" required="">
                         </div>
                         <div class="form-group">
                             <label>Password *</label>
-                            <input type="password" class="form-control" name="password" id="password" required="">
+                            <input type="password" class="form-control" name="password" required="">
                         </div>
+
+                        <div class="form-group">
+                            <label>Confirm Password *</label>
+                            <input type="password" class="form-control" name="confirmPassword" required="">
+                        </div> 
 
                         <p>
                             Your personal data will be used to support your experience
@@ -146,12 +206,11 @@
                         <button class="login-btn text-uppercase" type="submit">
                             Sign Up
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
@@ -166,8 +225,8 @@
     <script src="/assets/js/accordion.js"></script>
     <script src="/assets/js/swiper.js"></script>
     <script src="/assets/js/drawer.js"></script>
-    <script src="/assets/js/script.js"></script>
-    @* <script src="/assets/js/countdown.js"></script> *@
+    <script src="/assets/js/script.js" asp-append-version="true"></script>
+    <script src="/assets/js/countdown.js"></script>
 </body>
 
 </html>
