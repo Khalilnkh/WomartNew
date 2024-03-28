@@ -27,7 +27,7 @@
                     <tr>
                         <td class="product-thumbnail">
                             <div>
-                                <a href="product-detail.html">
+                                <a asp-controller="shop" asp-action="detail" asp-route-id="@item.ProductID">
                                     <figure>
                                         <img src="~/assets/images/products/@item.Image" alt="Product">
                                     </figure>
@@ -44,12 +44,12 @@
                             <div class="input-group">
                                 <input class="quantity form-control" type="text" value="@item.Count">
                                 <button class="minus-btn">
-                                    <a class="minusCount" asp-controller="cart" asp-action="UpdateCount" asp-route-id="@item.ProductID">
+                                    <a class="minusCount" data-color-id="@item.ColorID" data-size-id="@item.SizeID" asp-controller="cart" asp-action="UpdateCount" asp-route-id="@item.ProductID">
                                         <i class="fa-solid fa-minus"></i>
                                     </a>
                                 </button>
                                 <button class="plus-btn">
-                                    <a class="plusCount" asp-controller="cart" asp-action="UpdateCount" asp-route-id="@item.ProductID">
+                                    <a class="plusCount" data-color-id="@item.ColorID" data-size-id="@item.SizeID" asp-controller="cart" asp-action="UpdateCount" asp-route-id="@item.ProductID">
                                         <i class="fa-solid fa-plus"></i>
                                     </a>
                                 </button>
@@ -68,7 +68,7 @@
         </table>
 
         <div class="cart-action mb-6">
-            <a href="/checkout.html" class="btn__main">
+            <a asp-controller="shop" asp-action="index" class="btn__main">
                 Continue Shopping
             </a>
             <a asp-controller="cart" asp-action="removeAllCart" class="btn btn-rounded clearBtn">Clear Cart</a>
@@ -89,7 +89,7 @@
                 <label class="ls-25">Total</label>
                 <span>$@Model.Sum(x => x.Price * x.Count).ToString("F2")</span>
             </div>
-            <a href="/shop-sidebar.html" class="btn__main">
+            <a asp-controller="checkout" asp-action="index" class="btn__main">
                 Proced to checkout
             </a>
         </div>

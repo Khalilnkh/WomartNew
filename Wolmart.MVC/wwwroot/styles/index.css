@@ -228,6 +228,11 @@ header .header-main .right-side .divider {
   margin-left: 1.5rem;
   margin-top: 6px;
 }
+
+header .header-main .right-side #cart-info ul {
+    max-height: 500px;
+    overflow-y: auto;
+}
 header .header-main .right-side svg {
   font-size: 24px;
 }

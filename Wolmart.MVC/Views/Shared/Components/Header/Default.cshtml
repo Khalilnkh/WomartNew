@@ -57,7 +57,7 @@
                             <i class="fa-regular fa-user"></i>
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <a asp-controller="account" asp-action="profile">@appUser.UserName</a>
+                                <a asp-controller="account" asp-action="my-account">@appUser.UserName</a>
                             }
                             else
                             {

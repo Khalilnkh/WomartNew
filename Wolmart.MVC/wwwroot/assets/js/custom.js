@@ -4,13 +4,35 @@
 
         let colorID = $('.product__color .color.active').data('color-id');
         let sizeID = $('.product__size .size.active').data('size-id');
+        let priceText = $('#colorPrice').text();
+        let oldPriceText = $('#colorOldPrice').text();
 
-        let url = $(this).attr('href') + '?colorID=' + colorID + '&sizeID=' + sizeID;
+        if (oldPriceText != "" && colorID && sizeID != undefined) {
+            let match = priceText.match(/\d+/);
 
-        fetch(url).then(res => res.text())
-            .then(data => {
-                $('#cart-info').html(data);
-            });
+            let match1 = oldPriceText.match(/\d+/);
+
+            if (priceText != "") {
+                var priceOriginal = match[0];
+            }
+
+            let oldPriceOriginal = match1[0];
+
+            let url = $(this).attr('href') + '?colorID=' + colorID + '&sizeID=' + sizeID + '&price=' + oldPriceOriginal + '&discountedPrice=' + priceOriginal;
+
+            fetch(url).then(res => res.text())
+                .then(data => {
+                    $('#cart-info').html(data);
+                });
+        }
+        else {
+            let url = $(this).attr('href');
+
+            fetch(url).then(res => res.text())
+                .then(data => {
+                    $('#cart-info').html(data);
+                });
+        }
     });
 });
 
@@ -25,7 +47,7 @@ $(document).ready(function () {
         alert('hello')
             e.preventDefault();
         });
-    });
+});
 
 
 $(document).on('click', '.clearBtn', function (e) {
@@ -87,10 +109,14 @@ $(document).on('click', '.minusCount', function (e) {
 
     let inputCount = $(this).closest('.input-group').find('.quantity').val();
 
+    var colorID = $(this).attr("data-color-id")
+
+    var sizeID = $(this).attr("data-size-id")
+
     if (inputCount >= 2) {
         inputCount--;
         $(this).next().val(inputCount);
-        let url = $(this).attr('href') + '/?count=' + inputCount;
+        let url = $(this).attr('href') + '/?count=' + inputCount + '&colorID=' + colorID + '&sizeID=' + sizeID;
 
         fetch(url)
             .then(res => res.text())
@@ -108,7 +134,13 @@ $(document).on('click', '.minusCount', function (e) {
 $(document).on('click', '.plusCount', function (e) {
     e.preventDefault();
 
+    debugger
+
     let inputCount = $(this).closest('.input-group').find('.quantity').val();
+
+    var colorID = $(this).attr("data-color-id")
+
+    var sizeID = $(this).attr("data-size-id")
 
     if (inputCount > 0) {
         inputCount++;
@@ -119,7 +151,7 @@ $(document).on('click', '.plusCount', function (e) {
 
     $(this).prev().val(inputCount); inputCount
 
-    let url = $(this).attr('href') + '/?count=' + inputCount;
+    let url = $(this).attr('href') + '/?count=' + inputCount + '&colorID=' + colorID + '&sizeID=' + sizeID;
 
 
     fetch(url)
@@ -150,7 +182,7 @@ $(document).on('click', ".color", function () {
     var colorPrice = $(this).attr("data-price");
     var discountedPrice = $(this).attr("data-old-price")
 
-    $("#colorPrice").text("$" + colorPrice);
-    $("#colorOldPrice").text("$" + discountedPrice)
+    $("#colorPrice").text("$" + discountedPrice);
+    $("#colorOldPrice").text("$" + colorPrice)
 });
 

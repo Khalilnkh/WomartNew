@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Wolmart.MVC.DAL;
 
@@ -11,9 +12,11 @@ using Wolmart.MVC.DAL;
 namespace Wolmart.MVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240328132038_CreatedOrderTable")]
+    partial class CreatedOrderTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -386,8 +389,7 @@ namespace Wolmart.MVC.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Comment")
-                        .HasMaxLength(525)
-                        .HasColumnType("nvarchar(525)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CountryID")
                         .HasColumnType("int");

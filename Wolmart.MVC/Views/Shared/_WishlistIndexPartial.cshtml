@@ -27,7 +27,7 @@
                     <tr>
                         <td class="product-thumbnail">
                             <div>
-                                <a href="product-detail.html">
+                                <a asp-controller="product" asp-action="detail" asp-route-id="@item.ProductID">
                                     <figure>
                                         <img src="assets/images/products/@item.Image" alt="Product">
                                     </figure>
@@ -50,7 +50,6 @@
                                 <span class="wishlist-in-stock text-danger">Out of stock</span>
                             }
                         </td>
-
                         <td>
                             <div>
                                 <a asp-controller="cart" asp-action="addtocart" asp-route-id="@item.ProductID" class="btn__main addToCart">
@@ -62,7 +61,6 @@
                         <td>
                         </td>
                     </tr>
-
                 }
             </tbody>
         </table>

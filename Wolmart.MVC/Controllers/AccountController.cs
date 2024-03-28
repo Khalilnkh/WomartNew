@@ -89,6 +89,12 @@ namespace Wolmart.MVC.Controllers
             return RedirectToAction("index", "home");
         }
 
+        [HttpGet("my-account")]
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

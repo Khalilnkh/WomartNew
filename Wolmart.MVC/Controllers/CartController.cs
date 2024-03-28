@@ -88,7 +88,7 @@ namespace Wolmart.MVC.Controllers
             return PartialView("_CartIndexPartial", await _getCartItemAsync(cartVMs));
         }
 
-        public async Task<IActionResult> addToCart(int? ID, int? value, int? colorID, int? sizeID)
+        public async Task<IActionResult> addToCart(int? ID, int? value, int? colorID, int? sizeID, int? price, int? discountedPrice)
         {
             if (ID == null) return BadRequest();
 
@@ -96,7 +96,9 @@ namespace Wolmart.MVC.Controllers
 
             if (sizeID == null) sizeID = 1;
 
-            Product product = await _context.Products.Include(x=>x.ProductColors).FirstOrDefaultAsync(x => x.ID == ID);
+            Product product = await _context.Products
+                .Include(x=>x.ProductColors)
+                .FirstOrDefaultAsync(x => x.ID == ID);
             Color color = await _context.Colors.FirstOrDefaultAsync(x => x.ID == colorID);
             Size size = await _context.Sizes.FirstOrDefaultAsync(x => x.ID == sizeID);
 
@@ -116,22 +118,24 @@ namespace Wolmart.MVC.Controllers
                 cartVMs = new List<CartVM>();
             }
 
-            if(value != null && cartVMs.Any(x=>x.ProductID == ID))
+            if (value != null && cartVMs.Any(x => x.ProductID == ID && x.SizeID == sizeID && x.ColorID == colorID))
             {
-                cartVMs.First(x => x.ProductID == ID).Count += value.Value;
+                cartVMs.First(x => x.ProductID == ID && x.SizeID == sizeID && x.ColorID == colorID).Count += value.Value;
             }
 
-            if(cartVMs.Exists(x => x.ProductID == ID))
+            if (cartVMs.Exists(x => x.ProductID == ID && x.SizeID == sizeID && x.ColorID == colorID))
             {
-                cartVMs.Find(x => x.ProductID == ID).Count++;
+                cartVMs.Find(x => x.ProductID == ID && x.SizeID == sizeID && x.ColorID == colorID).Count++;
             }
+
 
             else
             {
                 CartVM cartVM = new CartVM
                 {
                     ProductID = product.ID,
-                    Price = product.ProductColors.Min(x => x.Price),
+                    Price = price > 0 ? (int)price : product.ProductColors.Min(x=>x.Price),
+                    DiscountedPrice = discountedPrice > 0 ? discountedPrice.Value : product.ProductColors.Min(x => x.DiscountedPrice ?? 0),
                     SizeID = size.ID,
                     ColorID = color.ID,
                     
@@ -173,7 +177,7 @@ namespace Wolmart.MVC.Controllers
             return PartialView("_CartPartial", await _getCartItemAsync(cartVMs));
         }
 
-        public async Task<IActionResult> UpdateCount(int? ID, int count)
+        public async Task<IActionResult> UpdateCount(int? ID, int? colorID, int? sizeID, int count)
         {
             if (ID == null) return BadRequest();
 
@@ -187,7 +191,7 @@ namespace Wolmart.MVC.Controllers
             {
                 cartVMs = JsonConvert.DeserializeObject<List<CartVM>>(cart);
 
-                CartVM cartVM = cartVMs.FirstOrDefault(x => x.ProductID == ID);
+                CartVM cartVM = cartVMs.FirstOrDefault(x => x.ProductID == ID && x.ColorID == colorID && x.SizeID == sizeID);
 
                 if(cartVM == null) return NotFound();
 
@@ -256,7 +260,6 @@ namespace Wolmart.MVC.Controllers
 
                 item.Image = product.MainImage;
                 item.Title = product.Name;
-                item.Price = product.ProductColors.Min(x => x.Price);
                 item.Color = color.Name;
                 item.Size = size.Name;
             }

@@ -49,8 +49,8 @@
                     }
                     else
                     {
-                        <ins class="new-price">$@(item.ProductColors.Select(x => x.Price.ToString("0.00")).FirstOrDefault())</ins>
-                        <del class="old-price">@(item.ProductColors.Select(x => x.DiscountedPrice?.ToString("$0.00")).FirstOrDefault())</del>
+                        <ins class="new-price">@(item.ProductColors.Select(x => x.DiscountedPrice?.ToString("$0.00")).FirstOrDefault())</ins>
+                        <del class="old-price">$@(item.ProductColors.Select(x => x.Price.ToString("0.00")).FirstOrDefault())</del>
                     }
                 </div>
 

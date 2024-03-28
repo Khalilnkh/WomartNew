@@ -15,7 +15,14 @@
                         </span>
                         <div class="card-bottom">
                             <span class="card-quantity">@cart.Count X </span>
-                            <span class="card-price">$@cart.Price</span>
+                            @if(cart.DiscountedPrice > 0)
+                            {
+                                <span class="card-price">$@cart.DiscountedPrice</span>
+                            }
+                            else
+                            {
+                                <span class="card-price">$@cart.Price</span>
+                            }
                         </div>
                     </div>
                     <div class="card-thumbnail">

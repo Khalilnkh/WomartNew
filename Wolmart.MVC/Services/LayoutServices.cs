@@ -51,7 +51,6 @@ namespace Wolmart.MVC.Services
 
                 cartVM.Title = product.Name;
                 cartVM.Image = product.MainImage;
-                cartVM.Price = product.ProductColors.Min(x => x.Price);
                 cartVM.Color = color.Name;
                 cartVM.Size = size.Name;
             }

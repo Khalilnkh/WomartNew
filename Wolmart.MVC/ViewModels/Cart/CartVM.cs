@@ -11,5 +11,6 @@
         public string Size { get; set; }
         public int SizeID { get; set; }
         public double Price { get; set; }
+        public double DiscountedPrice { get; set; }
     }
 }

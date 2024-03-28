@@ -56,16 +56,22 @@
                         .Where(pc => pc != null && pc.DiscountedPrice.HasValue && pc.DiscountedPrice > 0)
                         .Min(pc => (double?)pc.DiscountedPrice);
 
-                        if (minPrice.HasValue)
-                        {
-                            <div class="product-price">
-                                <ins class="new-price" id="colorPrice">$@minPrice.Value.ToString("0.00")</ins>
-                                @if (minDiscountedPrice.HasValue)
-                                {
-                                    <del style="font-size: 23px;color: #a2a2a2;font-weight: normal;" class="old-price" id="colorOldPrice">$@minDiscountedPrice.Value.ToString("0.00")</del>
-                                }
-                            </div>
-                        }
+
+                        <div class="product-price">
+                            @if (minDiscountedPrice.HasValue)
+                            {
+                                <ins class="new-price" id="colorPrice">$@minDiscountedPrice.Value.ToString("0.00")</ins>
+                            }
+
+                            @if (minDiscountedPrice.HasValue && minPrice.HasValue)
+                            {
+                                <del style="font-size: 23px;color: #a2a2a2;font-weight: normal;" class="old-price" id="colorOldPrice">$@minPrice.Value.ToString("0.00")</del>
+                            }
+                            else
+                            {
+                                <ins class="new-price" id="colorOldPrice">$@minPrice.Value.ToString("0.00")</ins>
+                            }
+                        </div>
                     }
 
                     <div class="ratings-wrapper">
@@ -221,7 +227,7 @@
                                         </div>
                                         @{
                                             var recommendedFeedbackCount = Model.Feedbacks.Count(f => f.Rating >= 4);
-                                            var recommendationPercentage = feedbackCount > 0 ? (double)recommendedFeedbackCount / feedbackCount * 100 : 0; 
+                                            var recommendationPercentage = feedbackCount > 0 ? (double)recommendedFeedbackCount / feedbackCount * 100 : 0;
 
                                             var recommendationPercentageString = recommendationPercentage.ToString("0.0");
                                         }
@@ -325,14 +331,14 @@
                                                                 <div class="ratings-wrapper">
                                                                     <div class="ratings-main">
                                                                         <div class="ratings-main">
-                                                                           @for (int i = 0; i < item.Rating; i++)
-                                                                           {
-                                                                               <i class="fa-solid fas fa-star"></i>
-                                                                           }
-                                                                           @for (int i = item.Rating; i < 5; i++)
-                                                                           {
-                                                                               <i class="fa-solid far fa-star"></i>
-                                                                           }
+                                                                            @for (int i = 0; i < item.Rating; i++)
+                                                                            {
+                                                                                <i class="fa-solid fas fa-star"></i>
+                                                                            }
+                                                                            @for (int i = item.Rating; i < 5; i++)
+                                                                            {
+                                                                                <i class="fa-solid far fa-star"></i>
+                                                                            }
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -395,7 +401,7 @@
                                         <a href="#" class="rating">(@product.Feedbacks.Select(x => x.Rating).Count() Reviews)</a>
                                     </div>
                                     <div class="product-price">
-                                        <ins class="new-price">$@product.ProductColors.Select(x=>x.Price).FirstOrDefault()</ins>
+                                        <ins class="new-price">$@product.ProductColors.Select(x => x.Price).FirstOrDefault()</ins>
                                         <del class="del-price">$49.89</del>
                                     </div>
                                 </div>

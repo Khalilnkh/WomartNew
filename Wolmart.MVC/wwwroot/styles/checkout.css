@@ -42,14 +42,14 @@
   font-size: 20px;
   font-weight: bold;
 }
-.checkout__wrapper .checkout__main .order__total .product__wrapper .btn__main {
+.checkout__wrapper .checkout__main .order__total .btn__main {
   display: flex;
   justify-content: center;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 100%;
 }
-.checkout__wrapper .checkout__main .order__total .product__wrapper .title {
+.checkout__wrapper .checkout__main .order__total .title {
   font-size: 16px;
   display: block;
   padding-top: 15px;
@@ -57,23 +57,23 @@
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
 }
-.checkout__wrapper .checkout__main .order__total .product__wrapper ul {
+.checkout__wrapper .checkout__main .order__total  ul {
   list-style: none;
   padding: 0;
   margin-top: 10px;
 }
-.checkout__wrapper .checkout__main .order__total .product__wrapper ul li {
+.checkout__wrapper .checkout__main .order__total ul li {
   display: flex;
   justify-content: space-between;
   padding-bottom: 10px;
 }
-.checkout__wrapper .checkout__main .order__total .product__wrapper ul li a {
+.checkout__wrapper .checkout__main .order__total  ul li a {
   font-size: 14px;
 }
-.checkout__wrapper .checkout__main .order__total .product__wrapper ul li span {
+.checkout__wrapper .checkout__main .order__total  ul li span {
   font-size: 14px;
 }
-.checkout__wrapper .checkout__main .order__total .product__wrapper .summary-table li span:last-child {
+.checkout__wrapper .checkout__main .order__total  .summary-table li span:last-child {
   font-weight: bold;
 }
 
