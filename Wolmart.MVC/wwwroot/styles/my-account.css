@@ -58,8 +58,12 @@
   font-size: 16px;
 }
 
-@media screen and (max-width: 768px) {
-  .account__detail-wrapper {
+.account__detail-wrapper .tab-content .text.text-danger{
+    font-size: 14px;
+}
+
+    @media screen and (max-width: 768px) {
+        .account__detail-wrapper {
     flex-direction: column !important;
   }
 }/*# sourceMappingURL=my-account.css.map */

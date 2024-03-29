@@ -31,8 +31,8 @@
     <link rel="stylesheet" href="/styles/checkout.css">
     <link rel="stylesheet" href="/styles/cart.css">
     <link rel="stylesheet" href="/styles/about.css">
-    <link rel="stylesheet" href="/styles/drawer.css">
-    <link rel="stylesheet" href="/styles/my-account.css">
+    <link rel="stylesheet" href="/styles/drawer.css" asp-append-version="true">
+    <link rel="stylesheet" href="/styles/my-account.css" asp-append-version="true">
     <link rel="stylesheet" href="/styles/product-detail.css" asp-append-version="true">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release-pro/v4.0.0/css/solid.css">
@@ -40,10 +40,10 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.4/swiper-bundle.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
 </head>
 
 <body>
-
     @await Component.InvokeAsync("Header", headerVM)
 
     @RenderBody()

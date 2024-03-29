@@ -1,6 +1,5 @@
-﻿@using Microsoft.AspNetCore.Identity
-
-@model HeaderVM
+﻿@model HeaderVM
+@using Microsoft.AspNetCore.Identity
 @inject ILayoutServices layoutservices
 @inject UserManager<AppUser> userManager
 
@@ -51,13 +50,13 @@
                         <span class="divider"></span>
                         <div class="main-forward">
                             <a href="contact.html">Contact Us</a>
-                            <a href="my-account.html">My Account</a>
+                            <a asp-controller="account" asp-action="profile">My Account</a>
                         </div>
                         <div class="modal-box">
                             <i class="fa-regular fa-user"></i>
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <a asp-controller="account" asp-action="my-account">@appUser.UserName</a>
+                                <a asp-controller="account" asp-action="profile">@appUser?.UserName</a>
                             }
                             else
                             {
@@ -123,7 +122,7 @@
                                 <i class="fa-regular fa-heart"></i>
                                 <span>Wishlist</span>
                             </a>
-                            <a href="#" class="item">
+                            <a asp-controller="shop" asp-action="index" class="item">
                                 <i class="fa-solid fa-code-compare"></i>
                                 <span>Compare</span>
                             </a>
@@ -214,10 +213,6 @@
                                                 </ul>
                                             </li>
                                         }
-     @*                                        <a href="#"
-                                            class="font-weight-bold text-primary text-uppercase">
-                                            View All Categories
-                                            </a> *@
                                         </li>
                                     </ul>
                                 </div>
@@ -246,11 +241,11 @@
                             </form>
                         </div>
                         <div class="header-right d-flex">
-                            <a href="#" class="item-box">
+                            <a asp-controller="account" asp-action="profile" class="item-box">
                                 <i class="fa-solid fa-truck"></i>
                                 <span>Track Order</span>
                             </a>
-                            <a href="#" class="item-box">
+                            <a asp-controller="shop" asp-action="index" class="item-box">
                                 <i class="fa-brands fa-ideal"></i>
                                 <span>Daily Deals</span>
                             </a>

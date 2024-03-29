@@ -12,18 +12,13 @@
                     </h3>
                     <div class="accordion-single-content">
                         <ul>
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Babies</a></li>
-                            <li><a href="#">Beauty</a></li>
-                            <li><a href="#">Decoration</a></li>
-                            <li><a href="#">Electronics</a></li>
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Food</a></li>
-                            <li><a href="#">Furniture</a></li>
-                            <li><a href="#">Kitchen</a></li>
-                            <li><a href="#">Medical</a></li>
-                            <li><a href="#">Sports</a></li>
-                            <li><a href="#">Watches</a></li>
+                            @foreach (Category item in ViewBag.Categories)
+                            {
+                                <li>
+                                    <a data-category="@item.ID" asp-controller="shop" asp-action="index" asp-route-category="@item.ID"
+                                       class="category-link">@item.Name</a>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
@@ -35,16 +30,15 @@
                     </h3>
                     <div class="accordion-single-content">
                         <ul>
-                            <li><a href="#">$0.00 - $100.00</a></li>
-                            <li><a href="#">$100.00 - $200.00</a></li>
-                            <li><a href="#">$200.00 - $300.00</a></li>
-                            <li><a href="#">$300.00 - $500.00</a></li>
-                            <li><a href="#">$500.00+</a></li>
+                            <li><a class="price-link" data-price="1" asp-controller="shop" asp-action="index" asp-route-minPrice="0" asp-route-maxPrice="100">$0.00 - $100.00</a></li>
+                            <li><a class="price-link" data-price="2" asp-controller="shop" asp-action="index" asp-route-minPrice="100" asp-route-maxPrice="300">$100.00 - $200.00</a></li>
+                            <li><a class="price-link" data-price="3" asp-controller="shop" asp-action="index" asp-route-minPrice="200" asp-route-maxPrice="300">$200.00 - $300.00</a></li>
+                            <li><a class="price-link" data-price="4" asp-controller="shop" asp-action="index" asp-route-minPrice="300" asp-route-maxPrice="500">$300.00 - $500.00</a></li>
                         </ul>
-                        <form method="POST" class="price-range">
-                            <input type="number" name="min_price" class="min_price text-center" placeholder="$min">
+                        <form asp-controller="shop" asp-action="index" method="GET" class="price-range mt-3">
+                            <input type="number" name="minPrice" class="min_price text-center" placeholder="$min">
                             <span class="dash">-</span>
-                            <input type="number" name="max_price" class="max_price text-center" placeholder="$max">
+                            <input type="number" name="maxPrice" class="max_price text-center" placeholder="$max">
                             <button type="submit" class="btn btn-primary btn-rounded">Go</button>
                         </form>
                     </div>
@@ -59,36 +53,18 @@
                         <div class="checkboxes">
                             <div class="checkboxes__row">
                                 <ul>
-                                    <li class="checkboxes__item">
-                                        <a href="#">
+                                    @foreach (var item in ViewBag.Sizes)
+                                    {
+                                        <li class="checkboxes__item">
                                             <label class="checkbox style-c">
-                                                <input type="checkbox" />
-                                                <div class="checkbox__checkmark"></div>
-                                                <a href="#" class="checkbox__body">Extra Large</a>
+                                                <a class="sizeItem" data-size="@item.ID" asp-controller="shop" asp-action="index" asp-route-size="@item.ID">
+                                                    <input type="checkbox" />
+                                                    <div class="checkbox__checkmark"></div>
+                                                </a>
+                                                <a asp-controller="shop" asp-action="index" asp-route-size="@item.ID" data-size="@item.ID" class="checkbox__body">@item.Name</a>
                                             </label>
-                                        </a>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Large</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Medium</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Small</a>
-                                        </label>
-                                    </li>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
                         </div>
@@ -104,55 +80,18 @@
                         <div class="checkboxes">
                             <div class="checkboxes__row">
                                 <ul>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Elegant Auto Group</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Green Grass</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Node Js</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">NS8</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Red</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Skysuite Tech</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Sterling</a>
-                                        </label>
-                                    </li>
+                                    @foreach (var item in ViewBag.Brands)
+                                    {
+                                        <li class="checkboxes__item">
+                                            <label class="checkbox style-c">
+                                                <a class="brandItem" data-brand="@item.ID" asp-controller="shop" asp-action="index" asp-route-brand="@item.ID">
+                                                    <input type="checkbox" />
+                                                    <div class="checkbox__checkmark"></div>
+                                                </a>
+                                                <a asp-controller="shop" asp-action="index" asp-route-brand="@item.ID" data-brand="@item.ID" class="checkbox__body">@item.Name</a>
+                                            </label>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
                         </div>
@@ -168,55 +107,18 @@
                         <div class="checkboxes">
                             <div class="checkboxes__row">
                                 <ul>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Black</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Blue</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Brown</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Green</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Grey</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Orange</a>
-                                        </label>
-                                    </li>
-                                    <li class="checkboxes__item">
-                                        <label class="checkbox style-c">
-                                            <input type="checkbox" />
-                                            <div class="checkbox__checkmark"></div>
-                                            <a href="#" class="checkbox__body">Yellow</a>
-                                        </label>
-                                    </li>
+                                    @foreach (var item in ViewBag.Colors)
+                                    {
+                                        <li class="checkboxes__item">
+                                            <label class="checkbox style-c">
+                                                <a class="colorItem" data-color="@item.ID" asp-controller="shop" asp-action="index" asp-route-color="@item.ID">
+                                                    <input type="checkbox" />
+                                                    <div class="checkbox__checkmark"></div>
+                                                </a>
+                                                <a asp-controller="shop" asp-action="index" asp-route-color="@item.ID" data-color="@item.ID" class="checkbox__body">@item.Name</a>
+                                            </label>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
                         </div>
@@ -403,7 +305,7 @@
                                             @foreach (Category item in ViewBag.Categories)
                                             {
                                                 <li>
-                                                    <a asp-controller="shop" asp-action="index" asp-route-category="@item.ID"
+                                                    <a data-category="@item.ID" asp-controller="shop" asp-action="index" asp-route-category="@item.ID"
                                                       class="category-link">@item.Name</a>
                                                 </li>
                                             }
@@ -418,10 +320,10 @@
                                     </h3>
                                     <div class="accordion-single-content price-filter">
                                         <ul>
-                                            <li><a asp-controller="shop" asp-action="index" asp-route-minPrice="0" asp-route-maxPrice="100">$0.00 - $100.00</a></li>
-                                            <li><a asp-controller="shop" asp-action="index" asp-route-minPrice="100" asp-route-maxPrice="300">$100.00 - $200.00</a></li>
-                                            <li><a asp-controller="shop" asp-action="index" asp-route-minPrice="200" asp-route-maxPrice="300">$200.00 - $300.00</a></li>
-                                            <li><a asp-controller="shop" asp-action="index" asp-route-minPrice="300" asp-route-maxPrice="500">$300.00 - $500.00</a></li>
+                                            <li><a class="price-link" data-price="1" asp-controller="shop" asp-action="index" asp-route-minPrice="0" asp-route-maxPrice="100">$0.00 - $100.00</a></li>
+                                            <li><a class="price-link" data-price="2" asp-controller="shop" asp-action="index" asp-route-minPrice="100" asp-route-maxPrice="300">$100.00 - $200.00</a></li>
+                                            <li><a class="price-link" data-price="3" asp-controller="shop" asp-action="index" asp-route-minPrice="200" asp-route-maxPrice="300">$200.00 - $300.00</a></li>
+                                            <li><a class="price-link" data-price="4" asp-controller="shop" asp-action="index" asp-route-minPrice="300" asp-route-maxPrice="500">$300.00 - $500.00</a></li>
                                         </ul>
                                         <form asp-controller="shop" asp-action="index" method="GET" class="price-range">
                                             <input type="number" name="minPrice" class="min_price text-center" placeholder="$min">
@@ -445,11 +347,11 @@
                                                     {
                                                         <li class="checkboxes__item">
                                                                 <label class="checkbox style-c">
-                                                                <a asp-controller="shop" asp-action="index" asp-route-size="@item.ID">
+                                                                <a class="sizeItem" data-size="@item.ID" asp-controller="shop" asp-action="index" asp-route-size="@item.ID">
                                                                         <input type="checkbox" />
                                                                         <div class="checkbox__checkmark"></div>
-                                                                    </a>
-                                                                <a asp-controller="shop" asp-action="index" asp-route-size="@item.ID" class="checkbox__body">@item.Name</a>
+                                                                </a>
+                                                                <a asp-controller="shop" asp-action="index" asp-route-size="@item.ID" data-size="@item.ID" class="checkbox__body">@item.Name</a>
                                                                 </label>
                                                         </li>
                                                     }
@@ -471,8 +373,8 @@
                                                     @foreach (var item in ViewBag.Brands)
                                                     {
                                                         <li class="checkboxes__item">
-                                                            <label data-brand-id="@item.ID" class="checkbox style-c">
-                                                                <a asp-controller="shop" asp-action="index" asp-route-brand="@item.ID">
+                                                            <label class="checkbox style-c">
+                                                                <a class="brandItem" data-brand="@item.ID" asp-controller="shop" asp-action="index" asp-route-brand="@item.ID">
                                                                     <input type="checkbox" />
                                                                     <div class="checkbox__checkmark"></div>
                                                                 </a>
@@ -499,7 +401,7 @@
                                                     {
                                                         <li class="checkboxes__item">
                                                             <label class="checkbox style-c">
-                                                                <a asp-controller="shop" asp-action="index" asp-route-color="@item.ID">
+                                                                <a data-color="@item.ID" class="colorItem" asp-controller="shop" asp-action="index" asp-route-color="@item.ID">
                                                                     <input type="checkbox" />
                                                                     <div class="checkbox__checkmark"></div>
                                                                 </a>
@@ -523,16 +425,17 @@
                                     <i class="fa-solid fa-bars"></i>
                                     Filters
                                 </div>
-                                <label>Sort By :</label>
-                                <i class="fa-solid fa-chevron-down"></i>
-                                <select name="orderby" class="form-control">
-                                    <option value="default" selected="selected">Default sorting</option>
-                                    <option value="popularity">Sort by popularity</option>
-                                    <option value="rating">Sort by average rating</option>
-                                    <option value="date">Sort by latest</option>
-                                    <option value="price-low">Sort by pric: low to high</option>
-                                    <option value="price-high">Sort by price: high to low</option>
-                                </select>
+                                <div class="sort-by">
+                                    <label>Sort By :</label>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                    <select name="orderby" class="form-control">
+                                        <option value="default" selected="selected">Default sorting</option>
+                                        <option value="rating">Sort by rating</option>
+                                        <option value="date">Sort by latest</option>
+                                        <option value="price-low">Sort by pric: low to high</option>
+                                        <option value="price-high">Sort by price: high to low</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="show__item">
                                 <i class="fa-solid fa-chevron-down"></i>

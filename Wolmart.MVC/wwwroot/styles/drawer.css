@@ -12,6 +12,15 @@
   transform: translateX(-320px);
   cursor: pointer;
 }
+
+.drawer-menu .category-link.checked {
+    font-weight: bold !important;
+}
+
+.drawer-menu .price-link.checked {
+    font-weight: bold !important;
+}
+
 .drawer-menu #nav .accordion__main.contents {
   padding: 10px 20px;
 }

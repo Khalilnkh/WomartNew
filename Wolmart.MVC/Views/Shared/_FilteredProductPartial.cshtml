@@ -20,12 +20,27 @@
                 @{
                     var timeCheck = DateTime.Today.AddMonths(-1);
                 }
-                @if (item.CreatedAt >= timeCheck)
-                {
-                    <div class="product-label-main">
+
+                <div class="product-label-main">
+                    @if (item.CreatedAt >= timeCheck)
+                    {
                         <label class="product-label label-new">New</label>
-                    </div>
-                }
+                    }
+                    @if (item.ProductColors.Any(x => x.DiscountedPrice.HasValue))
+                    {
+                        double? minNormalPrice = item.ProductColors.Min(x => x.Price);
+                        double? minDiscountedPrice = item.ProductColors.Min(x => x.DiscountedPrice);
+
+                        if (minNormalPrice.HasValue && minDiscountedPrice.HasValue)
+                        {
+                            double normalPrice = minNormalPrice.Value;
+                            double discountedPrice = minDiscountedPrice.Value;
+                            double discountPercentage = ((normalPrice - discountedPrice) / normalPrice) * 100;
+                            <label class="product-label label-discount">-@(Math.Round(discountPercentage))%</label>
+                        }
+                    }
+                </div>
+
             </figure>
             <div class="product-details">
                 <h4 class="product-title">
@@ -66,7 +81,7 @@
         @if (Model.HasPrev)
         {
             <li class="prev">
-                <a asp-controller="shop" asp-action="index" asp-route-page="@(Model.PageIndex-1)">
+                <a class="page-link" asp-controller="shop" asp-action="index" asp-route-page="@(Model.PageIndex-1)" data-page="@(Model.PageIndex-1)">
                     <i class="fa-solid fa-arrow-left-long mr-3"></i>
                     Prev
                 </a>
@@ -82,7 +97,7 @@
         @if (Model.HasNext)
         {
             <li class="next">
-                <a asp-controller="shop" asp-action="index" asp-route-page="@(Model.PageIndex+1)">
+                <a class="page-link" asp-controller="shop" asp-action="index" asp-route-page="@(Model.PageIndex+1)" data-page="@(Model.PageIndex+1)">
                     Next
                     <i class="fa-solid fa-arrow-right-long ml-3"></i>
                 </a>

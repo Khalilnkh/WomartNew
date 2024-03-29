@@ -97,6 +97,24 @@ input[type=number]::-webkit-outer-spin-button {
 .checkbox.style-c input:checked ~ .checkbox__checkmark {
   background-color: #000;
 }
+.checkbox__checkmark.checked{
+    background-color: #000 !important; 
+}
+
+.checkbox__checkmark.checked::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 1;
+    transition: opacity 0.25s ease;
+}
+
 
 .checkbox.style-c input:checked ~ .checkbox__checkmark:after {
   opacity: 1;
@@ -121,7 +139,7 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 4px;
 }
 
-.checkbox.style-c .checkbox__checkmark:after {
+/*.checkbox.style-c .checkbox__checkmark:after {
   content: "";
   position: absolute;
   left: 8px;
@@ -133,7 +151,7 @@ input[type=number]::-webkit-outer-spin-button {
   transform: rotate(45deg);
   opacity: 0;
   transition: opacity 0.25s ease;
-}
+}*/
 
 .checkbox.style-c .checkbox__body {
   color: #333;

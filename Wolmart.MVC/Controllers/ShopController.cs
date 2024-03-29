@@ -18,9 +18,49 @@ namespace Wolmart.MVC.Controllers
             _context = context;
         }
 
-        public IActionResult Index(int page, int? category, int? brand, int? size, int? color, int? minPrice, int? maxPrice)
+        public IActionResult Index(int page, int? category, int? brand, int? size, int? color, int? minPrice, int? maxPrice,int? show, string orderby)
         {
             IQueryable<Product> products = _context.Products.Include(x=>x.Feedbacks).Include(x=>x.ProductSizes).Include(x=>x.ProductColors).OrderBy(x=>x.ID);
+
+            switch(orderby)
+            {
+                case "rating":
+                    products = products.OrderByDescending(x => x.Feedbacks.Count());
+                    break;
+                case "date":
+                    products = products.OrderBy(x => x.CreatedAt);
+                    break;
+                case "price-low":
+                    products = products.OrderBy(x => x.ProductColors.Min(pc => pc.DiscountedPrice != null ? pc.DiscountedPrice : pc.Price));
+                    break;
+                case "price-high":
+                    products = products.OrderByDescending(x => x.ProductColors.Max(pc => pc.DiscountedPrice != null ? pc.DiscountedPrice : pc.Price));
+                    break;
+
+
+                default:
+                    break;
+
+            }
+
+            switch(show)
+            {
+                case 9:
+                    products = products.Take(9);
+                    break;
+                case 12:
+                    products = products.Take(12);
+                    break;
+                case 24:
+                    products = products.Take(24);
+                    break;
+                case 36:
+                    products = products.Take(36);
+                    break;
+
+                default:
+                    break;
+            }
 
             if (category.HasValue)
             {
@@ -45,10 +85,14 @@ namespace Wolmart.MVC.Controllers
 
             if (minPrice.HasValue && maxPrice.HasValue)
             {
-                products = products.Where(p => p.ProductColors.All(x => x.Price >= minPrice && x.Price <= maxPrice));
+                products = products.Where(p => p.ProductColors.All(color =>
+                    (color.DiscountedPrice ?? color.Price) >= minPrice &&
+                    (color.DiscountedPrice ?? color.Price) <= maxPrice) ||
+                    (p.ProductColors.Any(color => color.DiscountedPrice.HasValue && color.Price >= minPrice && color.Price <= maxPrice)));
             }
 
-            var pagedList = PagiNationList<Product>.Create(products, page, 12);
+
+            var pagedList = PagiNationList<Product>.Create(products, page, show ?? 12);
 
             ViewBag.Brands = _context.Brands.ToList();
             ViewBag.Categories = _context.Categories.ToList();
