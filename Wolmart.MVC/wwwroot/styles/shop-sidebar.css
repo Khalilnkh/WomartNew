@@ -29,6 +29,10 @@
     font-weight: bold !important;
 }
 
+.sidebar__main .category-link {
+    padding-bottom: 10px;
+}
+
 .sidebar__main .price-link.checked {
     font-weight: bold !important;
 }
@@ -43,11 +47,13 @@
 
     .category__main .icon-box {
         margin: 0 auto;
+        text-align: center;
     }
 
         .category__main .icon-box img {
             width: 89%;
             border-radius: 50% !important;
+            height: 130px;
         }
 
         .category__main .icon-box h4 {

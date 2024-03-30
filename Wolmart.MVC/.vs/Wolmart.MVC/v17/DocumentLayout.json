@@ -1,28 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\repos\\C#\\Wolmart.MVC\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\wwwroot\\assets\\js\\custom.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:wwwroot\\assets\\js\\custom.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\wwwroot\\assets\\js\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:wwwroot\\assets\\js\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\views\\shop\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:views\\shop\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\controllers\\shopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:controllers\\shopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -30,72 +9,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 61,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "custom.js",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\js\\custom.js",
-              "RelativeDocumentMoniker": "wwwroot\\assets\\js\\custom.js",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\js\\custom.js",
-              "RelativeToolTip": "wwwroot\\assets\\js\\custom.js",
-              "ViewState": "AQIAAA0BAAAAAAAAAAAgwDsBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-03-29T14:06:09.114Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "script.js",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\js\\script.js",
-              "RelativeDocumentMoniker": "wwwroot\\assets\\js\\script.js",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\js\\script.js",
-              "RelativeToolTip": "wwwroot\\assets\\js\\script.js",
-              "ViewState": "AQIAAGYAAAAAAAAAAAAIwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-03-29T14:06:03.565Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Shop\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shop\\Index.cshtml",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Shop\\Index.cshtml",
-              "RelativeToolTip": "Views\\Shop\\Index.cshtml",
-              "ViewState": "AQIAAIsBAAAAAAAAAAD4v6sBAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-29T13:48:16.745Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ShopController.cs",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Controllers\\ShopController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ShopController.cs",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Controllers\\ShopController.cs",
-              "RelativeToolTip": "Controllers\\ShopController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-29T13:48:13.495Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAACEAAABNAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-29T13:19:25.109Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }

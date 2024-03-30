@@ -1,4 +1,6 @@
-﻿<footer>
+﻿@model FooterVM
+
+<footer>
     <div class="newsletter-area">
         <div class="container">
             <div class="row">
@@ -13,9 +15,9 @@
                 </div>
                 <div class="col-lg-6 col-xl-7">
                     <div class="newsletter-input">
-                        <form>
+                        <form asp-controller="subscriber" asp-action="subscribe" method="POST">
                             <div class="form-wrapper">
-                                <input type="email" placeholder="Your E-mail Address">
+                                <input type="email" asp-for="@Model.Subscriber.Email" required placeholder="Your E-mail Address">
                             </div>
 
                             <button type="submit" class="btn__main">

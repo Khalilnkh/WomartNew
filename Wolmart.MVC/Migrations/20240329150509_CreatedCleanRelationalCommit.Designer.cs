@@ -12,8 +12,8 @@ using Wolmart.MVC.DAL;
 namespace Wolmart.MVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240328132038_CreatedOrderTable")]
-    partial class CreatedOrderTable
+    [Migration("20240329150509_CreatedCleanRelationalCommit")]
+    partial class CreatedCleanRelationalCommit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -389,7 +389,8 @@ namespace Wolmart.MVC.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Comment")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(525)
+                        .HasColumnType("nvarchar(525)");
 
                     b.Property<int>("CountryID")
                         .HasColumnType("int");

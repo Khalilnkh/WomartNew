@@ -1,5 +1,4 @@
-﻿
-
+﻿@model AboutVM
 
 <div class="page-header">
     <h1 class="page-title mb-0">About Us</h1>
@@ -10,11 +9,11 @@
         <div class="row">
             <ul class="breadcrumb-main">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a asp-controller="home" asp-action="index">Home</a>
                 </li>
                 <i class="fa-solid fa-angle-right"></i>
                 <li>
-                    <a href="my-account.html">About Us</a>
+                    <a asp-controller="about" asp-action="index">About Us</a>
                 </li>
             </ul>
         </div>
@@ -140,34 +139,15 @@
 
                 <h4 class="award-title">Awards</h4>
                 <div class="award_box col-lg-12">
-                    <div class="award-item">
-                        <img src="/assets/images/1.png" alt="Award Box">
-                        <p>
-                            Winner Seo Master MAGT<br>
-                            Smart Start Award 2018
-                        </p>
-                    </div>
-                    <div class="award-item">
-                        <img src="/assets/images/2.png" alt="Award Box">
-                        <p>
-                            Top Social Media Agencies<br>
-                            Next Partner 2019
-                        </p>
-                    </div>
-                    <div class="award-item">
-                        <img src="/assets/images/3.png" alt="Award Box">
-                        <p>
-                            5 Fastest Growing Abstract<br>
-                            Solution Providers 2020
-                        </p>
-                    </div>
-                    <div class="award-item">
-                        <img src="/assets/images/4.png" alt="Award Box">
-                        <p>
-                            National Excellence Agencie<br>
-                            Award Winner 2021
-                        </p>
-                    </div>
+                    @foreach (Award item in Model.Awards)
+                    {
+                        <div class="award-item">
+                            <img src="~/assets/images/@item.Logo" alt="Award Box">
+                            <p class="mt-2">
+                                @item.Text
+                            </p>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

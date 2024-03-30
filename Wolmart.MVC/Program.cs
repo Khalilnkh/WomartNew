@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Wolmart.MVC.DAL;
 using Wolmart.MVC.Interface;
 using Wolmart.MVC.Models;
+using Wolmart.MVC.Repository;
 using Wolmart.MVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.Configure<SMTPConfigModel>(builder.Configuration.GetSection("SMTPConfig"));
+builder.Services.AddScoped<IEmailRepository, EmailRepository>();
 builder.Services.AddScoped<ILayoutServices, LayoutServices>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.AddHttpContextAccessor();
 

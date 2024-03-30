@@ -5,6 +5,7 @@ using Microsoft.VisualBasic;
 using System.Reflection.Metadata.Ecma335;
 using Wolmart.MVC.DAL;
 using Wolmart.MVC.Extension;
+using Wolmart.MVC.Interface;
 using Wolmart.MVC.Models;
 using Wolmart.MVC.ViewModels;
 
@@ -16,11 +17,13 @@ namespace Wolmart.MVC.Areas.admin.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly IEmailRepository _emailRepository;
 
-        public ProductController(AppDbContext context, IWebHostEnvironment env)
+        public ProductController(AppDbContext context, IWebHostEnvironment env,IEmailRepository emailRepository)
         {
             _context = context;
             _env = env;
+            _emailRepository = emailRepository;
         }
         public IActionResult Index(int page)
         {
@@ -307,6 +310,8 @@ namespace Wolmart.MVC.Areas.admin.Controllers
 
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
+
+            await _emailRepository.GenerateLinkForNewProduct(product);
 
             return RedirectToAction("Index");
         }

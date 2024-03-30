@@ -12,8 +12,8 @@ using Wolmart.MVC.DAL;
 namespace Wolmart.MVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240327104626_CreatedIdentityTable")]
-    partial class CreatedIdentityTable
+    [Migration("20240330133051_CreatedMessageTable")]
+    partial class CreatedMessageTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -231,6 +231,33 @@ namespace Wolmart.MVC.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Wolmart.MVC.Models.Award", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Logo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Awards");
+                });
+
             modelBuilder.Entity("Wolmart.MVC.Models.Brand", b =>
                 {
                     b.Property<int>("ID")
@@ -307,6 +334,30 @@ namespace Wolmart.MVC.Migrations
                     b.ToTable("Colors");
                 });
 
+            modelBuilder.Entity("Wolmart.MVC.Models.Country", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Countries");
+                });
+
             modelBuilder.Entity("Wolmart.MVC.Models.Feedback", b =>
                 {
                     b.Property<int>("ID")
@@ -344,6 +395,157 @@ namespace Wolmart.MVC.Migrations
                     b.HasIndex("ProductID");
 
                     b.ToTable("Feedbacks");
+                });
+
+            modelBuilder.Entity("Wolmart.MVC.Models.Message", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Fullname")
+                        .IsRequired()
+                        .HasMaxLength(600)
+                        .HasColumnType("nvarchar(600)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("Wolmart.MVC.Models.Order", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AddressFirst")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("AddressSecond")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Comment")
+                        .HasMaxLength(525)
+                        .HasColumnType("nvarchar(525)");
+
+                    b.Property<int>("CountryID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("OrderStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float");
+
+                    b.Property<string>("TownCity")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("CountryID");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("Wolmart.MVC.Models.OrderItem", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("ColorID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("OrderID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeID")
+                        .HasColumnType("int");
+
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ColorID");
+
+                    b.HasIndex("OrderID");
+
+                    b.HasIndex("ProductID");
+
+                    b.HasIndex("SizeID");
+
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("Wolmart.MVC.Models.Product", b =>
@@ -666,6 +868,58 @@ namespace Wolmart.MVC.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Wolmart.MVC.Models.Order", b =>
+                {
+                    b.HasOne("Wolmart.MVC.Models.AppUser", "AppUser")
+                        .WithMany("Orders")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("Wolmart.MVC.Models.Country", "Country")
+                        .WithMany("Orders")
+                        .HasForeignKey("CountryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("Wolmart.MVC.Models.OrderItem", b =>
+                {
+                    b.HasOne("Wolmart.MVC.Models.Color", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Wolmart.MVC.Models.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Wolmart.MVC.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Wolmart.MVC.Models.Size", "Size")
+                        .WithMany()
+                        .HasForeignKey("SizeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Color");
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Size");
+                });
+
             modelBuilder.Entity("Wolmart.MVC.Models.Product", b =>
                 {
                     b.HasOne("Wolmart.MVC.Models.Brand", "Brand")
@@ -773,6 +1027,11 @@ namespace Wolmart.MVC.Migrations
                     b.Navigation("ParentSubcategory");
                 });
 
+            modelBuilder.Entity("Wolmart.MVC.Models.AppUser", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
             modelBuilder.Entity("Wolmart.MVC.Models.Brand", b =>
                 {
                     b.Navigation("Products");
@@ -781,6 +1040,16 @@ namespace Wolmart.MVC.Migrations
             modelBuilder.Entity("Wolmart.MVC.Models.Category", b =>
                 {
                     b.Navigation("Subcategories");
+                });
+
+            modelBuilder.Entity("Wolmart.MVC.Models.Country", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("Wolmart.MVC.Models.Order", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("Wolmart.MVC.Models.Product", b =>

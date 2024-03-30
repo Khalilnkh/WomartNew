@@ -1,12 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Runtime.InteropServices;
+using Wolmart.MVC.DAL;
+using Wolmart.MVC.ViewModels.About;
 
 namespace Wolmart.MVC.Controllers
 {
     public class AboutController : Controller
     {
-        public IActionResult Index()
+        private readonly AppDbContext _context;
+
+        public AboutController(AppDbContext context)
         {
-            return View();
+            _context = context;
+        }
+        public async Task<IActionResult> Index()
+        {
+            AboutVM aboutVM = new AboutVM
+            {
+                Awards = await _context.Awards.ToListAsync()
+            };
+
+            return View(aboutVM);
         }
     }
 }

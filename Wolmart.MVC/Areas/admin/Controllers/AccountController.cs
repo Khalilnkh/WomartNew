@@ -61,44 +61,44 @@ namespace Wolmart.MVC.Areas.admin.Controllers
         }
 
 
-        //public async Task<IActionResult> Register()
-        //{
-        //    AppUser appUser = new AppUser
-        //    {
-        //        FirstName = "admin",
-        //        LastName = "admin",
-        //        UserName = "admin",
-        //        Email = "admin@mail.com"
-        //    };
+        public async Task<IActionResult> Register()
+        {
+            AppUser appUser = new AppUser
+            {
+                FirstName = "admin",
+                LastName = "admin",
+                UserName = "admin",
+                Email = "admin@mail.com"
+            };
 
-        //    IdentityResult identityResult = await _userManager.CreateAsync(appUser, "admin");
+            IdentityResult identityResult = await _userManager.CreateAsync(appUser, "admin");
 
-        //    if (!identityResult.Succeeded)
-        //    {
-        //        foreach (var item in identityResult.Errors)
-        //        {
-        //            ModelState.AddModelError("", "error");
-        //        }
-        //    }
+            if (!identityResult.Succeeded)
+            {
+                foreach (var item in identityResult.Errors)
+                {
+                    ModelState.AddModelError("", "error");
+                }
+            }
 
-        //    await _userManager.AddToRoleAsync(appUser, "Admin");
+            await _userManager.AddToRoleAsync(appUser, "Admin");
 
-        //    return RedirectToAction("Index", "Home");
-        //}
+            return RedirectToAction("Index", "Home");
+        }
 
-        //public async Task<IActionResult> CreateRole()
-        //{
-        //    string[] roleNames = { "Admin", "Member" };
+        public async Task<IActionResult> CreateRole()
+        {
+            string[] roleNames = { "Admin", "Member" };
 
-        //    foreach (var roleName in roleNames)
-        //    {
-        //        if (await _roleManager.RoleExistsAsync(roleName))
-        //            continue;
+            foreach (var roleName in roleNames)
+            {
+                if (await _roleManager.RoleExistsAsync(roleName))
+                    continue;
 
-        //        await _roleManager.CreateAsync(new IdentityRole { Name = roleName });
-        //    }
+                await _roleManager.CreateAsync(new IdentityRole { Name = roleName });
+            }
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
     }
 }

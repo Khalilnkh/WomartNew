@@ -26,6 +26,9 @@ namespace Wolmart.MVC.DAL
         public DbSet<ProductDescription> ProductDescriptions { get; set; }
         public DbSet<ProductSpecification> ProductSpecifications { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<Award> Awards { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Subscriber> Subscribers { get; set; }
 
     }
 }

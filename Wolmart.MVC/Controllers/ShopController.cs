@@ -18,11 +18,23 @@ namespace Wolmart.MVC.Controllers
             _context = context;
         }
 
-        public IActionResult Index(int page, int? category, int? brand, int? size, int? color, int? minPrice, int? maxPrice,int? show, string orderby)
+        public IActionResult Index(int page, string q,int? categoryID, int? category, int? brand, int? size, int? color, int? minPrice, int? maxPrice,int? show, string orderby)
         {
             IQueryable<Product> products = _context.Products.Include(x=>x.Feedbacks).Include(x=>x.ProductSizes).Include(x=>x.ProductColors).OrderBy(x=>x.ID);
 
-            switch(orderby)
+            if (categoryID.HasValue)
+            {
+                products = products.Where(x => x.CategoryID == categoryID);
+            }
+
+            ViewBag.SearchTerm = q;
+            
+            if (!string.IsNullOrWhiteSpace(q))
+            {
+                products = products.Where(x => x.Name.Contains(q.Trim()) && (!categoryID.HasValue || x.CategoryID == categoryID));
+            }
+
+            switch (orderby)
             {
                 case "rating":
                     products = products.OrderByDescending(x => x.Feedbacks.Count());
@@ -36,7 +48,6 @@ namespace Wolmart.MVC.Controllers
                 case "price-high":
                     products = products.OrderByDescending(x => x.ProductColors.Max(pc => pc.DiscountedPrice != null ? pc.DiscountedPrice : pc.Price));
                     break;
-
 
                 default:
                     break;

@@ -217,24 +217,19 @@
                                     </ul>
                                 </div>
                             </div>
-                            <form method="GET" class="search-box d-flex gap-3">
+                            <form asp-controller="shop" asp-action="index" method="GET" class="search-box d-flex gap-3">
                                 <div class="select-box">
-                                    <select>
-                                        <option value="">All Categories</option>
-                                        <option value="4">Fashion</option>
-                                        <option value="5">Furniture</option>
-                                        <option value="6">Shoes</option>
-                                        <option value="7">Sports</option>
-                                        <option value="8">Games</option>
-                                        <option value="9">Computers</option>
-                                        <option value="10">Electronics</option>
-                                        <option value="11">Kitchen</option>
-                                        <option value="12">Clothing</option>
+                                    <select name="categoryID">
+                                        <option value="All">All Categories</option>
+                                        @foreach (Category category in Model.Categories)
+                                        {
+                                            <option value="@category.ID">@category.Name</option>
+                                        }
                                     </select>
                                 </div>
-                                <input type="text" placeholder="Search in...">
+                                <input type="text" name="q" placeholder="Search in...">
                                 <div class="search-wrapper">
-                                    <button class="search-btn">
+                                    <button type="submit" class="search-btn">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
                                 </div>
@@ -270,8 +265,8 @@
                     <a href="#" class="close__menu"><i class="close-menu"></i></a>
 
                     <div class="mobile__menu-wrapper item">
-                        <form action="#" method="get" class="form__base">
-                            <input type="text" class="form-control" name="search" autocomplete="off" placeholder="Search"
+                        <form asp-controller="shop" asp-action="index" method="GET" class="form__base">
+                            <input type="text" class="form-control" name="q" autocomplete="off" placeholder="Search"
                                    required />
                             <button class="btn btn-submit" type="submit">
                                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -305,166 +300,20 @@
                                  aria-labelledby="ex3-tab-1">
                                 <div class="tab-pane" id="main-menu">
                                     <ul class="mobile-menu">
-                                        <li><a href="#">Home</a></li>
                                         <li>
-                                            <a href="#">Shop</a>
-                                            <ul>
-                                                <li>
-                                                    <a href="#">Shop Pages</a>
-                                                    <ul>
-                                                        <li><a href="#">Banner With Sidebar</a></li>
-                                                        <li><a href="#">Boxed Banner</a></li>
-                                                        <li><a href="#">Full Width Banner</a></li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Horizontal Filter<span class="tip tip-hot">Hot</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Off Canvas Sidebar<span class="tip tip-new">New</span>
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="#">Infinite Ajax Scroll</a></li>
-                                                        <li><a href="#">Right Sidebar</a></li>
-                                                        <li><a href="#">Both Sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Shop Layouts</a>
-                                                    <ul>
-                                                        <li><a href="#">3 Columns Mode</a></li>
-                                                        <li><a href="#">4 Columns Mode</a></li>
-                                                        <li><a href="#">5 Columns Mode</a></li>
-                                                        <li><a href="#">6 Columns Mode</a></li>
-                                                        <li><a href="#">7 Columns Mode</a></li>
-                                                        <li><a href="#">8 Columns Mode</a></li>
-                                                        <li><a href="#">List Mode</a></li>
-                                                        <li><a href="#">List Mode With Sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Shop Layouts</a>
-                                                    <ul>
-                                                        <li><a href="#">3 Columns Mode</a></li>
-                                                        <li><a href="#">4 Columns Mode</a></li>
-                                                        <li><a href="#">5 Columns Mode</a></li>
-                                                        <li><a href="#">6 Columns Mode</a></li>
-                                                        <li><a href="#">7 Columns Mode</a></li>
-                                                        <li><a href="#">8 Columns Mode</a></li>
-                                                        <li><a href="#">List Mode</a></li>
-                                                        <li><a href="#">List Mode With Sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Shop Layouts</a>
-                                                    <ul>
-                                                        <li><a href="#">3 Columns Mode</a></li>
-                                                        <li><a href="#">4 Columns Mode</a></li>
-                                                        <li><a href="#">5 Columns Mode</a></li>
-                                                        <li><a href="#">6 Columns Mode</a></li>
-                                                        <li><a href="#">7 Columns Mode</a></li>
-                                                        <li><a href="#">8 Columns Mode</a></li>
-                                                        <li><a href="#">List Mode</a></li>
-                                                        <li><a href="#">List Mode With Sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
+                                            <a asp-controller="home" asp-action="index">Home</a>
                                         </li>
                                         <li>
-                                            <a href="#">Vendor</a>
-                                            <ul>
-                                                <li>
-                                                    <a href="#">Store Listing</a>
-                                                    <ul>
-                                                        <li><a href="#">Store listing 1</a></li>
-                                                        <li><a href="#">Store listing 2</a></li>
-                                                        <li><a href="#">Store listing 3</a></li>
-                                                        <li><a href="#">Store listing 4</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Vendor Store</a>
-                                                    <ul>
-                                                        <li><a href="#">Vendor Store 1</a></li>
-                                                        <li><a href="#">Vendor Store 2</a></li>
-                                                        <li><a href="#">Vendor Store 3</a></li>
-                                                        <li><a href="#">Vendor Store 4</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
+                                            <a asp-controller="shop" asp-action="index">Shop</a>
                                         </li>
                                         <li>
-                                            <a href="#">Blog</a>
-                                            <ul>
-                                                <li><a href="#">Classic</a></li>
-                                                <li><a href="#">Listing</a></li>
-                                                <li>
-                                                    <a href="#">Grid</a>
-                                                    <ul>
-                                                        <li><a href="#">Grid 2 columns</a></li>
-                                                        <li><a href="#">Grid 3 columns</a></li>
-                                                        <li><a href="#">Grid 4 columns</a></li>
-                                                        <li><a href="#">Grid sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Masonry</a>
-                                                    <ul>
-                                                        <li><a href="#">Masonry 2 columns</a></li>
-                                                        <li><a href="#">Masonry 3 columns</a></li>
-                                                        <li><a href="#">Masonry 4 columns</a></li>
-                                                        <li><a href="#">Masonry sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Mask</a>
-                                                    <ul>
-                                                        <li><a href="#">Blog mask grid</a></li>
-                                                        <li><a href="#">Blog mask masonry</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Single Post</a>
-                                                </li>
-                                            </ul>
+                                            <a asp-controller="contact" asp-action="index">Contact</a>
                                         </li>
                                         <li>
-                                            <a href="#">Pages</a>
-                                            <ul>
-
-                                                <li><a href="#">About Us</a></li>
-                                                <li><a href="#">Become A Vendor</a></li>
-                                                <li><a href="#">Contact Us</a></li>
-                                                <li><a href="#">Login</a></li>
-                                                <li><a href="#">FAQs</a></li>
-                                                <li><a href="#">Error 404</a></li>
-                                                <li><a href="#">Coming Soon</a></li>
-                                                <li><a href="#">Wishlist</a></li>
-                                                <li><a href="#">Cart</a></li>
-                                                <li><a href="#">Checkout</a></li>
-                                                <li><a href="#">My Account</a></li>
-                                            </ul>
+                                            <a asp-controller="about" asp-action="index">About</a>
                                         </li>
                                         <li>
-                                            <a href="">Elements</a>
-                                            <ul>
-                                                <li><a href="#">Products</a></li>
-                                                <li><a href="#">Titles</a></li>
-                                                <li><a href="#">Typography</a></li>
-                                                <li><a href="#">Product Category</a></li>
-                                                <li><a href="#">Buttons</a></li>
-                                                <li><a href="#">Accordions</a></li>
-                                                <li><a href="#">Alert &amp; Notification</a></li>
-                                                <li><a href="#">Tabs</a></li>
-                                                <li><a href="#">Testimonials</a></li>
-                                                <li><a href="#">Blog Posts</a></li>
-                                                <li><a href="#">Instagrams</a></li>
-                                                <li><a href="#">Call to Action</a></li>
-                                                <li><a href="#">Vendors</a></li>
-                                                <li><a href="#">Icon Boxes</a></li>
-                                                <li><a href="#">Icons</a></li>
-                                            </ul>
+                                            <a asp-controller="account" asp-action="index">Account</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -473,427 +322,52 @@
                             <div class="tab-pane fade" id="ex3-tabs-2" role="tabpanel" aria-labelledby="ex3-tab-2">
                                 <div class="tab-pane active" id="categories">
                                     <ul class="mobile-menu">
+                                        @foreach (var category in Model.Categories)
+                                        {
+                                            var subcategories = Model.Subcategories.Where(x => x.ParentCategoryID == category.ID).ToList();
+
+                                            <li>
+                                                <a asp-controller="shop" asp-action="index" asp-route-category="@category.ID">
+                                                    <i class="fa-solid fa-@category.Icon"></i>@category.Name
+
+                                                    @if (subcategories.Any())
+                                                    {
+                                                        <span class="menu-btn">
+                                                            <i class="fa-solid fa-chevron-right"></i>
+                                                        </span>
+                                                    }
+                                                </a>
+                                                <ul class="menu__wrapper" id="menu__wrapper">
+                                                    @{
+                                                        if (subcategories.Any())
+                                                        {
+                                                            foreach (var subcategory in subcategories)
+                                                            {
+                                                                @if (subcategory.ParentSubcategoryID == null)
+                                                                {
+                                                                    <li>
+                                                                        <a asp-controller="shop" asp-action="index" asp-route-category="@category.ID">
+                                                                            @subcategory.Name
+                                                                            <span class="menu-btn"><i class="fa-solid fa-chevron-right"></i></span>
+                                                                        </a>
+                                                                        <ul class="menu__wrapper-link" id="menu__wrapper-link">
+                                                                            @foreach (var subSubcategory in Model.Subcategories.Where(s => s.ParentSubcategoryID == subcategory.ID))
+                                                                            {
+                                                                                <li>
+                                                                                    <a asp-controller="shop" asp-action="index" asp-route-category="@category.ID">@subSubcategory.Name</a>
+                                                                                </li>
+                                                                            }
+                                                                        </ul>
+                                                                    </li>
+                                                                }
+                                                            }                                                          
+                                                        }
+                                                    }
+                                                </ul>
+                                            </li>
+                                        }
                                         <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-shirt"></i>Fashion
-                                                <span class="menu-btn"><i class="fa-solid fa-chevron-right"></i></span>
-                                            </a>
-                                            <ul class="menu__wrapper" id="menu__wrapper">
-                                                <li>
-                                                    <a href="#">
-                                                        Women
-                                                        <span class="menu-btn"><i class="fa-solid fa-chevron-right"></i></span>
-                                                    </a>
-                                                    <ul class="menu__wrapper-link" id="menu__wrapper-link">
-                                                        <li>
-                                                            <a href="#">New Arrivalssss</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Best Sellers</a>
-                                                        </li>
-                                                        <li><a href="#">Trending</a></li>
-                                                        <li><a href="#">Clothing</a></li>
-                                                        <li><a href="#">Shoes</a></li>
-                                                        <li><a href="#">Bags</a></li>
-                                                        <li>
-                                                            <a href="#">Accessories</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Jewlery &
-                                                                Watches
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Men
-                                                        <span class="menu-btn"><i class="fa-solid fa-chevron-right"></i></span>
-                                                    </a>
-                                                    <ul class="menu__wrapper-link" id="menu__wrapper-link">
-                                                        <li>
-                                                            <a href="#">New Arrivals</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Best Sellers</a>
-                                                        </li>
-                                                        <li><a href="#">Trending</a></li>
-                                                        <li><a href="#">Clothing</a></li>
-                                                        <li><a href="#">Shoes</a></li>
-                                                        <li><a href="#">Bags</a></li>
-                                                        <li>
-                                                            <a href="#">Accessories</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Jewlery &
-                                                                Watches
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Men
-                                                        <span class="menu-btn"><i class="fa-solid fa-chevron-right"></i></span>
-                                                    </a>
-                                                    <ul class="menu__wrapper-link" id="menu__wrapper-link">
-                                                        <li>
-                                                            <a href="#">New Arrivals</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Best Sellers</a>
-                                                        </li>
-                                                        <li><a href="#">Trending</a></li>
-                                                        <li><a href="#">Clothing</a></li>
-                                                        <li><a href="#">Shoes</a></li>
-                                                        <li><a href="#">Bags</a></li>
-                                                        <li>
-                                                            <a href="#">Accessories</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Jewlery &
-                                                                Watches
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-house"></i>Home & Garden
-                                            </a>
-                                            <ul>
-                                                <li>
-                                                    <a href="#">Bedroom</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">
-                                                                Beds, Frames &
-                                                                Bases
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="#">Dressers</a></li>
-                                                        <li>
-                                                            <a href="#">Nightstands</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Kid's Beds &
-                                                                Headboards
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="#">Armoires</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Living Room</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">Coffee Tables</a>
-                                                        </li>
-                                                        <li><a href="#">Chairs</a></li>
-                                                        <li><a href="#">Tables</a></li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Futons & Sofa
-                                                                Beds
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Cabinets &
-                                                                Chests
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Office</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">Office Chairs</a>
-                                                        </li>
-                                                        <li><a href="#">Desks</a></li>
-                                                        <li><a href="#">Bookcases</a></li>
-                                                        <li>
-                                                            <a href="#">File Cabinets</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Breakroom
-                                                                Tables
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Kitchen & Dining</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">Dining Sets</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Kitchen Storage
-                                                                Cabinets
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Bashers Racks</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Dining Chairs</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Dining Room
-                                                                Tables
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="#">Bar Stools</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-desktop"></i>Electronics
-                                            </a>
-                                            <ul>
-                                                <li>
-                                                    <a href="#">Laptops &amp; Computers</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">
-                                                                Desktop
-                                                                Computers
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="#">Monitors</a></li>
-                                                        <li><a href="#">Laptops</a></li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Hard Drives &amp;
-                                                                Storage
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Computer
-                                                                Accessories
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">TV &amp; Video</a>
-                                                    <ul>
-                                                        <li><a href="#">TVs</a></li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Home Audio
-                                                                Speakers
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="#">Projectors</a></li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Media Streaming
-                                                                Devices
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Digital Cameras</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">
-                                                                Digital SLR
-                                                                Cameras
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Sports & Action
-                                                                Cameras
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Camera Lenses</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Photo Printer</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Digital Memory
-                                                                Cards
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Cell Phones</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">Carrier Phones</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Unlocked Phones</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Phone & Cellphone
-                                                                Cases
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Cellphone
-                                                                Chargers
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-couch"></i>Furniture
-                                            </a>
-                                            <ul>
-                                                <li>
-                                                    <a href="#">Furniture</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">Sofas & Couches</a>
-                                                        </li>
-                                                        <li><a href="#">Armchairs</a></li>
-                                                        <li><a href="#">Bed Frames</a></li>
-                                                        <li>
-                                                            <a href="#">Beside Tables</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Dressing Tables</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Lighting</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">Light Bulbs</a>
-                                                        </li>
-                                                        <li><a href="#">Lamps</a></li>
-                                                        <li>
-                                                            <a href="#">Celling Lights</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Wall Lights</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Bathroom
-                                                                Lighting
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Home Accessories</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">
-                                                                Decorative
-                                                                Accessories
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Candals &
-                                                                Holders
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Home Fragrance</a>
-                                                        </li>
-                                                        <li><a href="#">Mirrors</a></li>
-                                                        <li><a href="#">Clocks</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Garden & Outdoors</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">
-                                                                Garden
-                                                                Furniture
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Lawn Mowers</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Pressure
-                                                                Washers
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                All Garden
-                                                                Tools
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Outdoor Dining</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-notes-medical"></i>Healthy & Beauty
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-gift"></i>Gift Ideas
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-gamepad"></i>Toy & Games
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-utensils"></i>Cooking
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-mobile-screen"></i>Smart Phones
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-camera-retro"></i>Cameras & Photo
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-keyboard"></i>Accessories
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
+                                            <a asp-controller="shop" asp-action="index">
                                                 View All Categories
                                             </a>
                                         </li>
@@ -903,72 +377,15 @@
                         </div>
                     </div>
                 </div>
-                <a class="header-logo" href="#">
-                    <img src="/assets/images/header-logo.png" alt="Header Logo">
+                <a class="header-logo" asp-controller="home" asp-action="index">
+                    <img src="~/assets/images/header-logo.png" alt="Header Logo">
                 </a>
                 <div class="card__wrapper">
                     <div class="sl-nav">
                         <ul>
                             <li>
                                 <i class="fa-solid fa-bag-shopping"></i>
-                                <span class="cart-count">2</span>
-                                <div class="triangle"></div>
-                                <ul>
-                                    <li>
-                                        <div class="card-item">
-                                            <div class="card-box">
-                                                <div>
-                                                    <span class="card-name">
-                                                        Beige knitted elas tic runner
-                                                        shoes
-                                                    </span>
-                                                    <div class="card-bottom">
-                                                        <span class="card-quantity">1 X </span>
-                                                        <span class="card-price">$14.22</span>
-                                                    </div>
-                                                </div>
-                                                <div class="card-thumbnail">
-                                                    <a class="close-btn" href="#">
-                                                        <i class="fa-solid fa-xmark"></i>
-                                                    </a>
-                                                    <img src="/assets/images/products/1-1-1.jpg" alt="Cart Product">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="card-item">
-                                            <div class="card-box">
-                                                <div>
-                                                    <span class="card-name">
-                                                        Beige knitted elas tic runner
-                                                        shoes
-                                                    </span>
-                                                    <div class="card-bottom">
-                                                        <span class="card-quantity">1 X </span>
-                                                        <span class="card-price">$14.22</span>
-                                                    </div>
-                                                </div>
-                                                <div class="card-thumbnail">
-                                                    <a class="close-btn" href="#">
-                                                        <i class="fa-solid fa-xmark"></i>
-                                                    </a>
-                                                    <img src="/assets/images/products/1-2.jpg" alt="Cart Product">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <hr />
-                                    <div class="cart-price">
-                                        <label>Subtotal:</label>
-                                        <span class="price">$44.30</span>
-                                    </div>
-
-                                    <div class="cart-wrapper">
-                                        <a href="#" class="btn-cart">View Cart</a>
-                                        <a href="#" class="btn-checkout">Checkout</a>
-                                    </div>
-                                </ul>
+                                @await Html.PartialAsync("_CartPartial", cartVMs)
                             </li>
                         </ul>
                     </div>

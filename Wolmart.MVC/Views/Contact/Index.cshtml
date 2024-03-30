@@ -1,4 +1,6 @@
-﻿<div class="page-header">
+﻿@model Message
+
+<div class="page-header">
     <h1 class="page-title mb-0">Contact Us</h1>
 </div>
 
@@ -113,24 +115,27 @@
                     </div>
                     <div class="col-lg-6 col-12 col-md-6">
                         <h4>Send Us a Message</h4>
-                        <form method="POST" class="form-message">
+                        <form asp-controller="contact" asp-action="contact" method="POST" class="form-message">
                             <div class="form-item">
                                 <label>
                                     Your name *
                                 </label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="fullname" required class="form-control">
+                                <span asp-validation-for="@Model.Fullname"></span>
                             </div>
                             <div class="form-item">
                                 <label>
                                     Your email *
                                 </label>
-                                <input type="email" name="email" class="form-control">
+                                <input type="email" name="email" required class="form-control">
+                                <span asp-validation-for="@Model.Email"></span>
                             </div>
                             <div class="form-item">
                                 <label>
                                     Your message *
                                 </label>
-                                <textarea type="text" rows="7" name="message" class="form-control"></textarea>
+                                <textarea type="text" rows="7" name="text" required class="form-control"></textarea>
+                                <span asp-validation-for="@Model.Text"></span>
                             </div>
                             <button type="submit" class="btn__main">
                                 Send Now

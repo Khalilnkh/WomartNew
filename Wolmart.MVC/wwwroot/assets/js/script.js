@@ -2,6 +2,7 @@ var menuToggle = document.querySelector('.mobile-menu-toggle');
 var filterMenuToggle = document.querySelector('.filter-menu-toggle');
 var menuBtn = document.querySelector('.menu-btn');
 var menuList = document.querySelector('.mobile-menu #menu__wrapper');
+var menuListA = document.querySelector('.mobile-menu li a');
 var menuWrapper = document.querySelectorAll('#menu__wrapper li .menu-btn');
 var menuLink = document.querySelectorAll('#menu__wrapper-link');
 var overlayMenu = document.querySelector('.mobile__menu .overlay__menu')
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
 
 colorLinks.forEach(link => {
     link.addEventListener('click', function(event) {
@@ -82,12 +84,6 @@ function toggleMenu(e) {
     e.preventDefault();
 }
 
-function filterToggleMenu(e) {
-    document.body.classList.toggle('mmenu-active');
-
-    e.preventDefault();
-}
-
 function btnToggle(e) {
     menuList.classList.toggle('d-block');
 
@@ -100,10 +96,7 @@ function menuWrapperToggle(e) {
     e.preventDefault();
 }
 
-
 menuToggle.addEventListener('click', toggleMenu);
-
-filterMenuToggle.addEventListener('click', filterToggleMenu);
 
 menuBtn.addEventListener('click', btnToggle);
 

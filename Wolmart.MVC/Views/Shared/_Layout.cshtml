@@ -8,13 +8,12 @@
     List<CartVM> cartvm = await layoutservices.GetCart();
 
     HeaderVM headerVM = new HeaderVM
-    {
-       Categories = categories,
-       Subcategories = subcategories,
-       CartVMs = cartvm
-    };
+            {
+                Categories = categories,
+                Subcategories = subcategories,
+                CartVMs = cartvm
+            };
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +28,7 @@
     <link rel="stylesheet" href="/styles/shop-sidebar.css" asp-append-version="true">
     <link rel="stylesheet" href="/styles/accordion.css" asp-append-version="true">
     <link rel="stylesheet" href="/styles/checkout.css">
+    <link rel="stylesheet" href="/styles/contact.css">
     <link rel="stylesheet" href="/styles/cart.css">
     <link rel="stylesheet" href="/styles/about.css">
     <link rel="stylesheet" href="/styles/drawer.css" asp-append-version="true">
@@ -56,7 +56,6 @@
         </svg>
     </div>
 
-
     <div class="modal fade modal-index" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -82,11 +81,11 @@
                 </ul>
                 <div class="tab-content" id="ex2-content">
                     <form asp-controller="account" asp-action="login" method="POST" class="tab-pane fade show active"
-                         id="ex2-tabs-1"
-                         role="tabpanel"
-                         aria-labelledby="ex2-tab-1">
+                          id="ex2-tabs-1"
+                          role="tabpanel"
+                          aria-labelledby="ex2-tab-1">
                         @if (TempData["ErrorMessage"] != null)
-                        {                        
+                        {
                             <div class="alert alert-danger" role="alert">
                                 <ul>
                                     @foreach (var modelStateEntry in ViewData.ModelState)
@@ -175,7 +174,7 @@
                         <div class="form-group">
                             <label>Confirm Password *</label>
                             <input type="password" class="form-control" name="confirmPassword" required="">
-                        </div> 
+                        </div>
 
                         <p>
                             Your personal data will be used to support your experience

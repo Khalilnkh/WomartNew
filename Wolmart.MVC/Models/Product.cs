@@ -60,6 +60,7 @@ namespace Wolmart.MVC.Models
 
         [NotMapped]
         public List<int> ColorIDs { get; set; }
+
         [NotMapped]
         public List<int?> Counts { get; set; }
     }
