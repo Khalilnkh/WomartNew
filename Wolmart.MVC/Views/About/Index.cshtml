@@ -24,15 +24,9 @@
     <div class="container">
         <div class="row">
             <div class="about__top">
-                <h4 class="title text-center">
-                    We’re Devoted Marketing
-                    <br />
-                    Consultants Helping Your Business Grow
-                </h4>
-                <p class="desc text-center">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor labore et dolore magna aliqua. Venenatis tellu metus
-                </p>
-                <img src="/assets/images/about_us.jpg" alt="About Us">
+                <h4 style="max-width: 55%" class="title text-center">@Model.Settings.FirstOrDefault(x => x.Key == "AboutTitle").Value</h4>
+                <p class="desc text-center">@Model.Settings.FirstOrDefault(x => x.Key == "AboutDescription").Value</p>
+                <img src="~/assets/images/@Model.Settings.FirstOrDefault(x => x.Key == "AboutImage").Value" alt="About Us">
             </div>
             <div class="about__center">
                 <div class="col-lg-6">

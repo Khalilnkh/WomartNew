@@ -107,7 +107,6 @@ namespace Wolmart.MVC.Areas.admin.Controllers
                 categories.Image = category.File.CreateImage(_env, "assets", "images", "categories");
             }
 
-
             categories.Name = category.Name.Trim();
             categories.UpdatedAt = DateTime.Now;
 

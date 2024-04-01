@@ -307,6 +307,28 @@ namespace Wolmart.MVC.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Wolmart.MVC.Models.Client", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Clients");
+                });
+
             modelBuilder.Entity("Wolmart.MVC.Models.Color", b =>
                 {
                     b.Property<int>("ID")
@@ -369,9 +391,6 @@ namespace Wolmart.MVC.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -392,6 +411,38 @@ namespace Wolmart.MVC.Migrations
                     b.HasIndex("ProductID");
 
                     b.ToTable("Feedbacks");
+                });
+
+            modelBuilder.Entity("Wolmart.MVC.Models.FeedbackImage", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("FeedbackID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("FeedbackID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("FeedbackImages");
                 });
 
             modelBuilder.Entity("Wolmart.MVC.Models.Message", b =>
@@ -745,6 +796,26 @@ namespace Wolmart.MVC.Migrations
                     b.ToTable("ProductSpecifications");
                 });
 
+            modelBuilder.Entity("Wolmart.MVC.Models.Setting", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Key")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasMaxLength(455)
+                        .HasColumnType("nvarchar(455)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Setttings");
+                });
+
             modelBuilder.Entity("Wolmart.MVC.Models.Size", b =>
                 {
                     b.Property<int>("ID")
@@ -878,6 +949,21 @@ namespace Wolmart.MVC.Migrations
                 {
                     b.HasOne("Wolmart.MVC.Models.Product", "Product")
                         .WithMany("Feedbacks")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Wolmart.MVC.Models.FeedbackImage", b =>
+                {
+                    b.HasOne("Wolmart.MVC.Models.Feedback", null)
+                        .WithMany("FeedbackImages")
+                        .HasForeignKey("FeedbackID");
+
+                    b.HasOne("Wolmart.MVC.Models.Product", "Product")
+                        .WithMany()
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1062,6 +1148,11 @@ namespace Wolmart.MVC.Migrations
             modelBuilder.Entity("Wolmart.MVC.Models.Country", b =>
                 {
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("Wolmart.MVC.Models.Feedback", b =>
+                {
+                    b.Navigation("FeedbackImages");
                 });
 
             modelBuilder.Entity("Wolmart.MVC.Models.Order", b =>

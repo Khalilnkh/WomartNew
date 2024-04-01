@@ -21,6 +21,7 @@ namespace Wolmart.MVC.DAL
         public DbSet<Color> Colors { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<FeedbackImage> FeedbackImages { get; set; }
         public DbSet<ProductColor> ProductColors { get; set; }
         public DbSet<ProductSize> ProductSizes { get; set; }
         public DbSet<ProductDescription> ProductDescriptions { get; set; }
@@ -29,6 +30,8 @@ namespace Wolmart.MVC.DAL
         public DbSet<Award> Awards { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Subscriber> Subscribers { get; set; }
+        public DbSet<Setting> Setttings { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
     }
 }

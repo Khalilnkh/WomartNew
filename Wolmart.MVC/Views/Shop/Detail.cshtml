@@ -139,7 +139,7 @@
                                href="#ex4-tabs-3"
                                role="tab"
                                aria-controls="ex4-tabs-3"
-                               aria-selected="false">Customer Reviews (3)</a>
+                               aria-selected="false">Customer Reviews (@Model.Feedbacks.Count())</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="ex4-content">
@@ -349,9 +349,12 @@
                                                             <div class="comment-action">
                                                                 <div class="review-image">
                                                                     <div id="review-gallery">
-                                                                        <a href="~/assets/images/products/@item.Image">
-                                                                            <img src="~/assets/images/products/@item.Image" alt="">
-                                                                        </a>
+                                                                        @foreach (FeedbackImage feedbackImage in Model.FeedbackImages)
+                                                                        {
+                                                                            <a href="~/assets/images/products/@feedbackImage.Image">
+                                                                                <img src="~/assets/images/products/@feedbackImage.Image" alt="">
+                                                                            </a>
+                                                                        }
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Wolmart.MVC.Models
 {
@@ -15,10 +16,14 @@ namespace Wolmart.MVC.Models
         public string Email { get; set; }
         [Required]
         public string Text { get; set; }
-        public string Image { get; set; }
+
         [Required]
         public int Rating { get; set; }
         public int ProductID { get; set; }
         public Product Product { get; set; }
+        public List<FeedbackImage> FeedbackImages { get; set; }
+
+        [NotMapped]
+        public IFormFile File { get; set; }
     }
 }

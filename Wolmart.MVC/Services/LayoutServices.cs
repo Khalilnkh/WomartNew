@@ -57,5 +57,10 @@ namespace Wolmart.MVC.Services
 
             return cartVMs;
         }
+
+        public async Task<Dictionary<string, string>> GetSettingAsync()
+        {
+            return await _context.Setttings.ToDictionaryAsync(x => x.Key, x => x.Value);
+        }
     }
 }

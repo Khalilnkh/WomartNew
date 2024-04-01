@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Wolmart.MVC.DAL;
 using Wolmart.MVC.Models;
+using Wolmart.MVC.ViewModels.Contact;
 
 namespace Wolmart.MVC.Controllers
 {
@@ -11,9 +13,14 @@ namespace Wolmart.MVC.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ContactVM contactVM = new ContactVM
+            {
+                Settings = await _context.Setttings.ToDictionaryAsync(x => x.Key, x=> x.Value),
+            };
+
+            return View(contactVM);
         }
 
         [HttpPost]

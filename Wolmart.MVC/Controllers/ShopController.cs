@@ -150,6 +150,7 @@ namespace Wolmart.MVC.Controllers
                     Colors = await _context.Colors.ToListAsync(),
                     Sizes = await _context.Sizes.ToListAsync(),
                     Feedbacks = await _context.Feedbacks.Where(x => x.ProductID == ID).ToListAsync(),
+                    FeedbackImages = await _context.FeedbackImages.Where(x => x.ProductID == ID).ToListAsync(),
                     Description = await _context.ProductDescriptions.Where(x => x.ProductID == ID).ToListAsync(),
                     Specifications = await _context.ProductSpecifications.Where(x => x.ProductID == ID).ToListAsync(),
                     Products = await _context.Products.Include(x=>x.ProductColors).Include(x=>x.Feedbacks).Where(x => x.CategoryID == product.CategoryID).ToListAsync(),

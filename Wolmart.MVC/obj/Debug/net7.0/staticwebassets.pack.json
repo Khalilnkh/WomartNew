@@ -921,6 +921,10 @@
       "PackagePath": "staticwebassets\\assets\\images\\default-profile.png"
     },
     {
+      "Id": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\images\\feedbacks\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\feedbacks\\1.jpg"
+    },
+    {
       "Id": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\images\\footer-logo.png",
       "PackagePath": "staticwebassets\\assets\\images\\footer-logo.png"
     },
@@ -967,10 +971,6 @@
     {
       "Id": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\images\\products\\1_org_zoom.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\products\\1_org_zoom.jpg"
-    },
-    {
-      "Id": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\images\\products\\1eec9005-194b-4664-af23-9b93b25eca91_202403301822302126_431992502_342678218699442_5520396518054480436_n.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\products\\1eec9005-194b-4664-af23-9b93b25eca91_202403301822302126_431992502_342678218699442_5520396518054480436_n.jpg"
     },
     {
       "Id": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\images\\products\\2-800x900.jpg",
@@ -1083,14 +1083,6 @@
     {
       "Id": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\images\\products\\5-800x900.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\products\\5-800x900.jpg"
-    },
-    {
-      "Id": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\images\\products\\7dd0d966-06ea-48f2-ad4c-0d667396c3b7_202403301822299395_431992502_342678218699442_5520396518054480436_n.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\products\\7dd0d966-06ea-48f2-ad4c-0d667396c3b7_202403301822299395_431992502_342678218699442_5520396518054480436_n.jpg"
-    },
-    {
-      "Id": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\images\\products\\9c4af01f-e984-400b-becb-dd747b5e7916_202403301822299324_431992502_342678218699442_5520396518054480436_n.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\products\\9c4af01f-e984-400b-becb-dd747b5e7916_202403301822299324_431992502_342678218699442_5520396518054480436_n.jpg"
     },
     {
       "Id": "D:\\repos\\C#\\Wolmart.MVC\\wwwroot\\assets\\images\\slides\\man.png",

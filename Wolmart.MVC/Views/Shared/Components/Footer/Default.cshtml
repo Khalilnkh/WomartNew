@@ -36,28 +36,30 @@
                 <div class="footer-main">
                     <div class="footer-about col-lg-4">
                         <div class="footer-logo">
-                            <img src="/assets/images/footer-logo.png" alt="Footer Logo">
+                            <img src="~/assets/images/@Model.Settings.FirstOrDefault(x=>x.Key == "FooterLogo").Value" alt="Footer Logo">
                         </div>
                         <p>Got Question? Call us 24/7</p>
-                        <a href="tel:18005707777">1-800-570-7777</a>
+                        <a href="tel:1@(Model.Settings.FirstOrDefault(x => x.Key == "PhoneNumber").Value)">
+                            1-@Model.Settings.FirstOrDefault(x => x.Key == "PhoneNumber").Value
+                        </a>
                         <p>
                             Register now to get updates on pronot get up icons
                             & coupons ster now toon.
                         </p>
                         <div class="social-wrapper">
-                            <a class="social_facebook icon" href="#">
+                            <a class="social_facebook icon" href="@(Model.Settings.FirstOrDefault(x => x.Key == "FacebookAddress").Value)" target="_blank">
                                 <i class="fa-brands fa-facebook-f"></i>
                             </a>
-                            <a class="social_twitter icon" href="#">
+                            <a class="social_twitter icon" href="@(Model.Settings.FirstOrDefault(x => x.Key == "TwitterAddress").Value)" target="_blank">
                                 <i class="fa-brands fa-twitter"></i>
                             </a>
-                            <a class="social_instagram icon" href="#">
+                            <a class="social_instagram icon" href="@(Model.Settings.FirstOrDefault(x => x.Key == "InstagramAddress").Value)" target="_blank">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
-                            <a class="social_youtube icon" href="#">
+                            <a class="social_youtube icon" href="@(Model.Settings.FirstOrDefault(x => x.Key == "YoutubeAddress").Value)" target="_blank">
                                 <i class="fa-brands fa-youtube"></i>
                             </a>
-                            <a class="social_pinterest icon" href="#">
+                            <a class="social_pinterest icon" href="@(Model.Settings.FirstOrDefault(x => x.Key == "PinterestAddress").Value)" target="_blank">
                                 <i class="fa-brands fa-pinterest"></i>
                             </a>
                         </div>
@@ -67,12 +69,12 @@
                             <div class="widget">
                                 <h3 class="link-title">Company</h3>
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Team Member</a></li>
-                                    <li><a href="#">Career</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Affilate</a></li>
-                                    <li><a href="#">Order History</a></li>
+                                    <li><a asp-controller="about" asp-action="index">About Us</a></li>
+                                    <li><a asp-controller="about" asp-action="index">Team Member</a></li>
+                                    <li><a asp-controller="about" asp-action="index">Career</a></li>
+                                    <li><a asp-controller="contact" asp-action="index">Contact Us</a></li>
+                                    <li><a asp-controller="shop" asp-action="index">Affilate</a></li>
+                                    <li><a asp-controller="account" asp-action="profile">Order History</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -80,12 +82,12 @@
                             <div class="widget">
                                 <h4 class="link-title">My Account</h4>
                                 <ul>
-                                    <li><a href="#">Track My Order</a></li>
-                                    <li><a href="#">View Cart</a></li>
+                                    <li><a asp-controller="account" asp-action="profile">Track My Order</a></li>
+                                    <li><a asp-controller="cart" asp-action="index">View Cart</a></li>
                                     <li><a href="#">Sign In</a></li>
-                                    <li><a href="#">Help</a></li>
-                                    <li><a href="#">My Wishlist</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a asp-controller="contact" asp-action="index">Help</a></li>
+                                    <li><a asp-controller="wishlist" asp-action="index">My Wishlist</a></li>
+                                    <li><a asp-controller="contact" asp-action="index">Privacy Policy</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -93,104 +95,38 @@
                             <div class="widget">
                                 <h4 class="link-title">Customer Service</h4>
                                 <ul>
-                                    <li><a href="#">Payment Methods</a></li>
-                                    <li><a href="#">Money-back guarantee!</a></li>
-                                    <li><a href="#">Product Returns</a></li>
-                                    <li><a href="#">Support Center</a></li>
-                                    <li><a href="#">Shipping</a></li>
-                                    <li><a href="#">Term and Conditions</a></li>
+                                    <li><a asp-controller="account" asp-action="profile">Payment Methods</a></li>
+                                    <li><a asp-controller="contact" asp-action="index">Money-back guarantee!</a></li>
+                                    <li><a asp-controller="account" asp-action="profile">Product Returns</a></li>
+                                    <li><a asp-controller="contact" asp-action="index">Support Center</a></li>
+                                    <li><a asp-controller="account" asp-action="profile">Shipping</a></li>
+                                    <li><a asp-controller="about" asp-action="index">Term and Conditions</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="footer-category">
-                    <div class="category-link">
-                        <h6>Consumer Electric:</h6>
+                    @foreach (Category item in Model.Categories)
+                    {
+                        <div class="category-link">
+                            <h6>@item.Name:</h6>
 
-                        <a href="#">TV Television</a>
-                        <a href="#">Air Condition</a>
-                        <a href="#">Refrigerator</a>
-                        <a href="#">Washing Machine</a>
-                        <a href="#">Audio Speaker</a>
-                        <a href="#">Security Camera</a>
-                        <a href="#">View All</a>
-                    </div>
-                    <div class="category-link">
-                        <h6>Clothing & Apparel:</h6>
-
-                        <a href="#">Men's T-shirt</a>
-                        <a href="#">Dresses</a>
-                        <a href="#">Men's Sneacker</a>
-                        <a href="#">Leather Backpack</a>
-                        <a href="#">Watches</a>
-                        <a href="#">Jeans</a>
-                        <a href="#">Sunglasses</a>
-                        <a href="#">Boots</a>
-                        <a href="#">Rayban</a>
-                        <a href="#">Acccessories</a>
-                    </div>
-                    <div class="category-link">
-                        <h6>Home, Garden & Kitchen:</h6>
-
-                        <a href="#">Sofa</a>
-                        <a href="#">Chair</a>
-                        <a href="#">Bed Room</a>
-                        <a href="#">Living Room</a>
-                        <a href="#">Cookware</a>
-                        <a href="#">Utensil</a>
-                        <a href="#">Blender</a>
-                        <a href="#">Garden Equipments</a>
-                        <a href="#">Decor</a>
-                        <a href="#">Library</a>
-                    </div>
-                    <div class="category-link">
-                        <h6>Health & Beauty:</h6>
-
-                        <a href="#">Skin Care</a>
-                        <a href="#">Body Shower</a>
-                        <a href="#">Makeup</a>
-                        <a href="#">Hair Care</a>
-                        <a href="#">Lipstick</a>
-                        <a href="#">Perfume</a>
-                        <a href="#">View all</a>
-                    </div>
-                    <div class="category-link">
-                        <h6>Jewelry & Watches:</h6>
-
-                        <a href="#">Necklace</a>
-                        <a href="#">Pendant</a>
-                        <a href="#">Diamond Ring</a>
-                        <a href="#">Silver Earing</a>
-                        <a href="#">Leather Watcher</a>
-                        <a href="#">Rolex</a>
-                        <a href="#">Gucci</a>
-                        <a href="#">Australian Opal</a>
-                        <a href="#">Ammolite</a>
-                        <a href="#">Sun Pyrite</a>
-                    </div>
-                    <div class="category-link">
-                        <h6>Computer & Technologies:</h6>
-
-                        <a href="#">Laptop</a>
-                        <a href="#">iMac</a>
-                        <a href="#">Smartphone</a>
-                        <a href="#">Tablet</a>
-                        <a href="#">Apple</a>
-                        <a href="#">Asus</a>
-                        <a href="#">Drone</a>
-                        <a href="#">Wireless Speaker</a>
-                        <a href="#">Game Controller</a>
-                        <a href="#">View all</a>
-                    </div>
+                            @foreach (Subcategory subcategory in Model.Subcategories.Where(x => x.ParentCategoryID == item.ID))
+                            {
+                                <a asp-controller="shop" asp-action="index" asp-route-category="@item.ID">@subcategory.Name</a>
+                            }
+                            <a asp-controller="shop" asp-action="index">View All</a>
+                        </div>
+                    }
                 </div>
                 <div class="footer-bottom">
                     <div class="copyright">
-                        <p>Copyright © 2024 Wolmart Store. All Rights Reserved.</p>
+                        <p>Copyright © @DateTime.Now.Year Wolmart Store. All Rights Reserved.</p>
                     </div>
                     <div>
                         <span>We're using safe payment for</span>
-                        <img src="/assets/images/payment.png" alt="Payment">
+                        <img src="~/assets/images/payment.png" alt="Payment">
                     </div>
                 </div>
             </div>

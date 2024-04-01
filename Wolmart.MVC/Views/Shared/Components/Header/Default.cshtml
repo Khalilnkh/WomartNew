@@ -4,6 +4,7 @@
 @inject UserManager<AppUser> userManager
 
 @{
+    Dictionary<string, string> settings = await layoutservices.GetSettingAsync();
     List<CartVM> cartVMs = await layoutservices.GetCart();
     AppUser appUser = null;
     if (User.Identity.IsAuthenticated)
@@ -79,7 +80,7 @@
                 <div class="header-wrapper d-flex align-items-center justify-content-between">
                     <div class="left-side d-flex align-items-center">
                         <a asp-controller="home" asp-action="index" class="header-logo">
-                            <img src="/assets/images/header-logo.png" alt="Header Logo">
+                            <img src="~/assets/images/@settings.FirstOrDefault(x => x.Key == "HeaderLogo").Value" alt="Header Logo">
                         </a>
                         <div class="menu-list">
                             <ul class="d-flex">
@@ -111,8 +112,8 @@
                             <i class="fa-solid fa-phone"></i>
                             <div class="phone-box">
                                 <h4>Live Chat <span>or :</span></h4>
-                                <a href="tel:#">
-                                    0(800)123-456
+                                <a href="tel:1@(settings.FirstOrDefault(x => x.Key == "PhoneNumber").Value)">
+                                    @settings.FirstOrDefault(x => x.Key == "PhoneNumber").Value
                                 </a>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-﻿@model Message
+﻿@model ContactVM
 
 <div class="page-header">
     <h1 class="page-title mb-0">Contact Us</h1>
@@ -31,28 +31,28 @@
                         <i class="fa-regular fa-envelope"></i>
                     </div>
                     <h4 class="icon-title">E-mail Address</h4>
-                    <p>mail@example.com</p>
+                    <p>@Model.Settings.FirstOrDefault(x => x.Key == "EmailAddress").Value</p>
                 </div>
                 <div class="item-card">
                     <div class="icon-base">
                         <i class="fa-solid fa-headphones"></i>
                     </div>
                     <h4 class="icon-title">Phone Number</h4>
-                    <p>(715) 575-41-67</p>
+                    <p>@Model.Settings.FirstOrDefault(x => x.Key == "PhoneNumber").Value</p>
                 </div>
                 <div class="item-card">
                     <div class="icon-base">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
                     <h4 class="icon-title">Address</h4>
-                    <p>Wuckertchester, SC 76004-5331</p>
+                    <p>@Model.Settings.FirstOrDefault(x => x.Key == "Address").Value</p>
                 </div>
                 <div class="item-card">
                     <div class="icon-base">
                         <i class="fa-solid fa-file"></i>
                     </div>
                     <h4 class="icon-title">Fax</h4>
-                    <p>1-800-570-7777</p>
+                    <p>@Model.Settings.FirstOrDefault(x => x.Key == "Fax").Value</p>
                 </div>
             </div>
 
@@ -121,21 +121,21 @@
                                     Your name *
                                 </label>
                                 <input type="text" name="fullname" required class="form-control">
-                                <span asp-validation-for="@Model.Fullname"></span>
+                                <span asp-validation-for="@Model.Message.Fullname"></span>
                             </div>
                             <div class="form-item">
                                 <label>
                                     Your email *
                                 </label>
                                 <input type="email" name="email" required class="form-control">
-                                <span asp-validation-for="@Model.Email"></span>
+                                <span asp-validation-for="@Model.Message.Email"></span>
                             </div>
                             <div class="form-item">
                                 <label>
                                     Your message *
                                 </label>
                                 <textarea type="text" rows="7" name="text" required class="form-control"></textarea>
-                                <span asp-validation-for="@Model.Text"></span>
+                                <span asp-validation-for="@Model.Message.Text"></span>
                             </div>
                             <button type="submit" class="btn__main">
                                 Send Now
@@ -146,3 +146,4 @@
             </div>
         </div>
     </div>
+</div>
