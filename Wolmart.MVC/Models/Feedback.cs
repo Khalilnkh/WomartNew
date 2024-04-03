@@ -12,6 +12,7 @@ namespace Wolmart.MVC.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
         [Required]
@@ -24,6 +25,7 @@ namespace Wolmart.MVC.Models
         public List<FeedbackImage> FeedbackImages { get; set; }
 
         [NotMapped]
-        public IFormFile File { get; set; }
+        [MaxLength(5)]
+        public IEnumerable<IFormFile> Files { get; set; }
     }
 }

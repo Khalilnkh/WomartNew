@@ -17,7 +17,7 @@ namespace Wolmart.MVC.Controllers
         {
             ContactVM contactVM = new ContactVM
             {
-                Settings = await _context.Setttings.ToDictionaryAsync(x => x.Key, x=> x.Value),
+                Settings = await _context.Settings.ToDictionaryAsync(x => x.Key, x=> x.Value),
             };
 
             return View(contactVM);

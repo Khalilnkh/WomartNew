@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\repos\\C#\\Wolmart.MVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\areas\\admin\\views\\shared\\_awardindexpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:areas\\admin\\views\\shared\\_awardindexpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\areas\\admin\\views\\shared\\_clientindexpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:areas\\admin\\views\\shared\\_clientindexpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\areas\\admin\\controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:areas\\admin\\controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|d:\\repos\\c#\\wolmart.mvc\\views\\shared\\components\\product\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4732E56A-90AD-47A2-AC99-FA691E1E95D7}|Wolmart.MVC.csproj|solutionrelative:views\\shared\\components\\product\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,55 +21,33 @@
           "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_AwardIndexPartial.cshtml",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Areas\\admin\\Views\\Shared\\_AwardIndexPartial.cshtml",
-              "RelativeDocumentMoniker": "Areas\\admin\\Views\\Shared\\_AwardIndexPartial.cshtml",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Areas\\admin\\Views\\Shared\\_AwardIndexPartial.cshtml",
-              "RelativeToolTip": "Areas\\admin\\Views\\Shared\\_AwardIndexPartial.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-01T15:44:17.13Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_ClientIndexPartial.cshtml",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Areas\\admin\\Views\\Shared\\_ClientIndexPartial.cshtml",
-              "RelativeDocumentMoniker": "Areas\\admin\\Views\\Shared\\_ClientIndexPartial.cshtml",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Areas\\admin\\Views\\Shared\\_ClientIndexPartial.cshtml",
-              "RelativeToolTip": "Areas\\admin\\Views\\Shared\\_ClientIndexPartial.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAkAAAA",
+              "DocumentIndex": 1,
+              "Title": "Default.cshtml",
+              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Shared\\Components\\Product\\Default.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\Components\\Product\\Default.cshtml",
+              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Shared\\Components\\Product\\Default.cshtml",
+              "RelativeToolTip": "Views\\Shared\\Components\\Product\\Default.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-01T15:43:25.807Z",
+              "WhenOpened": "2024-04-03T16:11:32.027Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Areas\\admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Areas\\admin\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Areas\\admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Areas\\admin\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAI0AAAAAAAAAAAAAAKsAAAAcAAAA",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAA0BAAAAAAAAAAAAACUBAACjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-01T15:42:50.585Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ClientController.cs",
-              "DocumentMoniker": "D:\\repos\\C#\\Wolmart.MVC\\Areas\\admin\\Controllers\\ClientController.cs",
-              "RelativeDocumentMoniker": "Areas\\admin\\Controllers\\ClientController.cs",
-              "ToolTip": "D:\\repos\\C#\\Wolmart.MVC\\Areas\\admin\\Controllers\\ClientController.cs",
-              "RelativeToolTip": "Areas\\admin\\Controllers\\ClientController.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAgwDUAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-01T15:27:03.222Z",
+              "WhenOpened": "2024-04-03T16:10:09.677Z",
               "EditorCaption": ""
             }
           ]

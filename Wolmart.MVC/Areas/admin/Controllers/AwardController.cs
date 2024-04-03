@@ -47,7 +47,6 @@ namespace Wolmart.MVC.Areas.admin.Controllers
                     return View(award);
                 }
 
-
                 if (!award.File.CheckFileSize(20000))
                 {
                     ModelState.AddModelError("File", "The maximum size must be 20mb!");

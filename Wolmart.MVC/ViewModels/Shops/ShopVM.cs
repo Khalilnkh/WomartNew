@@ -13,8 +13,8 @@ namespace Wolmart.MVC.ViewModels.Shops
         public List<Category> Categories { get; set; }
         public List<Color> Colors { get; set; }
         public List<Feedback> Feedbacks { get; set; }
+        public Feedback Feedback { get; set; }
         public List<FeedbackImage> FeedbackImages { get; set; }
         public List<Size> Sizes { get; set; }
-        public List<CartVM> CartVMs { get; set; }
     }
 }

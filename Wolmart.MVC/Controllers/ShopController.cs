@@ -2,20 +2,24 @@
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Wolmart.MVC.DAL;
+using Wolmart.MVC.Extension;
 using Wolmart.MVC.Models;
 using Wolmart.MVC.ViewModels;
 using Wolmart.MVC.ViewModels.Cart;
 using Wolmart.MVC.ViewModels.Shops;
+using Wolmart.MVC.ViewModels.View;
 
 namespace Wolmart.MVC.Controllers
 {
     public class ShopController : Controller
     {
         private readonly AppDbContext _context;
-
-        public ShopController(AppDbContext context)
+        private readonly IWebHostEnvironment _env;
+        
+        public ShopController(AppDbContext context,IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public IActionResult Index(int page, string q,int? categoryID, int? category, int? brand, int? size, int? color, int? minPrice, int? maxPrice,int? show, string orderby)
@@ -123,6 +127,7 @@ namespace Wolmart.MVC.Controllers
             var product = await _context.Products
                 .Include(x => x.ProductImages)
                 .Include(x => x.Feedbacks)
+                .ThenInclude(x => x.FeedbackImages)
                 .Include(x => x.ProductDescriptions)
                 .Include(x => x.ProductColors)
                 .ThenInclude(x => x.Color)
@@ -132,17 +137,31 @@ namespace Wolmart.MVC.Controllers
 
             if (product != null)
             {
-                string cart = Request.Cookies["cart"];
-                List<CartVM> cartVMs = null;
+                string view = HttpContext.Request.Cookies["view"];
 
-                if (!string.IsNullOrWhiteSpace(cart))
+                List<ViewVM> viewVMs = null;
+
+                if (!string.IsNullOrWhiteSpace(view))
                 {
-                    cartVMs = JsonConvert.DeserializeObject<List<CartVM>>(cart);
+                    viewVMs = JsonConvert.DeserializeObject<List<ViewVM>>(view);
                 }
                 else
                 {
-                    cartVMs = new List<CartVM>();
+                    viewVMs = new List<ViewVM>();
                 }
+
+                ViewVM viewVM = new ViewVM
+                {
+                    ProductID = product.ID,
+                    Image = product.MainImage,
+                    Title = product.Name
+                };
+
+                viewVMs.Add(viewVM);
+
+                view = JsonConvert.SerializeObject(viewVMs);
+
+                HttpContext.Response.Cookies.Append("view", view);
 
                 shopVM = new ShopVM
                 {
@@ -150,21 +169,11 @@ namespace Wolmart.MVC.Controllers
                     Colors = await _context.Colors.ToListAsync(),
                     Sizes = await _context.Sizes.ToListAsync(),
                     Feedbacks = await _context.Feedbacks.Where(x => x.ProductID == ID).ToListAsync(),
-                    FeedbackImages = await _context.FeedbackImages.Where(x => x.ProductID == ID).ToListAsync(),
+                    FeedbackImages = await _context.FeedbackImages.ToListAsync(),
                     Description = await _context.ProductDescriptions.Where(x => x.ProductID == ID).ToListAsync(),
                     Specifications = await _context.ProductSpecifications.Where(x => x.ProductID == ID).ToListAsync(),
                     Products = await _context.Products.Include(x=>x.ProductColors).Include(x=>x.Feedbacks).Where(x => x.CategoryID == product.CategoryID).ToListAsync(),
-                    CartVMs = cartVMs 
                 };
-
-                foreach (CartVM item in shopVM.CartVMs)
-                {
-                    Product products = await _context.Products.Include(x => x.ProductColors).FirstOrDefaultAsync(x => x.ID == item.ProductID);
-
-                    item.Image = products.MainImage;
-                    item.Title = products.Name;
-                    item.Price = products.ProductColors.Min(x => x.Price);
-                }
             }
             else
             {
@@ -176,14 +185,50 @@ namespace Wolmart.MVC.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Feedback(int? ID, Feedback feedback)
+        public async Task<IActionResult> Feedback(int? ProductID, Feedback feedback)
         {
+            if (!ModelState.IsValid) return View();
+
+            if (feedback.Files != null && feedback.Files.Count() > 0)
+            {
+                List<FeedbackImage> feedbackImages = new List<FeedbackImage>();
+
+                foreach (IFormFile file in feedback.Files)
+                {
+                    if (!file.CheckFileType())
+                    {
+                        ModelState.AddModelError("Files", "File type must be jpg or png.");
+                        return View(feedback);
+                    }
+
+                    if (!file.CheckFileSize(20000))
+                    {
+                        ModelState.AddModelError("Files", "The maximum size must be 20mb!");
+                        return View();
+                    }
+
+                    FeedbackImage feedbackImage = new FeedbackImage
+                    {
+                        Image = file.CreateImage(_env, "assets", "images", "feedbacks"),
+                        FeedbackID = feedback.ID,
+                        CreatedAt = DateTime.Now
+                    };
+
+                    feedbackImages.Add(feedbackImage);
+                }
+                feedback.FeedbackImages= feedbackImages;
+            }
+
+            feedback.Name = feedback.Name.Trim();
+            feedback.Text = feedback.Text.Trim();
+            feedback.Email = feedback.Email.Trim();
+            feedback.ProductID = (int)ProductID;
             feedback.CreatedAt = DateTime.Now;
 
             await _context.Feedbacks.AddAsync(feedback);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("index", "shop");
+            return View("index", "shop");
         }
 
     }

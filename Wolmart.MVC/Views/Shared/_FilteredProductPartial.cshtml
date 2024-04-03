@@ -59,13 +59,32 @@
                         </h4>
                         <div class="ratings-wrapper">
                             <div class="ratings-main">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
+                                @{
+                                    double totalRating = 0;
+                                    int feedbackCount = 0;
+
+                                    foreach (Feedback feedback in item.Feedbacks)
+                                    {
+                                        totalRating += feedback.Rating;
+                                        feedbackCount++;
+                                    }
+
+                                    double averageRating = feedbackCount > 0 ? totalRating / feedbackCount : 0;
+                                }
+
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    if (i < averageRating)
+                                    {
+                                        <i class="fa-solid fa-star"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa-solid far fa-star"></i>
+                                    }
+                                }
                             </div>
-                            <a href="#" class="rating">(@item.Feedbacks.Count Reviews)</a>
+                            <a asp-controller="shop" asp-action="detail" asp-route-id="@item.ID" class="rating">(@item.Feedbacks.Count Reviews)</a>
                         </div>
                         <div class="product-price">
                             @if (item.ProductColors.Any(x => x.DiscountedPrice == null))
@@ -76,11 +95,10 @@
                             }
                             else
                             {
-                                <ins class="new-price">@(item.ProductColors.Select(x => x.DiscountedPrice?.ToString("0.00")).FirstOrDefault())</ins>
+                                <ins class="new-price">$@(item.ProductColors.Select(x => x.DiscountedPrice?.ToString("0.00")).FirstOrDefault())</ins>
                                 <del class="old-price">$@(item.ProductColors.Select(x => x.Price.ToString("0.00")).FirstOrDefault())</del>
                             }
                         </div>
-
                     </div>
                 </div>
             }

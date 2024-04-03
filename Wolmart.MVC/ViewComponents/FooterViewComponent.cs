@@ -19,7 +19,7 @@ namespace Wolmart.MVC.ViewComponents
             {
                 Categories = await _context.Categories.ToListAsync(),
                 Subcategories = await _context.Subcategories.ToListAsync(),
-                Settings = await _context.Setttings.ToDictionaryAsync(x => x.Key, x => x.Value),  
+                Settings = await _context.Settings.ToDictionaryAsync(x => x.Key, x => x.Value),  
             };
 
             return View(await Task.FromResult(footerVM));

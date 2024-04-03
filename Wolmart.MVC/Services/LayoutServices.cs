@@ -60,7 +60,7 @@ namespace Wolmart.MVC.Services
 
         public async Task<Dictionary<string, string>> GetSettingAsync()
         {
-            return await _context.Setttings.ToDictionaryAsync(x => x.Key, x => x.Value);
+            return await _context.Settings.ToDictionaryAsync(x => x.Key, x => x.Value);
         }
     }
 }

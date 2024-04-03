@@ -12,8 +12,8 @@ using Wolmart.MVC.DAL;
 namespace Wolmart.MVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240330173117_UpdatedFeedbackTable")]
-    partial class UpdatedFeedbackTable
+    [Migration("20240402165224_CreatedFreshRelationalDatabase")]
+    partial class CreatedFreshRelationalDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -310,6 +310,28 @@ namespace Wolmart.MVC.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Wolmart.MVC.Models.Client", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Clients");
+                });
+
             modelBuilder.Entity("Wolmart.MVC.Models.Color", b =>
                 {
                     b.Property<int>("ID")
@@ -370,6 +392,7 @@ namespace Wolmart.MVC.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -405,14 +428,11 @@ namespace Wolmart.MVC.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("FeedbackID")
+                    b.Property<int>("FeedbackID")
                         .HasColumnType("int");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -420,8 +440,6 @@ namespace Wolmart.MVC.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("FeedbackID");
-
-                    b.HasIndex("ProductID");
 
                     b.ToTable("FeedbackImages");
                 });
@@ -777,6 +795,26 @@ namespace Wolmart.MVC.Migrations
                     b.ToTable("ProductSpecifications");
                 });
 
+            modelBuilder.Entity("Wolmart.MVC.Models.Setting", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Key")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasMaxLength(455)
+                        .HasColumnType("nvarchar(455)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Settings");
+                });
+
             modelBuilder.Entity("Wolmart.MVC.Models.Size", b =>
                 {
                     b.Property<int>("ID")
@@ -799,6 +837,53 @@ namespace Wolmart.MVC.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Sizes");
+                });
+
+            modelBuilder.Entity("Wolmart.MVC.Models.Slider", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("BackgroundImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsFirstImage")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ShopLink")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("TopTitle")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Sliders");
                 });
 
             modelBuilder.Entity("Wolmart.MVC.Models.Subcategory", b =>
@@ -919,17 +1004,13 @@ namespace Wolmart.MVC.Migrations
 
             modelBuilder.Entity("Wolmart.MVC.Models.FeedbackImage", b =>
                 {
-                    b.HasOne("Wolmart.MVC.Models.Feedback", null)
+                    b.HasOne("Wolmart.MVC.Models.Feedback", "Feedback")
                         .WithMany("FeedbackImages")
-                        .HasForeignKey("FeedbackID");
-
-                    b.HasOne("Wolmart.MVC.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductID")
+                        .HasForeignKey("FeedbackID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("Feedback");
                 });
 
             modelBuilder.Entity("Wolmart.MVC.Models.Order", b =>

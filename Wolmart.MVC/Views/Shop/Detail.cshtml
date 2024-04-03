@@ -12,7 +12,7 @@
                                     @foreach (ProductImage item in Model.Product.ProductImages)
                                     {
                                         <a href="~/assets/images/products/@item.Image" class="swiper-slide">
-                                            <img src="~/assets/images/products/@item.Image" alt="Product Image">
+                                            <img src="~/assets/images/products/@item.Image" alt="@item.Product.Name">
                                         </a>
                                     }
                                 </div>
@@ -22,7 +22,7 @@
                                     @foreach (ProductImage item in Model.Product.ProductImages)
                                     {
                                         <div class="swiper-slide">
-                                            <img src="~/assets/images/products/@item.Image" alt="Product Image">
+                                            <img src="~/assets/images/products/@item.Image" alt="@item.Product.Name">
                                         </div>
                                     }
                                 </div>
@@ -215,11 +215,10 @@
                                                 <p>Average Rating</p>
                                                 <div class="ratings-wrapper">
                                                     <div class="ratings-main">
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
+                                                        @for (int i = 0; i < 5; i++)
+                                                        {
+                                                            <i class="fa-solid fa-star @(i < averageRating ? "" : "far")"></i>
+                                                        }
                                                     </div>
                                                     <a href="#" class="rating">(@feedbackCount Reviews)</a>
                                                 </div>
@@ -284,6 +283,7 @@
                                             <p class="mb-3">Your email address will not be published. Required fields are marked *</p>
                                             <form asp-controller="shop" asp-action="feedback" asp-route-ProductID="@Model.Product.ID" method="POST" class="review-form" enctype="multipart/form-data">
                                                 <div class="rating-form">
+                                                    <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
                                                     <label for="rating">Your Rating Of This Product :</label>
                                                     <div class="ratings-wrapper">
                                                         <div class="ratings-main">
@@ -293,17 +293,24 @@
                                                             <i class="ratingStar far fa-star" data-value="4"></i>
                                                             <i class="ratingStar far fa-star" data-value="5"></i>
                                                         </div>
-                                                        <input type="hidden" name="rating" id="ratingValue" value="1" />
+                                                        <input type="hidden" asp-for="@Model.Feedback.Rating" id="ratingValue" value="1" />
                                                     </div>
                                                 </div>
-                                                <textarea cols="30" rows="6" name="text" placeholder="Write Your Review Here..." id="review"></textarea>
+                                                <textarea cols="30" rows="6" asp-for="@Model.Feedback.Text" placeholder="Write Your Review Here..." id="review"></textarea>
                                                 <div class="input-main">
                                                     <div class="col-md-6">
-                                                        <input type="text" name="name" placeholder="Your Name" id="author">
+                                                        <input type="text" asp-for="@Model.Feedback.Name" placeholder="Your Name" id="author">
+                                                        <span class="text-danger" asp-validation-for="@Model.Feedback.Name"></span>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" name="email" placeholder="Your Email" id="email">
+                                                        <input type="text" asp-for="@Model.Feedback.Email" placeholder="Your Email" id="email">
+                                                        <span class="text-danger" asp-validation-for="@Model.Feedback.Email"></span>
                                                     </div>
+                                                </div>
+                                                <div class="form-group mb-4">
+                                                    <label class="mb-2">Image</label>
+                                                    <input class="form-control" style="font-size: 16px;" asp-for="@Model.Feedback.Files" placeholder="Image...">
+                                                    <span class="text-danger" asp-validation-for="@Model.Feedback.Files"></span>
                                                 </div>
                                                 <button type="submit" class="btn__main">
                                                     Submit Review
@@ -349,10 +356,10 @@
                                                             <div class="comment-action">
                                                                 <div class="review-image">
                                                                     <div id="review-gallery">
-                                                                        @foreach (FeedbackImage feedbackImage in Model.FeedbackImages)
+                                                                        @foreach (FeedbackImage feedbackImage in Model.FeedbackImages.Where(x => x.FeedbackID == item.ID))
                                                                         {
-                                                                            <a href="~/assets/images/products/@feedbackImage.Image">
-                                                                                <img src="~/assets/images/products/@feedbackImage.Image" alt="">
+                                                                            <a href="~/assets/images/feedbacks/@feedbackImage.Image">
+                                                                                <img src="~/assets/images/feedbacks/@feedbackImage.Image" alt="@item.Text">
                                                                             </a>
                                                                         }
                                                                     </div>

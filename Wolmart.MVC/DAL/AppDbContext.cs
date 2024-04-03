@@ -30,8 +30,8 @@ namespace Wolmart.MVC.DAL
         public DbSet<Award> Awards { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Subscriber> Subscribers { get; set; }
-        public DbSet<Setting> Setttings { get; set; }
+        public DbSet<Setting> Settings { get; set; }
         public DbSet<Client> Clients { get; set; }
-
+        public DbSet<Slider> Sliders { get; set; }
     }
 }

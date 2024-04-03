@@ -216,9 +216,9 @@
   display: flex;
   gap: 1rem;
 }
-.product__detail .product__main .product__tabs .customer-review .review__user ul .comment-body #review-gallery {
+/*.product__detail .product__main .product__tabs .customer-review .review__user ul .comment-body #review-gallery {
   display: flex;
-}
+}*/
 .product__detail .product__main .product__tabs .customer-review .review__user ul .comment-body #review-gallery a {
   width: 8%;
 }

@@ -18,7 +18,7 @@ namespace Wolmart.MVC.Controllers
         {
             AboutVM aboutVM = new AboutVM
             {
-                Settings = await _context.Setttings.ToDictionaryAsync(x => x.Key,x => x.Value),
+                Settings = await _context.Settings.ToDictionaryAsync(x => x.Key,x => x.Value),
                 Awards = await _context.Awards.ToListAsync()
             };
 
