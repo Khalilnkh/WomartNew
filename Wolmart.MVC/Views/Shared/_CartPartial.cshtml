@@ -26,10 +26,10 @@
                         </div>
                     </div>
                     <div class="card-thumbnail">
-                        <a class="close-btn" asp-controller="cart" asp-action="removeCart" asp-route-id="@cart.ProductID">
+                        <a class="close-btn" asp-controller="cart" asp-action="removeCart" asp-route-colorID="@cart.ColorID" asp-route-sizeID="@cart.SizeID" asp-route-id="@cart.ProductID">
                             <i class="fa-solid fa-xmark"></i>
                         </a>
-                        <img src="/assets/images/products/@cart.Image" alt="Cart Product">
+                        <img src="~/assets/images/products/@cart.Image" alt="Cart Product">
                     </div>
                 </div>
             </div>
@@ -40,7 +40,24 @@
     {
         <div class="cart-price">
             <label>Subtotal:</label>
-            <span class="price">$@Model.Sum(x => x.Price * x.Count).ToString("F2")</span>
+            <span class="price">
+                @{
+                    double totalPrice = 0;
+
+                    foreach (var item in Model)
+                    {
+                        if (item.DiscountedPrice == 0)
+                        {
+                            totalPrice += item.Price * item.Count;
+                        }
+                        else if (item.Price != 0 && item.DiscountedPrice != 0)
+                        {
+                            totalPrice += item.DiscountedPrice * item.Count;
+                        }
+                    }
+                }
+                $@totalPrice.ToString("F2")
+            </span>
         </div>
 
         <div class="cart-wrapper">

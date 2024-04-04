@@ -56,6 +56,8 @@ public class HomeController : Controller
             Clients = await _context.Clients.ToListAsync(),
             Products = await _context.Products.Include(x=>x.ProductColors).Include(x=>x.Feedbacks).ToListAsync(),
             Sliders = await _context.Sliders.ToListAsync(),
+            Subcategories = await _context.Subcategories.ToListAsync(),
+            Settings = await _context.Settings.ToDictionaryAsync(x => x.Key, x => x.Value),
             ViewVMs = viewVMs
         };
 

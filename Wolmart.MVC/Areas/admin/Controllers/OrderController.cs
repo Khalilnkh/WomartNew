@@ -50,6 +50,7 @@ namespace Wolmart.MVC.Areas.admin.Controllers
 
             order.OrderStatus = orderStatus;
             order.Comment = comment?.Trim();
+            order.UpdatedAt = DateTime.Now;
 
             await _context.SaveChangesAsync();
 

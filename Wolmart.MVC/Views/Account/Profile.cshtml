@@ -139,13 +139,8 @@
                                 <h4>Order History</h4>
                             </div>
 
-                            @if (Model.Order == null)
+                            @if (Model != null && Model.Order != null)
                             {
-                                <h3>The order appears empty. If you wish, order the product you want immediately and have it at your door within 24 hours!</h3>
-                            }
-                            else
-                            {
-
                                 <form class="form__wrapper">
                                     <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
                                     <table style="font-size: 14px;" class="table table-hover table-s-triped">
@@ -188,10 +183,11 @@
                                                 <div class="select-main d-flex gap-3 col-lg-12">
                                                     <form method="POST" class="form__wrapper mt-5 w-100">
                                                         <div style="font-size: 14px;" class="card">
-                                                            <div class="card-body">
+                                                            <div class="card-body" id="order-card-body">
                                                                 <h5 class="card-title">@Model.Order.Name @Model.Order.Surname</h5>
                                                                 <p class="card-text">@Model.Order.Country.Name</p>
                                                                 <p class="card-text">@Model.Order.OrderStatus</p>
+                                                                <p class="card-text">@Model.Order?.Comment</p>
                                                                 <p class="card-text">$@Model.Order.TotalPrice.ToString("F2")</p>
                                                                 <p class="card-text">@Model.Order.AddressFirst</p>
                                                                 <p class="card-text">@Model.Order.AddressSecond</p>
@@ -238,6 +234,10 @@
                                         </div>
                                     </div>
                                 </div>
+                            }
+                            else
+                            {
+                             <h3>The order appears empty. If you wish, order the product you want immediately and have it at your door within 24 hours!</h3>
                             }
                         </div>
                     </div>

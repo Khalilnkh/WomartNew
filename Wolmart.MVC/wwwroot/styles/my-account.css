@@ -1,3 +1,12 @@
+.account__detail-wrapper #order-card-body .card-title {
+    padding-left: 15px !important;
+}
+
+.account__detail-wrapper #order-card-body .card-text {
+    padding-left: 15px !important;
+    padding: 0;
+}
+
 .account__detail-wrapper {
   display: flex;
   gap: 2rem;

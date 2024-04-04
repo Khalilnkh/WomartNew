@@ -16,9 +16,12 @@
                     <label asp-for="File">Image</label>
                     <input disabled class="form-control mb-3" asp-for="File" placeholder="Image...">
                     <span class="text-danger" asp-validation-for="File"></span>
-                    <div style="width: 12.33%">
-                        <img src="~/assets/images/categories/@Model.Image" class="img-fluid" alt="Alternate Text" />
-                    </div>
+                    @if (Model.Image != null)
+                    {
+                        <div style="width: 12.33%">
+                            <img src="~/assets/images/categories/@Model.Image" class="img-fluid" alt="Alternate Text" />
+                        </div>
+                    }
                 </div>
                 <a class="btn btn-primary" asp-area="admin" asp-controller="category" asp-action="index">
                     Back to menu

@@ -15,7 +15,6 @@ namespace Wolmart.MVC.Controllers
         {
             _context = context;
         }
-
         public async Task<IActionResult> Index()
         {
             string cart = HttpContext.Request.Cookies["cart"];
@@ -33,7 +32,6 @@ namespace Wolmart.MVC.Controllers
 
             return View(await _getCartItemAsync(cartVMs));
         }
-
         public async Task<IActionResult> GetCart()
         {
             string cart = Request.Cookies["cart"];
@@ -51,7 +49,6 @@ namespace Wolmart.MVC.Controllers
 
             return PartialView("_CartPartial", await _getCartItemAsync(cartVMs));
         }
-
         public async Task<IActionResult> GetDetailCart()
         {
             string cart = Request.Cookies["cart"];
@@ -69,7 +66,6 @@ namespace Wolmart.MVC.Controllers
 
             return PartialView("_DetailCartPartial", await _getCartItemAsync(cartVMs));
         }
-
         public async Task<IActionResult> GetCartIndex()
         {
             string cart = Request.Cookies["cart"];
@@ -87,7 +83,6 @@ namespace Wolmart.MVC.Controllers
 
             return PartialView("_CartIndexPartial", await _getCartItemAsync(cartVMs));
         }
-
         public async Task<IActionResult> addToCart(int? ID, int? value, int? colorID, int? sizeID, int? price, int? discountedPrice)
         {
             if (ID == null) return BadRequest();
@@ -151,8 +146,7 @@ namespace Wolmart.MVC.Controllers
 
             return PartialView("_CartPartial", await _getCartItemAsync(cartVMs));
         }
-
-        public async Task<IActionResult> RemoveCart(int? ID)
+        public async Task<IActionResult> RemoveCart(int? ID,int? colorID, int? sizeID)
         {
             if (ID == null) return BadRequest();
 
@@ -164,7 +158,7 @@ namespace Wolmart.MVC.Controllers
 
             List<CartVM> cartVMs = JsonConvert.DeserializeObject<List<CartVM>>(cart);
 
-            CartVM cartVM = cartVMs.Find(x => x.ProductID == ID);
+            CartVM cartVM = cartVMs.Find(x => x.ProductID == ID && x.ColorID == colorID && x.SizeID == sizeID);
 
             if (cartVM == null) return NotFound();
 
@@ -176,7 +170,6 @@ namespace Wolmart.MVC.Controllers
 
             return PartialView("_CartPartial", await _getCartItemAsync(cartVMs));
         }
-
         public async Task<IActionResult> UpdateCount(int? ID, int? colorID, int? sizeID, int count)
         {
             if (ID == null) return BadRequest();
@@ -208,7 +201,7 @@ namespace Wolmart.MVC.Controllers
 
             return PartialView("_CartIndexPartial", await _getCartItemAsync(cartVMs));
         }
-        public async Task<IActionResult> RemoveFromCart(int? ID)
+        public async Task<IActionResult> RemoveFromCart(int? ID, int? colorID, int? sizeID)
         {
             if (ID == null) return BadRequest();
 
@@ -220,7 +213,7 @@ namespace Wolmart.MVC.Controllers
 
             List<CartVM> cartVMs = JsonConvert.DeserializeObject<List<CartVM>>(cart);
 
-            CartVM cartVM = cartVMs.Find(x => x.ProductID == ID);
+            CartVM cartVM = cartVMs.Find(x => x.ProductID == ID && x.ColorID == colorID && x.SizeID == sizeID);
 
             if (cartVM == null) return NotFound();
 
@@ -232,7 +225,6 @@ namespace Wolmart.MVC.Controllers
 
             return PartialView("_CartIndexPartial", await _getCartItemAsync(cartVMs));
         }
-
         public async Task<IActionResult> RemoveAllCart()
         {
             string cart = HttpContext.Request.Cookies["cart"];
@@ -249,7 +241,6 @@ namespace Wolmart.MVC.Controllers
 
             return PartialView("_CartIndexPartial", await _getCartItemAsync(cartVMs));
         }
-
         private async Task<List<CartVM>> _getCartItemAsync(List<CartVM> cartVMs) 
         {
             foreach (CartVM item in cartVMs)

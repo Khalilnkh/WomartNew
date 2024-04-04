@@ -107,16 +107,24 @@
                     </div>
                 </div>
                 <div class="footer-category">
-                    @foreach (Category item in Model.Categories)
+                    @foreach (Category item in Model.Categories.Take(3))
                     {
+                        var checkSubcategory = Model.Subcategories.Where(x => x.ParentCategoryID == item.ID);
                         <div class="category-link">
-                            <h6>@item.Name:</h6>
 
-                            @foreach (Subcategory subcategory in Model.Subcategories.Where(x => x.ParentCategoryID == item.ID))
+                            @if(checkSubcategory.Count() != 0)
+                            {
+                                <h6>@item.Name:</h6>
+                            }
+
+                            @foreach (Subcategory subcategory in checkSubcategory.Take(6))
                             {
                                 <a asp-controller="shop" asp-action="index" asp-route-category="@item.ID">@subcategory.Name</a>
                             }
-                            <a asp-controller="shop" asp-action="index">View All</a>
+                            @if (checkSubcategory.Count() != 0)
+                            {
+                                <a asp-controller="shop" asp-action="index">View All</a>
+                            }
                         </div>
                     }
                 </div>

@@ -69,19 +69,43 @@
                                             x
                                             <span class="quantity">@item.Count</span>
                                         </a>
-                                        <span class="price">$@item.Price.ToString("F2")</span>
+                                        @if(item.DiscountedPrice != 0)
+                                        {
+                                            <span class="price">$@item.DiscountedPrice.ToString("F2")</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="price">$@item.Price.ToString("F2")</span>
+                                        }
                                     </li>
                                 }
                             </ul>
                             <ul class="summary-table">
                                 <li>
-                                    <span>Subtotal:</span> <span class="font-weight-bold">$@Model.CartVMs.Sum(x=>x.Price * x.Count).ToString("F2")</span>
+                                    <span>Subtotal:</span>
+                                    @{
+                                        double totalPrice = 0;
+
+                                        foreach (var item in Model.CartVMs)
+                                        {
+                                            if (item.DiscountedPrice == 0)
+                                            {
+                                                totalPrice += item.Price * item.Count;
+                                            }
+                                            else if (item.Price != 0 && item.DiscountedPrice != 0)
+                                            {
+                                                totalPrice += item.DiscountedPrice * item.Count;
+                                            }
+                                        }
+                                    }
+                                    <span class="font-weight-bold">$@totalPrice.ToString("F2")</span>
                                 </li>
                                 <li>
                                     <span>Delivery:</span> <span>Free</span>
                                 </li>
                                 <li>
-                                    <span>Total:</span> <span>$@Model.CartVMs.Sum(x=>x.Price * x.Count).ToString("F2")</span>
+                                    <span>Total:</span>
+                                    <span class="font-weight-bold">$@totalPrice.ToString("F2")</span>
                                 </li>
                             </ul>
                             <button type="submit" class="btn__main">

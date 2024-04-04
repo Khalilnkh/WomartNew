@@ -3,109 +3,36 @@
 @{
     if (Model.Count > 0)
     {
-        @if(ViewBag.SearchTerm != null)
+        @if (ViewBag.SearchTerm != null)
         {
-              <div class="search-info mt-5">
-                <p style="font-size: 16px;">@Model.Count results for <span style="font-weight: bold;">"@ViewBag.SearchTerm"</span></p>
-              </div>
+            <div class="search-info mt-5">
+                <p style="font-size: 16px;">@(Model.Count * Model.TotalPages) results for <span style="font-weight: bold;">"@ViewBag.SearchTerm"</span></p>
+            </div>
         }
         <div class="product-wrapper">
             @foreach (Product item in Model)
             {
                 <div class="item-wrapper">
-                    <figure class="product-gallery">
-                        <a asp-controller="shop" asp-action="detail" asp-route-id="@item.ID">
-                            <img src="~/assets/images/products/@item.MainImage" alt="Product">
-                            <img src="~/assets/images/products/@item.HoverImage" alt="Product">
-                        </a>
-                        <div class="product-menu">
-                            <a asp-controller="cart" asp-action="addtocart" asp-route-id="@item.ID" class="btn-label btn-cart addToCart" title="Add to cart">
-                                <i class="fa-solid fa-bag-shopping"></i>
-                            </a>
-                            <a asp-controller="wishlist" asp-action="addtowishlist" asp-route-id="@item.ID" class="btn-label btn-wishlist addToCart" title="Add to wishlist">
-                                <i class="fa-regular fa-heart"></i>
-                            </a>
-                        </div>
-                        @{
-                            var timeCheck = DateTime.Today.AddMonths(-1);
-                        }
-
-                        <div class="product-label-main">
-                            @if (item.CreatedAt >= timeCheck)
-                            {
-                                <label class="product-label label-new">New</label>
-                            }
-                            @if (item.ProductColors.Any(x => x.DiscountedPrice.HasValue))
-                            {
-                                double? minNormalPrice = item.ProductColors.Min(x => x.Price);
-                                double? minDiscountedPrice = item.ProductColors.Min(x => x.DiscountedPrice);
-
-                                if (minNormalPrice.HasValue && minDiscountedPrice.HasValue)
-                                {
-                                    double normalPrice = minNormalPrice.Value;
-                                    double discountedPrice = minDiscountedPrice.Value;
-                                    double discountPercentage = ((normalPrice - discountedPrice) / normalPrice) * 100;
-                                    <label class="product-label label-discount">-@(Math.Round(discountPercentage))%</label>
-                                }
-                            }
-                        </div>
-
-                    </figure>
-                    <div class="product-details">
-                        <h4 class="product-title">
-                            <a asp-controller="shop" asp-action="detail" asp-route-id="@item.ID">
-                                @item.Name
-                            </a>
-                        </h4>
-                        <div class="ratings-wrapper">
-                            <div class="ratings-main">
-                                @{
-                                    double totalRating = 0;
-                                    int feedbackCount = 0;
-
-                                    foreach (Feedback feedback in item.Feedbacks)
-                                    {
-                                        totalRating += feedback.Rating;
-                                        feedbackCount++;
-                                    }
-
-                                    double averageRating = feedbackCount > 0 ? totalRating / feedbackCount : 0;
-                                }
-
-                                @for (int i = 0; i < 5; i++)
-                                {
-                                    if (i < averageRating)
-                                    {
-                                        <i class="fa-solid fa-star"></i>
-                                    }
-                                    else
-                                    {
-                                        <i class="fa-solid far fa-star"></i>
-                                    }
-                                }
-                            </div>
-                            <a asp-controller="shop" asp-action="detail" asp-route-id="@item.ID" class="rating">(@item.Feedbacks.Count Reviews)</a>
-                        </div>
-                        <div class="product-price">
-                            @if (item.ProductColors.Any(x => x.DiscountedPrice == null))
-                            {
-                                <ins class="new-price">$@(item.ProductColors.Min(x => x.Price.ToString("0.00"))) -</ins>
-                                <span class="del-price">$@item.ProductColors.Max(x => x.Price).ToString("0.00")
-                                </span>
-                            }
-                            else
-                            {
-                                <ins class="new-price">$@(item.ProductColors.Select(x => x.DiscountedPrice?.ToString("0.00")).FirstOrDefault())</ins>
-                                <del class="old-price">$@(item.ProductColors.Select(x => x.Price.ToString("0.00")).FirstOrDefault())</del>
-                            }
-                        </div>
-                    </div>
+                    @await Component.InvokeAsync("Product", item)
                 </div>
             }
         </div>
         <div class="pagination-main">
             <p class="pagination-info">
-                Showing<span>@Model.Start-@Model.TotalItems of @Model.Count</span>Products
+                Showing<span>
+                    @if (Model.PageIndex == 1)
+                    {
+                        @(Model.Start)
+                    }
+                    else
+                    {
+                        @(Model.TotalItems * Model.PageIndex - 12)
+                    }
+                    -
+                    @(Model.TotalItems * Model.PageIndex)
+
+                    of @(Model.Count * Model.TotalPages - 12)
+                </span>Products
             </p>
             <ul class="pagination">
                 @if (Model.HasPrev)

@@ -4,65 +4,64 @@
     ViewData["Title"] = "Home Page";
 }
 
-
 <section id="swiper-container" class="swiper-container">
-        <div class="swiper-wrapper">
-            @foreach (Slider item in Model.Sliders)
-            {
-                <div class="swiper-slide" style="background-image: url(/assets/images/slides/@item.BackgroundImage);">
-                    <div class="container">
-                        <div class="row">
+    <div class="swiper-wrapper">
+        @foreach (Slider item in Model.Sliders)
+        {
+            <div class="swiper-slide" style="background-image: url(/assets/images/slides/@item.BackgroundImage);">
+                <div class="container">
+                    <div class="row">
 
-                            <div class="swiper-slide item-box">
-                                @if (item.IsFirstImage)
-                                {
-                                    <div id="image-wrapper" class="image-wrapper">
-                                        <img src="~/assets/images/slides/@item.Image" alt="Slider Image">
-                                    </div>
-                                    <div class="content-wrapper">
-                                        <h5 class="text-uppercase">@item.TopTitle</h5>
-                                        <h3>
-                                            @Html.Raw(@item.Title)
-                                        </h3>
-                                        <p class="description">
-                                            @item.Description
-                                        </p>
-                                        <a id="shop-btn" href="@(item.ShopLink)" target="_blank" class="shop-btn text-uppercase">
-                                            Shop Now
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="content-wrapper second">
-                                        <h5 class="text-uppercase">@item.TopTitle</h5>
-                                        <h3>
-                                            @Html.Raw(@item.Title)
-                                        </h3>
-                                        <p class="description">
-                                            @item.Description
-                                        </p>
-                                        <a href="@(item.ShopLink)" target="_blank" class="shop-btn text-uppercase">
-                                            Shop Now
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                    <div id="image-wrapper" class="image-wrapper">
-                                        <img src="~/assets/images/slides/@item.Image" alt="Slider Image">
-                                    </div>
-                                }
-                            </div>
+                        <div class="swiper-slide item-box">
+                            @if (item.IsFirstImage)
+                            {
+                                <div id="image-wrapper" class="image-wrapper">
+                                    <img src="~/assets/images/slides/@item.Image" alt="Slider Image">
+                                </div>
+                                <div class="content-wrapper">
+                                    <h5 class="text-uppercase">@item.TopTitle</h5>
+                                    <h3>
+                                        @Html.Raw(@item.Title)
+                                    </h3>
+                                    <p class="description">
+                                        @item.Description
+                                    </p>
+                                    <a id="shop-btn" href="@(item.ShopLink)" target="_blank" class="shop-btn text-uppercase">
+                                        Shop Now
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="content-wrapper second">
+                                    <h5 class="text-uppercase">@item.TopTitle</h5>
+                                    <h3>
+                                        @Html.Raw(@item.Title)
+                                    </h3>
+                                    <p class="description">
+                                        @item.Description
+                                    </p>
+                                    <a href="@(item.ShopLink)" target="_blank" class="shop-btn text-uppercase">
+                                        Shop Now
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div id="image-wrapper" class="image-wrapper">
+                                    <img src="~/assets/images/slides/@item.Image" alt="Slider Image">
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
-            }
-        </div>
-        <!-- !swiper slides -->
-        <!-- pagination dots -->
-        <div class="swiper-pagination"></div>
-        <!-- !pagination dots -->
-    </section> 
+            </div>
+        }
+    </div>
+    <!-- !swiper slides -->
+    <!-- pagination dots -->
+    <div class="swiper-pagination"></div>
+    <!-- !pagination dots -->
+</section>
 
 <section class="service-main">
     <div class="container">
@@ -141,7 +140,7 @@
                     </div>
                 </div>
                 <div class="btn-product">
-                    <a href="#">
+                    <a asp-controller="shop" asp-action="index">
                         More Products
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </a>
@@ -175,7 +174,7 @@
                             </strong>
                         </div>
                         <hr />
-                        <a href="#">
+                        <a asp-controller="shop" asp-action="index">
                             Shop Now
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -192,7 +191,7 @@
                             </strong>
                         </div>
                         <hr />
-                        <a href="#">
+                        <a asp-controller="shop" asp-action="index">
                             Shop Now
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -224,8 +223,8 @@
                                aria-controls="ex1-tabs-3" aria-selected="false">Most Popular</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="ex1-tab-3" data-bs-toggle="tab" href="#ex1-tabs-3" role="tab"
-                               aria-controls="ex1-tabs-3" aria-selected="false">View All</a>
+                            <a class="nav-link" id="ex1-tab-1" data-bs-toggle="tab" href="#ex1-tabs-1" role="tab"
+                               aria-controls="ex1-tabs-1" aria-selected="false">View All</a>
                         </li>
                     </ul>
                 </div>
@@ -283,7 +282,7 @@
                                 @{
                                     var popularItem = Model.Products.OrderByDescending(x => x.Feedbacks.Any() ? x.Feedbacks.Average(f => f.Rating) : -1).FirstOrDefault();
                                 }
-                                @if (popularItem  != null)
+                                @if (popularItem != null)
                                 {
                                     <div class="product">
                                         @await Component.InvokeAsync("Product", popularItem)
@@ -314,54 +313,17 @@
                     <div class="box-wrapper">
                         <h2>Clothes & Fashion Apparel</h2>
                         <ul>
-                            <li>
-                                <a href="#">
-                                    Accessories
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Bodyclothes
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Dress & Skirts
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Jeans
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Jumpers
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Knitwears
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Lounge & Underwear
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Shoes
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    T-shirts
-                                </a>
-                            </li>
+                            @foreach (Subcategory item in Model.Subcategories.Where(x => x.ParentSubcategoryID == 10))
+                            {
+                                <li>
+                                    <a asp-controller="shop" asp-action="index" asp-route-category="@item.ParentCategoryID">
+                                        @item.Name
+                                    </a>
+                                </li>
+                            }
                         </ul>
 
-                        <a class="shop-btn" href="#">
+                        <a class="shop-btn" asp-controller="shop" asp-action="category" asp-route-category="10">
                             Browse All
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -379,194 +341,21 @@
                                 <p>Only until the end of this week.</p>
                             </div>
 
-                            <a href="#" class="shop-btn">
+                            <a asp-controller="shop" asp-action="index" class="shop-btn">
                                 Shop Now
                                 <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
-                        <img src="/assets/images/banner-9.jpg" alt="Banner Image">
+                        <img src="~/assets/images/banner-9.jpg" alt="Banner Image">
                     </div>
                     <div id="deal-wrapper" class="deal-wrapper">
                         <div class="swiper-wrapper product-wrapper">
-                            <div class="swiper-slide item-wrapper">
-                                <figure class="product-gallery">
-                                    <a href="#">
-                                        <img src="assets/images/products/4-1-1.jpg" alt="Product">
-                                        <img src="assets/images/products/4-1-2.jpg" alt="Product">
-                                    </a>
-                                    <div class="product-menu">
-                                        <a href="#" class="btn-label btn-cart" title="Add to cart">
-                                            <i class="fa-solid fa-bag-shopping"></i>
-                                        </a>
-                                        <a href="#" class="btn-label btn-wishlist" title="Add to wishlist">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product-label-main">
-                                    </div>
-                                </figure>
-                                <div class="product-details">
-                                    <h4 class="product-title"><a href="#">White Schoolbag</a></h4>
-                                    <div class="ratings-wrapper">
-                                        <div class="ratings-main">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <a href="#" class="rating">(3 Reviews)</a>
-                                    </div>
-                                    <div class="product-price">
-                                        <ins class="new-price">$56.48</ins>
-                                        <!-- <span class="del-price">$49.89</span> -->
-                                    </div>
+                            @foreach (Product item in Model.Products.Where(x => x.CategoryID == 3).Take(9))
+                            {
+                                <div class="swiper-slide item-wrapper">
+                                    @await Component.InvokeAsync("Product", item)
                                 </div>
-                            </div>
-                            <div class="swiper-slide item-wrapper">
-                                <figure class="product-gallery">
-                                    <a href="#">
-                                        <img src="assets/images/products/1-2.jpg" alt="Product">
-
-                                    </a>
-                                    <div class="product-menu">
-                                        <a href="#" class="btn-label btn-cart" title="Add to cart">
-                                            <i class="fa-solid fa-bag-shopping"></i>
-                                        </a>
-                                        <a href="#" class="btn-label btn-wishlist" title="Add to wishlist">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product-label-main">
-                                    </div>
-                                </figure>
-                                <div class="product-details">
-                                    <h4 class="product-title"><a href="#">Women's Comforter</a></h4>
-                                    <div class="ratings-wrapper">
-                                        <div class="ratings-main">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <a href="#" class="rating">(3 Reviews)</a>
-                                    </div>
-                                    <div class="product-price">
-                                        <ins class="new-price">$35.99</ins>
-                                        <del class="old-price">$37.99</del>
-                                        <!-- <span class="del-price">$49.89</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide item-wrapper">
-                                <figure class="product-gallery">
-                                    <a href="#">
-                                        <img src="assets/images/products/4-3.jpg" alt="Product">
-                                    </a>
-                                    <div class="product-menu">
-                                        <a href="#" class="btn-label btn-cart" title="Add to cart">
-                                            <i class="fa-solid fa-bag-shopping"></i>
-                                        </a>
-                                        <a href="#" class="btn-label btn-wishlist" title="Add to wishlist">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product-label-main">
-                                        <label class="product-label label-new">New</label>
-                                    </div>
-                                </figure>
-                                <div class="product-details">
-                                    <h4 class="product-title"><a href="#">Blue Traingin Shoes</a></h4>
-                                    <div class="ratings-wrapper">
-                                        <div class="ratings-main">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <a href="#" class="rating">(3 Reviews)</a>
-                                    </div>
-                                    <div class="product-price">
-                                        <ins class="new-price">$58.99</ins>
-                                        <!-- <span class="del-price">$49.89</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide item-wrapper">
-                                <figure class="product-gallery">
-                                    <a href="#">
-                                        <img src="assets/images/products/4-4.jpg">
-
-                                    </a>
-                                    <div class="product-menu">
-                                        <a href="#" class="btn-label btn-cart" title="Add to cart">
-                                            <i class="fa-solid fa-bag-shopping"></i>
-                                        </a>
-                                        <a href="#" class="btn-label btn-wishlist" title="Add to wishlist">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product-label-main">
-                                    </div>
-                                </figure>
-                                <div class="product-details">
-                                    <h4 class="product-title"><a href="#">Beyond OTP Shirt</a></h4>
-                                    <div class="ratings-wrapper">
-                                        <div class="ratings-main">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <a href="#" class="rating">(3 Reviews)</a>
-                                    </div>
-                                    <div class="product-price">
-                                        <ins class="new-price">$26.00</ins>
-                                        <!-- <span class="del-price">$49.89</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide item-wrapper">
-                                <figure class="product-gallery">
-                                    <a href="#">
-                                        <img src="assets/images/products/1-5.jpg">
-
-                                    </a>
-                                    <div class="product-menu">
-                                        <a href="#" class="btn-label btn-cart" title="Add to cart">
-                                            <i class="fa-solid fa-bag-shopping"></i>
-                                        </a>
-                                        <a href="#" class="btn-label btn-wishlist" title="Add to wishlist">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product-label-main">
-                                        <label class="product-label label-new">New</label>
-                                        <label class="product-label label-discount">-35%</label>
-                                    </div>
-                                </figure>
-                                <div class="product-details">
-                                    <h4 class="product-title"><a href="#">White Valise</a></h4>
-                                    <div class="ratings-wrapper">
-                                        <div class="ratings-main">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <a href="#" class="rating">(3 Reviews)</a>
-                                    </div>
-                                    <div class="product-price">
-                                        <ins class="new-price">$40.00</ins>
-                                        <del class="old-price">$49.89</del>
-                                        <!-- <span class="del-price">$49.89</span> -->
-                                    </div>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -591,7 +380,7 @@
                             </strong>
                         </div>
                     </div>
-                    <img src="/assets/images/banner-10.jpg" alt="">
+                    <img src="~/assets/images/banner-10.jpg" alt="Banner Image">
                 </div>
                 <div class="banner-box second">
                     <div class="banner-content right">
@@ -605,7 +394,7 @@
                             </strong>
                         </div>
                     </div>
-                    <img src="/assets/images/banner-11.jpg" alt="">
+                    <img src="~/assets/images/banner-11.jpg" alt="Banner Image">
                 </div>
             </div>
         </div>
@@ -618,56 +407,18 @@
             <div id="banner-main">
                 <div class="category-wrapper">
                     <div class="box-wrapper">
-                        <h2>Computers & Technologies</h2>
+                        <h2>Laptops & Computers</h2>
                         <ul>
-                            <li>
-                                <a href="#">
-                                    Desktop PC
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Headphones
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Laptops
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Monitors
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Smartphones
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Speakers
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Storage & Memory
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Tablets
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Watches
-                                </a>
-                            </li>
+                            @foreach (Subcategory item in Model.Subcategories.Where(x => x.ParentSubcategoryID == 45))
+                            {
+                                <li>
+                                    <a asp-controller="shop" asp-action="index" asp-route-category="@item.ParentCategoryID">
+                                        @item.Name
+                                    </a>
+                                </li>
+                            }
                         </ul>
-
-                        <a class="shop-btn" href="#">
+                        <a class="shop-btn" asp-controller="shop" asp-action="index" asp-route-category="3">
                             Browse All
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -695,185 +446,12 @@
                     </div>
                     <div id="deal-wrapper" class="deal-wrapper">
                         <div class="swiper-wrapper product-wrapper">
-                            <div class="swiper-slide item-wrapper">
-                                <figure class="product-gallery">
-                                    <a href="#">
-                                        <img src="assets/images/products/5-1-1.jpg" alt="Product">
-                                        <img src="assets/images/products/5-1-2.jpg" alt="Product">
-                                    </a>
-                                    <div class="product-menu">
-                                        <a href="#" class="btn-label btn-cart" title="Add to cart">
-                                            <i class="fa-solid fa-bag-shopping"></i>
-                                        </a>
-                                        <a href="#" class="btn-label btn-wishlist" title="Add to wishlist">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product-label-main">
-                                    </div>
-                                </figure>
-                                <div class="product-details">
-                                    <h4 class="product-title"><a href="#">Bluetooth Music Recorder</a></h4>
-                                    <div class="ratings-wrapper">
-                                        <div class="ratings-main">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <a href="#" class="rating">(8 Reviews)</a>
-                                    </div>
-                                    <div class="product-price">
-                                        <ins class="new-price">$28.00</ins>
-                                        <!-- <span class="del-price">$49.89</span> -->
-                                    </div>
+                            @foreach (Product item in Model.Products.Where(x => x.CategoryID == 3).Take(9))
+                            {
+                                <div class="swiper-slide item-wrapper">
+                                    @await Component.InvokeAsync("Product", item)
                                 </div>
-                            </div>
-                            <div class="swiper-slide item-wrapper">
-                                <figure class="product-gallery">
-                                    <a href="#">
-                                        <img src="assets/images/products/5-4.jpg" alt="Product">
-
-                                    </a>
-                                    <div class="product-menu">
-                                        <a href="#" class="btn-label btn-cart" title="Add to cart">
-                                            <i class="fa-solid fa-bag-shopping"></i>
-                                        </a>
-                                        <a href="#" class="btn-label btn-wishlist" title="Add to wishlist">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product-label-main">
-                                    </div>
-                                </figure>
-                                <div class="product-details">
-                                    <h4 class="product-title"><a href="#">Magnetic Charge Box</a></h4>
-                                    <div class="ratings-wrapper">
-                                        <div class="ratings-main">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <a href="#" class="rating">(3 Reviews)</a>
-                                    </div>
-                                    <div class="product-price">
-                                        <ins class="new-price">$79.00</ins>
-                                        <!-- <span class="del-price">$49.89</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide item-wrapper">
-                                <figure class="product-gallery">
-                                    <a href="#">
-                                        <img src="assets/images/products/4-3.jpg" alt="Product">
-                                    </a>
-                                    <div class="product-menu">
-                                        <a href="#" class="btn-label btn-cart" title="Add to cart">
-                                            <i class="fa-solid fa-bag-shopping"></i>
-                                        </a>
-                                        <a href="#" class="btn-label btn-wishlist" title="Add to wishlist">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product-label-main">
-                                        <label class="product-label label-new">New</label>
-                                    </div>
-                                </figure>
-                                <div class="product-details">
-                                    <h4 class="product-title"><a href="#">Soft Sound Marker</a></h4>
-                                    <div class="ratings-wrapper">
-                                        <div class="ratings-main">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <a href="#" class="rating">(3 Reviews)</a>
-                                    </div>
-                                    <div class="product-price">
-                                        <ins class="new-price">$27.00</ins>
-                                        <del class="old-price">$35.00</del>
-                                        <!-- <span class="del-price">$49.89</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide item-wrapper">
-                                <figure class="product-gallery">
-                                    <a href="#">
-                                        <img src="assets/images/products/5-4.jpg">
-
-                                    </a>
-                                    <div class="product-menu">
-                                        <a href="#" class="btn-label btn-cart" title="Add to cart">
-                                            <i class="fa-solid fa-bag-shopping"></i>
-                                        </a>
-                                        <a href="#" class="btn-label btn-wishlist" title="Add to wishlist">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product-label-main">
-                                    </div>
-                                </figure>
-                                <div class="product-details">
-                                    <h4 class="product-title"><a href="#">Men's Black Watch</a></h4>
-                                    <div class="ratings-wrapper">
-                                        <div class="ratings-main">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <a href="#" class="rating">(9 Reviews)</a>
-                                    </div>
-                                    <div class="product-price">
-                                        <ins class="new-price">$50.00</ins>
-                                        <del class="old-price">$65.00</del>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide item-wrapper">
-                                <figure class="product-gallery">
-                                    <a href="#">
-                                        <img src="assets/images/products/1-5.jpg">
-
-                                    </a>
-                                    <div class="product-menu">
-                                        <a href="#" class="btn-label btn-cart" title="Add to cart">
-                                            <i class="fa-solid fa-bag-shopping"></i>
-                                        </a>
-                                        <a href="#" class="btn-label btn-wishlist" title="Add to wishlist">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product-label-main">
-                                        <label class="product-label label-new">New</label>
-                                        <label class="product-label label-discount">-35%</label>
-                                    </div>
-                                </figure>
-                                <div class="product-details">
-                                    <h4 class="product-title"><a href="#">White Valise</a></h4>
-                                    <div class="ratings-wrapper">
-                                        <div class="ratings-main">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <a href="#" class="rating">(3 Reviews)</a>
-                                    </div>
-                                    <div class="product-price">
-                                        <ins class="new-price">$40.00</ins>
-                                        <del class="old-price">$49.89</del>
-                                        <!-- <span class="del-price">$49.89</span> -->
-                                    </div>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -896,12 +474,12 @@
                             <h3>Cameras and Leans Sale</h3>
                         </div>
 
-                        <a href="#" class="shop-btn">
+                        <a asp-controller="shop" asp-action="index" class="shop-btn">
                             Shop Now
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
-                    <img src="/assets/images/banner-13.jpg" alt="Banner Image">
+                    <img src="~/assets/images/banner-13.jpg" alt="Banner Image">
                 </div>
             </div>
         </div>
@@ -917,7 +495,7 @@
                     <h2>Top Rated Products</h2>
                 </div>
                 <div class="btn-product">
-                    <a href="#">
+                    <a asp-controller="shop" asp-action="index">
                         More Products
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </a>
@@ -925,15 +503,15 @@
             </div>
             <div class="deal-wrapper">
                 <div class="swiper-wrapper product-wrapper">
-                   @foreach (Product item in Model.Products.Where(x => x.Feedbacks.Any()).Take(12))
+                    @foreach (Product item in Model.Products.Where(x => x.Feedbacks.Any()).Take(12))
                     {
-                      var maxRating = item.Feedbacks.Max(feedback => feedback.Rating);
-                      if(maxRating > 0)
-                      {
+                        var maxRating = item.Feedbacks.Max(feedback => feedback.Rating);
+                        if (maxRating > 0)
+                        {
                             <div class="swiper-slide item-wrapper">
                                 @await Component.InvokeAsync("Product", item)
                             </div>
-                      }
+                        }
                     }
                 </div>
             </div>
@@ -985,4 +563,78 @@
     </div>
 </section>
 
+@section scripts {
+    <script>
+        var count = @Model.Settings.FirstOrDefault(x => x.Key == "OfferEnd").Value;
+    var counter = setInterval(timer, 1000);
+    function timer() {
+        count = count - 1;
+        if (count <= 0) {
+            clearInterval(counter);
+            return;
+        }
+        let varDay = Math.floor(count / 86400)
+        let varHour = Math.floor(count / 3600) % 24
+        let varMin = Math.floor(count / 60) % 60
+        let varSec = count % 60
 
+        countD = varDay;
+
+        if (varHour >= 10) {
+            countH = varHour;
+        } else {
+            countH = '0' + varHour;
+        }
+
+        if (varMin >= 10) {
+            countM = varMin;
+        } else {
+            countM = '0' + varMin;
+        }
+
+        if (varSec == 60) {
+            countS = '00';
+        } else if (varSec >= 10) {
+            countS = varSec;
+        } else {
+            countS = '0' + varSec;
+        }
+
+        document.getElementById("timer").innerHTML = countD + ':' + countH + ':' + countM + ':' + countS;
+    }
+
+    //Scroll back to top
+
+    let progressPath = document.getElementById("progress-path");
+    let progressWrap = document.getElementById("progress-wrap");
+    let pathLength = progressPath.getTotalLength();
+    progressPath.style.transition = progressPath.style.webkitTransition = "none";
+    progressPath.style.strokeDasharray = pathLength + " " + pathLength;
+    progressPath.style.strokeDashoffset = pathLength;
+    progressPath.getBoundingClientRect();
+    progressPath.style.transition = progressPath.style.webkitTransition =
+        "stroke-dashoffset 10ms linear";
+
+    const onScollEvent = function (event) {
+        let scroll = window.scrollY;
+        let height = document.body.scrollHeight - window.innerHeight;
+        let progress = pathLength - (scroll * pathLength) / height;
+        progressPath.style.strokeDashoffset = progress;
+
+        let offset = 50;
+        if (window.scrollY > offset) {
+            progressWrap.classList.add("active-progress");
+        } else {
+            progressWrap.classList.remove("active-progress");
+        }
+    };
+
+    onScollEvent();
+    window.onscroll = onScollEvent;
+    progressWrap.onclick = function (event) {
+        window.scroll({ top: 0, behavior: "smooth" });
+        return false;
+    };
+
+</script>
+}

@@ -50,7 +50,7 @@
                         </div>
                         <span class="divider"></span>
                         <div class="main-forward">
-                            <a href="contact.html">Contact Us</a>
+                            <a asp-controller="contact" asp-action="index">Contact Us</a>
                             <a asp-controller="account" asp-action="profile">My Account</a>
                         </div>
                         <div class="modal-box">
@@ -154,7 +154,7 @@
                                 <a href="#" class="category-toggle" role="button" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="true" data-display="static"
                                    title="Browse Categories">
-                                    <i class="w-icon-category"></i>
+                                    <i class="fa-solid fa-bars" style="font-size: 14px"></i>
                                     <span>Browse Categories</span>
                                 </a>
 
@@ -165,11 +165,12 @@
                                             var subcategories = Model.Subcategories.Where(s => s.ParentCategoryID == category.ID).ToList();
 
                                             <li>
-                                                <a href="#">
-                                                    <i class="fa-solid fa-@category.Icon"></i>@category.Name
+                                                <a asp-controller="shop" asp-action="index" asp-route-category="@category.ID">
+                                                    <i class="fa-solid fa-@category.Icon"></i>
+                                                    <span class="d-flex w-100">@category.Name</span>
                                                     @if (subcategories.Any())
                                                     {
-                                                        <div class="chevron">
+                                                        <div>
                                                             <i class="fa-solid fa-chevron-right"></i>
                                                         </div>
                                                     }

@@ -8,6 +8,9 @@ namespace Wolmart.MVC.ViewModels.Home
         public List<Product> Products { get; set; }
         public List<Client> Clients { get; set; }
         public List<Slider> Sliders { get; set; }
+        public List<Subcategory> Subcategories { get; set; }
         public List<ViewVM> ViewVMs { get; set; }
+        public Dictionary<string, string> Settings { get; set; }
+
     }
 }

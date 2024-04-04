@@ -2,8 +2,11 @@
 
 <figure class="product-gallery">
     <a asp-controller="shop" asp-action="detail" asp-route-id="@Model.ID">
-        <img src="~/assets/images/products/@Model.MainImage" alt="Product">
-        <img src="~/assets/images/products/@Model.HoverImage" alt="Product">
+        <img src="~/assets/images/products/@Model.MainImage" alt="@Model.Name">
+        @if(Model.HoverImage != null)
+        {
+            <img src="~/assets/images/products/@Model.HoverImage" alt="@Model.Name">
+        }
     </a>
     <div class="product-menu">
             <a asp-controller="cart" asp-action="addtocart" asp-route-id="@Model.ID" class="btn-label btn-cart addToCart" title="Add to cart">

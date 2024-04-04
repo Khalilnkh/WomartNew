@@ -20,9 +20,12 @@
 
             <tr>
                 <th scope="row">@counter</th>
-                <td style="width: 12%;">
-                    <img class="w-100" height="200px" src="~/assets/images/categories/@item.Image" alt="Category Image" />
-                </td>
+                @if(item.Image != null)
+                {
+                    <td style="width: 12%;">
+                        <img class="w-100" height="200px" src="~/assets/images/categories/@item.Image" alt="Category Image" />
+                    </td>
+                }
                 <td>@item.Name</td>
                 <td>
                     <div class="settings-tb d-flex gap-2 justify-content-end">

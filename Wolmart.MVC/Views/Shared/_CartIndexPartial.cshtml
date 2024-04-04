@@ -39,7 +39,16 @@
                                 @item.Title  (@item.Color - @item.Size)
                             </a>
                         </td>
-                        <td><span class="amount">$@item.Price.ToString("F2")</span></td>
+                        <td>
+                            @if(item.DiscountedPrice != 0)
+                            {
+                                <span class="amount">$@item.DiscountedPrice.ToString("F2")</span>
+                            }
+                            else
+                            {
+                                <span class="amount">$@item.Price.ToString("F2")</span>
+                            }
+                        </td>
                         <td class="medium__item">
                             <div class="input-group">
                                 <input class="quantity form-control" type="text" value="@item.Count">
@@ -56,10 +65,17 @@
                             </div>
                         </td>
                         <td>
-                            <span class="amount">$@((item.Price * item.Count).ToString("F2"))</span>
+                            @if(item.DiscountedPrice != 0)
+                            {
+                                <span class="amount">$@((item.DiscountedPrice * item.Count).ToString("F2"))</span>
+                            }
+                            else
+                            {
+                                <span class="amount">$@((item.Price * item.Count).ToString("F2"))</span>
+                            }
                         </td>
                         <td>
-                            <a asp-controller="cart" asp-action="removeFromCart" asp-route-id="@item.ProductID" class="fa-solid fa-trash deleteCart"></a>
+                            <a asp-controller="cart" asp-action="removeFromCart" asp-route-sizeID="@item.SizeID" asp-route-colorID="@item.ColorID" asp-route-id="@item.ProductID" class="fa-solid fa-trash deleteCart"></a>
                         </td>
                     </tr>
 
@@ -79,7 +95,22 @@
             <h3 class="title">Cart Totals</h3>
             <div class="cart-subtotal cart-item d-flex align-items-center justify-content-between">
                 <label class="ls-25">Subtotal</label>
-                <span>$@Model.Sum(x => x.Price * x.Count).ToString("F2")</span>
+                @{
+                    double totalPrice = 0;
+
+                    foreach (var item in Model)
+                    {
+                        if (item.DiscountedPrice == 0)
+                        {
+                            totalPrice += item.Price * item.Count;
+                        }
+                        else if (item.Price != 0 && item.DiscountedPrice != 0)
+                        {
+                            totalPrice += item.DiscountedPrice * item.Count;
+                        }
+                    }
+                }
+                <span>$@totalPrice.ToString("F2")</span>
             </div>
             <div class="cart-delivery cart-item d-flex align-items-center justify-content-between">
                 <label class="ls-25">Delivery</label>
@@ -87,7 +118,7 @@
             </div>
             <div class="cart-total cart-item d-flex align-items-center justify-content-between">
                 <label class="ls-25">Total</label>
-                <span>$@Model.Sum(x => x.Price * x.Count).ToString("F2")</span>
+                <span>$@totalPrice.ToString("F2")</span>
             </div>
             <a asp-controller="checkout" asp-action="index" class="btn__main">
                 Proced to checkout

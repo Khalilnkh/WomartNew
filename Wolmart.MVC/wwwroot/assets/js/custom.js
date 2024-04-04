@@ -7,18 +7,24 @@
         let priceText = $('#colorPrice').text();
         let oldPriceText = $('#colorOldPrice').text();
 
-        if (oldPriceText != "" && colorID && sizeID != undefined) {
+        if (priceText != "" && colorID && sizeID != undefined) {
             let match = priceText.match(/\d+/);
+            let priceOriginal = match ? match[0] : "";
 
-            let match1 = oldPriceText.match(/\d+/);
+            let oldPriceOriginal = "";
 
-            if (priceText != "") {
-                var priceOriginal = match[0];
+            if (oldPriceText != "") {
+                let match1 = oldPriceText.match(/\d+/);
+                oldPriceOriginal = match1 ? match1[0] : "";
             }
 
-            let oldPriceOriginal = match1[0];
+            let url = '';
 
-            let url = $(this).attr('href') + '?colorID=' + colorID + '&sizeID=' + sizeID + '&price=' + oldPriceOriginal + '&discountedPrice=' + priceOriginal;
+            if (oldPriceOriginal == "") {
+                url = $(this).attr('href') + '?colorID=' + colorID + '&sizeID=' + sizeID + '&price=' + priceOriginal + '&discountedPrice=' + oldPriceOriginal;
+            } else {
+                url = $(this).attr('href') + '?colorID=' + colorID + '&sizeID=' + sizeID + '&price=' + oldPriceOriginal + '&discountedPrice=' + priceOriginal;
+            }
 
             fetch(url).then(res => res.text())
                 .then(data => {
@@ -34,19 +40,6 @@
                 });
         }
     });
-});
-
-$(document).ready(function () {
-    $('.addToWishlist').click(function (e) {
-        alert('hello')
-        e.preventDefault();
-    });
-
-
-    $(document).on('click', '.testBtn', function (e) {
-        alert('hello')
-            e.preventDefault();
-        });
 });
 
 $(document).on('click', '.clearBtn', function (e) {
@@ -310,9 +303,14 @@ $(document).on('mouseover click', ".ratingStar", function (event) {
 
 $(document).on('click', ".color", function () {
     var colorPrice = $(this).attr("data-price");
-    var discountedPrice = $(this).attr("data-old-price")
+    var discountedPrice = $(this).attr("data-old-price");
 
-    $("#colorPrice").text("$" + discountedPrice);
-    $("#colorOldPrice").text("$" + colorPrice)
+    if (discountedPrice.trim() === "") {
+        $("#colorPrice").text("$" + colorPrice);
+        $("#colorOldPrice").text("");
+    } else {
+        $("#colorPrice").text("$" + discountedPrice);
+        $("#colorOldPrice").text("$" + colorPrice);
+    }
 });
 
