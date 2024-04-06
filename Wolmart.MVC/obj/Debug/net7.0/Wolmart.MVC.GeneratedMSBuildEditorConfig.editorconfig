@@ -242,6 +242,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcU2hhcmVkXF9TdWJzY3JpYmVySW5kZXhQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/repos/C\#/Wolmart.MVC/Areas/admin/Views/Shared/_UserIndexPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcU2hhcmVkXF9Vc2VySW5kZXhQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/repos/C\#/Wolmart.MVC/Areas/admin/Views/Size/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcU2l6ZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -296,6 +300,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/repos/C\#/Wolmart.MVC/Areas/admin/Views/Subscriber/Read.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcU3Vic2NyaWJlclxSZWFkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/repos/C\#/Wolmart.MVC/Areas/admin/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/repos/C\#/Wolmart.MVC/Areas/admin/Views/User/Read.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcVXNlclxSZWFkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/repos/C\#/Wolmart.MVC/Areas/admin/Views/_ViewImports.cshtml]

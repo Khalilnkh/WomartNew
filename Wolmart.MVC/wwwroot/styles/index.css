@@ -111,7 +111,7 @@ input[type=number]::-webkit-outer-spin-button {
     border: solid #fff;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
-    opacity: 1;
+    opacity: 1 !important;
     transition: opacity 0.25s ease;
 }
 
@@ -139,7 +139,7 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 4px;
 }
 
-/*.checkbox.style-c .checkbox__checkmark:after {
+.checkbox.style-c .checkbox__checkmark:after {
   content: "";
   position: absolute;
   left: 8px;
@@ -151,7 +151,7 @@ input[type=number]::-webkit-outer-spin-button {
   transform: rotate(45deg);
   opacity: 0;
   transition: opacity 0.25s ease;
-}*/
+}
 
 .checkbox.style-c .checkbox__body {
   color: #333;
@@ -1892,6 +1892,7 @@ footer .footer-bottom span {
   height: 44px;
   margin-bottom: 15px;
   padding-left: 15px;
+  font-size: 14px;
 }
 #loginModal .tab-content .login-btn {
   border: none;

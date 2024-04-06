@@ -109,6 +109,7 @@ namespace Wolmart.MVC.Controllers
 
             var pagedList = PagiNationList<Product>.Create(products, page, show ?? 12);
 
+            ViewBag.Products = _context.Products.ToList();
             ViewBag.Brands = _context.Brands.ToList();
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Colors = _context.Colors.ToList();
@@ -128,6 +129,8 @@ namespace Wolmart.MVC.Controllers
                 .Include(x => x.ProductImages)
                 .Include(x => x.Feedbacks)
                 .ThenInclude(x => x.FeedbackImages)
+                .Include(x => x.ProductSizes)
+                .ThenInclude(x => x.Size)
                 .Include(x => x.ProductDescriptions)
                 .Include(x => x.ProductColors)
                 .ThenInclude(x => x.Color)
@@ -228,7 +231,7 @@ namespace Wolmart.MVC.Controllers
             await _context.Feedbacks.AddAsync(feedback);
             await _context.SaveChangesAsync();
 
-            return View("index", "shop");
+            return RedirectToAction("Index", "Shop"); 
         }
 
     }

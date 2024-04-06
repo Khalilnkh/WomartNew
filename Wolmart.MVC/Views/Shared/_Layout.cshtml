@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="~/styles/accordion.css" asp-append-version="true">
     <link rel="stylesheet" href="~/styles/checkout.css">
     <link rel="stylesheet" href="~/styles/contact.css">
-    <link rel="stylesheet" href="~/styles/cart.css">
+    <link rel="stylesheet" href="~/styles/cart.css" asp-append-version="true">
     <link rel="stylesheet" href="~/styles/about.css">
     <link rel="stylesheet" href="~/styles/drawer.css" asp-append-version="true">
     <link rel="stylesheet" href="~/styles/my-account.css" asp-append-version="true">
@@ -92,7 +92,7 @@
                                     {
                                         foreach (var error in modelStateEntry.Value.Errors)
                                         {
-                                            <li>@error.ErrorMessage</li>
+                                            <li style="font-size: 13px">@error.ErrorMessage</li>
                                         }
                                     }
                                 </ul>
@@ -135,7 +135,7 @@
                                     <ul>
                                         @foreach (var error in (string[])errors)
                                         {
-                                            <li>@error</li>
+                                            <li style="font-size: 13px">@error</li>
                                         }
                                     </ul>
                                 </div>
@@ -144,7 +144,7 @@
                             {
                                 <div class="alert alert-danger" role="alert">
                                     <ul>
-                                        <li>@errors</li>
+                                        <li style="font-size: 13px">@errors</li>
                                     </ul>
                                 </div>
                             }

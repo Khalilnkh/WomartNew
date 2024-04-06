@@ -28,7 +28,7 @@
 
             fetch(url).then(res => res.text())
                 .then(data => {
-                    $('#cart-info').html(data);
+                    $('.cart-info').html(data);
                 });
         }
         else {
@@ -36,7 +36,7 @@
 
             fetch(url).then(res => res.text())
                 .then(data => {
-                    $('#cart-info').html(data);
+                    $('.cart-info').html(data);
                 });
         }
     });
@@ -52,7 +52,7 @@ $(document).on('click', '.clearBtn', function (e) {
 
             fetch('/cart/getcart').then(res => res.text())
                 .then(data => {
-                    $('#cart-info').html(data);
+                    $('.cart-info').html(data);
                 })
         })
 })
@@ -62,7 +62,7 @@ $(document).on('click', '.close-btn', function (e) {
     fetch($(this).attr('href'))
         .then(res => res.text())
         .then(data => {
-            $('#cart-info').html(data);
+            $('.cart-info').html(data);
             fetch('/cart/getcartindex').then(res => res.text())
                 .then(data => {
                     $('#cartIndex').html(data);
@@ -79,7 +79,7 @@ $(document).on('click', '.deleteCart', function (e) {
             $('#cartIndex').html(data);
             fetch('/cart/getcart').then(res => res.text())
                 .then(data => {
-                    $('#cart-info').html(data);
+                    $('.cart-info').html(data);
                 })
         })
 })
@@ -251,7 +251,7 @@ $(document).on('click', '.minusCount', function (e) {
 
                 fetch('/cart/getcart').then(res => res.text())
                     .then(data => {
-                        $('#cart-info').html(data);
+                        $('.cart-info').html(data);
                     });
             });
     }
@@ -285,7 +285,7 @@ $(document).on('click', '.plusCount', function (e) {
 
             fetch('/cart/getcart').then(res => res.text())
                 .then(data => {
-                    $('#cart-info').html(data);
+                    $('.cart-info').html(data);
                 });
         });
 
@@ -305,11 +305,21 @@ $(document).on('click', ".color", function () {
     var colorPrice = $(this).attr("data-price");
     var discountedPrice = $(this).attr("data-old-price");
 
-    if (discountedPrice.trim() === "") {
+    if (!discountedPrice || discountedPrice.trim() === "") {
         $("#colorPrice").text("$" + colorPrice);
         $("#colorOldPrice").text("");
     } else {
         $("#colorPrice").text("$" + discountedPrice);
+        $("#colorOldPrice").text("$" + colorPrice);
+    }
+});
+
+$(document).ready(function () {
+    var colorPrice = $(".color").first().data("price");
+    var oldPrice = $(".color").first().data("old-price");
+
+    if (colorPrice && oldPrice) {
+        $("#colorPrice").text("$" + oldPrice);
         $("#colorOldPrice").text("$" + colorPrice);
     }
 });

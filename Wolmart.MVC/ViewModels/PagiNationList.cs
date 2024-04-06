@@ -1,8 +1,9 @@
-﻿namespace Wolmart.MVC.ViewModels
+﻿using System.Drawing.Printing;
+
+namespace Wolmart.MVC.ViewModels
 {
     public class PagiNationList<T> : List<T>
     {
-
         public PagiNationList(IQueryable<T> entities, int page, int totalPages)
         {
             TotalPages = totalPages;
@@ -38,7 +39,6 @@
         public int TotalItems { get; set; }
 
         public int PageIndex { get; set; }
-
 
         public bool HasNext => PageIndex < TotalPages;
         public bool HasPrev => PageIndex > 1;

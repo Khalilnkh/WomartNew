@@ -52,7 +52,7 @@ namespace Wolmart.MVC.Areas.admin.Controllers
                     ModelState.AddModelError("File", "The maximum size must be 20mb!");
                     return View(award);
                 }
-                award.Logo = award.File.CreateImage(_env, "assets", "images", "products");
+                award.Logo = award.File.CreateImage(_env, "assets", "images");
             }
             else
             {
@@ -102,7 +102,7 @@ namespace Wolmart.MVC.Areas.admin.Controllers
                     ModelState.AddModelError("MainFile", "The maximum size must be 20mb!");
                     return View(award);
                 }
-                awards.Logo = award.File.CreateImage(_env, "assets", "images", "products");
+                awards.Logo = award.File.CreateImage(_env, "assets", "images");
             }
 
             awards.Text = award.Text.Trim();

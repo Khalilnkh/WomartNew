@@ -132,7 +132,7 @@
                                     <li>
                                         <i class="fa-solid fa-bag-shopping"></i>
                                         Cart
-                                        <div id="cart-info">
+                                        <div class="cart-info">
                                             @await Html.PartialAsync("_CartPartial", cartVMs)
                                         </div>
                                     </li>
@@ -191,7 +191,7 @@
                                                                             @foreach (var subSubcategory in Model.Subcategories.Where(s => s.ParentSubcategoryID == subcategory.ID))
                                                                             {
                                                                                 <li>
-                                                                                    <a href="#">@subSubcategory.Name</a>
+                                                                                    <a asp-controller="shop" asp-action="index" asp-route-category="@category.ID">@subSubcategory.Name</a>
                                                                                 </li>
                                                                             }
                                                                         </ul>
@@ -205,7 +205,7 @@
                                                         <li>
                                                             <div class="banner-fixed menu-banner menu-banner2">
                                                                 <figure>
-                                                                    <img src="assets/images/@category.Image"
+                                                                    <img src="~/assets/images/@category.Image"
                                                                          alt="Menu Banner" width="235"
                                                                          height="347" />
                                                                 </figure>
@@ -330,7 +330,8 @@
 
                                             <li>
                                                 <a asp-controller="shop" asp-action="index" asp-route-category="@category.ID">
-                                                    <i class="fa-solid fa-@category.Icon"></i>@category.Name
+                                                    <i class="fa-solid fa-@category.Icon"></i>
+                                                    <span class="d-flex w-100">@category.Name</span>
 
                                                     @if (subcategories.Any())
                                                     {
@@ -387,7 +388,9 @@
                         <ul>
                             <li>
                                 <i class="fa-solid fa-bag-shopping"></i>
-                                @await Html.PartialAsync("_CartPartial", cartVMs)
+                                <div class="cart-info">
+                                    @await Html.PartialAsync("_CartPartial", cartVMs)
+                                </div>
                             </li>
                         </ul>
                     </div>

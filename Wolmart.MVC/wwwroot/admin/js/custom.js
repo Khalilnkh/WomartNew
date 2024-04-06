@@ -2,6 +2,24 @@
 
     "use strict";
 
+    $('.searchInput').on('input', function () {
+        let search = $(this).val().trim();
+        let url = "/admin/user/searchusers";
+
+        if (search) {
+            url += "?search=" + search; 
+        }
+
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                $('#userList').html(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+
     $(document).on("click", "#inputadding", function (e) {
         e.preventDefault();
 
@@ -200,8 +218,6 @@
                 )
             }
         })
-
-
     })
 
     $(document).on('click', '.deleteProdImg', function (e) {
@@ -223,7 +239,6 @@
                   fetch(url)
                       .then(res => res.text())
                       .then(data => {
-                          //$('.form-data').html(data)
                           $('.productImages').html(data)
                       });
 
@@ -259,7 +274,6 @@
                 fetch(url)
                     .then(res => res.text())
                     .then(data => {
-                        //$('.form-data').html(data)
                         $('.contentDynm').html(data)
                     });
 

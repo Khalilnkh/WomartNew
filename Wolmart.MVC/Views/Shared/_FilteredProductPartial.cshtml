@@ -20,19 +20,41 @@
         <div class="pagination-main">
             <p class="pagination-info">
                 Showing<span>
+
                     @if (Model.PageIndex == 1)
                     {
                         @(Model.Start)
                     }
-                    else
+                    @if(Model.HasNext && Model.PageIndex != 1)
                     {
                         @(Model.TotalItems * Model.PageIndex - 12)
                     }
+                    @if(!Model.HasNext && Model.HasPrev)
+                    {
+                        int totalCount = ViewBag.Products.Count - Model.TotalItems;
+                        @totalCount
+                    }
                     -
-                    @(Model.TotalItems * Model.PageIndex)
-
-                    of @(Model.Count * Model.TotalPages - 12)
-                </span>Products
+                    @if(!Model.HasNext && Model.PageIndex != 1)
+                    {
+                        int totalCount = ViewBag.Products.Count;
+                        @totalCount
+                    }
+                    else
+                    {
+                        @(Model.TotalItems * Model.PageIndex)
+                    }
+                    of
+                    @if (ViewBag.Products != null && Model.HasNext || Model.HasPrev) 
+                    {
+                        int totalCount = ViewBag.Products.Count;
+                        @totalCount
+                    }
+                    else
+                    {
+                        @(Model.TotalItems * Model.PageIndex)
+                    }
+                </span>
             </p>
             <ul class="pagination">
                 @if (Model.HasPrev)

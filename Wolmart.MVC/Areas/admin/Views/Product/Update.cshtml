@@ -16,15 +16,12 @@
                     <input class="form-control" asp-for="Name" placeholder="Name...">
                     <span class="text-danger" asp-validation-for="Name"></span>
                 </div>
-                @foreach (ProductDescription description in Model.ProductDescriptions)
-                {
-                    <div class="form-group">
-                        <label class="form-label" asp-for="@description.Text">Description</label>
-                        <textarea rows="40" cols="70" class="form-control" name="ProductDescription[]" id="inputCKdesc" asp-for="@description.Text">
-                        </textarea>
-                        <span asp-validation-for="@description.Text" class="text text-danger"></span>
-                    </div>
-                }
+                <div class="form-group">
+                    <label class="form-label" asp-for="ProductDescriptions[0].Text">Model</label>
+                    <textarea rows="40" cols="70" class="form-control" id="inputCKdesc" asp-for="ProductDescriptions[0].Text">
+                    </textarea>
+                    <span class="text-danger" asp-validation-for="ProductDescriptions[0].Text"></span>
+                </div>
                 <div class="form-group">
                     <label class="form-label" asp-for="ProductSpecifications[0].Model">Model</label>
                     <input class="form-control" asp-for="ProductSpecifications[0].Model" placeholder="Model">
@@ -39,17 +36,21 @@
                     <label asp-for="MainFile" class="mb-2">Main Image</label>
                     <input class="form-control mb-3" asp-for="MainFile" placeholder="Main Image...">
                     <span class="text-danger" asp-validation-for="MainFile"></span>
+            
                     <div style="width: 12.33%">
-                        <img src="~/assets/images/products/@Model.HoverImage" class="img-fluid" alt="Alternate Text" />
+                        <img src="~/assets/images/products/@Model.MainImage" class="img-fluid" alt="Alternate Text" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label asp-for="HoverFile" class="mb-2">Hover Image</label>
                     <input class="form-control mb-3" asp-for="HoverFile" placeholder="Main Image...">
                     <span class="text-danger" asp-validation-for="HoverFile"></span>
-                    <div style="width: 12.33%">
-                        <img src="~/assets/images/products/@Model.HoverImage" class="img-fluid" alt="Alternate Text" />
-                    </div>
+                    @if(Model.HoverImage != null)
+                    {
+                        <div style="width: 12.33%">
+                            <img src="~/assets/images/products/@Model.HoverImage" class="img-fluid" alt="Alternate Text" />
+                        </div>
+                    }
                 </div>
                 <div class="form-group">
                     <label asp-for="Files" class="form-label">Image List</label>
@@ -95,7 +96,7 @@
                                             </div>
                                             <div class="form-group col-lg-4">
                                                 <label class="mb-2">Count</label>
-                                                <input class="form-control" name="SizeCounts[]" asp-for="@Model.ProductSizes[i].Count" placeholder="Enter Count" />
+                                                <input class="form-control" asp-for="SizeCounts" value="@Model.ProductSizes[i].Count" placeholder="Count...">
                                                 <span class="text-danger" asp-validation-for="SizeCounts"></span>
                                             </div>
                                             <div class="addInputButton">
@@ -131,19 +132,19 @@
                                             </div>
                                             <div class="form-group col-lg-4">
                                                 <label class="mb-2">Count</label>
-                                                <input class="form-control" name="Counts[]" asp-for="@Model.ProductColors[i].Count" placeholder="Count...">
+                                                <input class="form-control" asp-for="Counts" value="@Model.ProductColors[i].Count" placeholder="Count...">
                                                 <span class="text-danger" asp-validation-for="Counts"></span>
                                             </div>
                                         </div>
                                         <div class="select-main d-flex gap-3 col-lg-12">
                                             <div class="form-group col-lg-4">
                                                 <label class="mb-2">Price</label>
-                                                <input class="form-control" name="Prices[]" asp-for="@Model.ProductColors[i].Price" placeholder="Price...">
+                                                <input class="form-control" asp-for="Prices" value="@Model.ProductColors[i].Price" placeholder="Price...">
                                                 <span class="text-danger" asp-validation-for="Prices"></span>
                                             </div>
                                             <div class="form-group col-lg-4">
                                                 <label class="mb-2">Discounted Price</label>
-                                                <input class="form-control" asp-for="@Model.ProductColors[i].DiscountedPrice" placeholder="Discounted Price...">
+                                                <input class="form-control" asp-for="DiscountedPrices" value="@Model.ProductColors[i].DiscountedPrice" placeholder="Discounted Price...">
                                                 <span class="text-danger" asp-validation-for="DiscountedPrices"></span>
                                             </div>
                                             <div class="addInputButton1">

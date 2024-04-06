@@ -27,7 +27,7 @@ namespace Wolmart.MVC.Areas.admin.Controllers
         }
         public IActionResult Index(int page)
         {
-            IQueryable<Product> product = _context.Products.OrderBy(x => x.ID);
+            IQueryable<Product> product = _context.Products.OrderByDescending(x => x.ID);
 
             return View(PagiNationList<Product>.Create(product, page, 5));
         }
@@ -289,17 +289,17 @@ namespace Wolmart.MVC.Areas.admin.Controllers
                 product.ProductImages = productImages;
             }
 
-            if (product.ProductDescription != null)
+            if (product.ProductDescriptions != null)
             {
                 List<ProductDescription> productDescriptions = new List<ProductDescription>();
-                for (int i = 0; i < product.ProductDescription.Count; i++)
+                for (int i = 0; i < product.ProductDescriptions.Count; i++)
                 {
-                    ProductDescription productDescription = new ProductDescription
+                    ProductDescription ProductDescriptions = new ProductDescription
                     {
-                        Text = product.ProductDescription[i],
+                        Text = product.ProductDescriptions[0].Text,
                         CreatedAt = DateTime.Now
                     };
-                    productDescriptions.Add(productDescription);
+                    productDescriptions.Add(ProductDescriptions);
                 }
                 product.ProductDescriptions = productDescriptions;
             }
@@ -370,7 +370,7 @@ namespace Wolmart.MVC.Areas.admin.Controllers
 
             if (products == null) return NotFound();
 
-            if(!await _context.Brands.AnyAsync(x=>x.ID == product.BrandID))
+            if (!await _context.Brands.AnyAsync(x=>x.ID == product.BrandID))
             {
                 ModelState.AddModelError("BrandID", "Select a correct brand");
 
@@ -391,7 +391,6 @@ namespace Wolmart.MVC.Areas.admin.Controllers
                 return View();
             }
 
-
             if (product.ColorIDs.Count() != product.Counts.Count())
             {
                 ModelState.AddModelError("", "Select a correct list");
@@ -403,31 +402,36 @@ namespace Wolmart.MVC.Areas.admin.Controllers
 
             if (product.SizeIDs != null)
             {
-
                 for (int i = 0; i < product.SizeIDs.Count(); i++)
                 {
-                    if (!await _context.Sizes.AnyAsync(x => x.ID == product.SizeIDs[i]))
+                    try
                     {
-                        ModelState.AddModelError("", $"This size id {product.SizeIDs[i]} is incorrect`");
+                        if (!await _context.Sizes.AnyAsync(x => x.ID == product.SizeIDs[i]))
+                        {
+                            ModelState.AddModelError("", $"This size id {product.SizeIDs[i]} is incorrect");
+                            return View();
+                        }
 
+                        if (product.SizeCounts[i] <= 0)
+                        {
+                            ModelState.AddModelError("", $"Count is incorrect");
+                            return View();
+                        }
+
+                        ProductSize productSize = new ProductSize
+                        {
+                            SizeID = product.SizeIDs[i],
+                            Count = (int)product.SizeCounts[i],
+                            UpdatedAt = DateTime.Now
+                        };
+
+                        productSizes.Add(productSize);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", $"An error occurred: {ex.Message}");
                         return View();
                     }
-
-                    if (product.SizeCounts[i] <= 0)
-                    {
-                        ModelState.AddModelError("", $"Count is incorrect");
-
-                        return View();
-                    }
-
-                    ProductSize productSize = new ProductSize
-                    {
-                        SizeID = product.SizeIDs[i],
-                        Count = (int)product.SizeCounts[i],
-                        UpdatedAt = DateTime.Now
-                    };
-
-                    productSizes.Add(productSize);
                 }
 
                 products.ProductSizes = productSizes;
@@ -435,43 +439,42 @@ namespace Wolmart.MVC.Areas.admin.Controllers
 
             List<ProductColor> productColors = new List<ProductColor>();
 
-            if(product.ColorIDs != null)
+            if (product.ColorIDs != null)
             {
                 for (int i = 0; i < product.ColorIDs.Count(); i++)
                 {
-                    if (!await _context.Colors.AnyAsync(c => c.ID == product.ColorIDs[i]))
+                    try
                     {
-                        ModelState.AddModelError("", $"This color id {product.ColorIDs[i]} is incorrect`");
+                        if (!await _context.Colors.AnyAsync(x => x.ID == product.ColorIDs[i]))
+                        {
+                            ModelState.AddModelError("", $"This color id {product.ColorIDs[i]} is incorrect");
+                            return View();
+                        }
 
+                        if (product.Counts[i] <= 0)
+                        {
+                            ModelState.AddModelError("", $"Count is incorrect");
+                            return View();
+                        }
+
+                        ProductColor productColor = new ProductColor
+                        {
+                            ColorID = product.ColorIDs[i],
+                            Price = (int)product.Prices[i],
+                            DiscountedPrice = product.DiscountedPrices?[i],
+                            Count = (int)product.Counts[i],
+                            UpdatedAt = DateTime.Now
+                        };
+
+                        productColors.Add(productColor);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", $"An error occurred: {ex.Message}");
                         return View();
                     }
-
-                    if (product.Counts[i] <= 0)
-                    {
-                        ModelState.AddModelError("", $"Count is incorrect");
-
-                        return View();
-                    }
-
-
-                    if (product.Prices[i] <= 0)
-                    {
-                        ModelState.AddModelError("", $"Price is incorrect");
-
-                        return View();
-                    }
-
-                    ProductColor productColor = new ProductColor
-                    {
-                        ColorID = product.ColorIDs[i],
-                        Count = (int)product.Counts[i],
-                        Price = (int)product.Prices[i],
-                        DiscountedPrice = product.DiscountedPrices?[i],
-                        UpdatedAt = DateTime.Now
-                    };
-
-                    productColors.Add(productColor);
                 }
+
                 products.ProductColors = productColors;
             }
 
@@ -482,14 +485,12 @@ namespace Wolmart.MVC.Areas.admin.Controllers
                 return View();
             }
 
-
             if (product.Files != null && product.Files.Count() > 4)
             {
                 ModelState.AddModelError("Files ", "You can select a maximum 5 images");
 
                 return View();
             }
-
 
             if (product.MainFile != null)
             {
@@ -553,19 +554,19 @@ namespace Wolmart.MVC.Areas.admin.Controllers
                 products.ProductImages = productImages;
             }
 
-            if (product.ProductDescription != null)
+            if (product.ProductDescriptions != null)
             {
                 _context.ProductDescriptions.RemoveRange(products.ProductDescriptions);
 
                 List<ProductDescription> productDescriptions = new List<ProductDescription>();
 
-                for (int i = 0; i < product.ProductDescription.Count; i++)
+                for (int i = 0; i < product.ProductDescriptions.Count; i++)
                 {
-                    if (product.ProductDescription[i] != null)
+                    if (product.ProductDescriptions[i].Text != null)
                     {
                         ProductDescription productDescription = new ProductDescription
                         {
-                            Text = product.ProductDescription[i],
+                            Text = product.ProductDescriptions[i].Text,
                             UpdatedAt = DateTime.Now
                         };
                         productDescriptions.Add(productDescription);
@@ -590,7 +591,7 @@ namespace Wolmart.MVC.Areas.admin.Controllers
 
         public async Task<IActionResult> Delete(int? ID,int page)
         {
-            IQueryable<Product> products = _context.Products.OrderBy(x => x.ID == ID);
+            IQueryable<Product> products = _context.Products.OrderByDescending(x => x.ID == ID);
 
             if (ID == null) return BadRequest();
 
